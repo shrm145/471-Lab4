@@ -1,0 +1,84 @@
+`timescale 1 ps / 100 fs
+
+module CPU(clk, reset);
+	input clk, reset;
+	
+	// CONTROLS
+	wire Branch, Jump, JR, ALUSource, RegWrite, MemWrite, MemToReg, RegDest, valToAdderCtrl;
+	wire [1:0] ALUControl;
+	wire [31:0] instruction, PCnotJR; 
+	wire [29:0] PC, constCtrl, PCnoJump, PCJump;
+	wire [4:0] Rs, Rt, Rd;
+	wire [15:0] imm16;
+	wire [25:0] jumpTarget;
+	
+	assign Rs = instruction[25:21];
+	assign Rt = instruction[20:16];
+	assign Rd = instruction[15:11];
+	assign imm16 = instruction[15:0];
+	assign jumpTarget = instruction[25:0];
+
+	// REGFILE
+	wire [31:0] WriteData;
+	wire [31:0] readRs, readRt;
+	wire [3:0] WriteRegAddr;
+	
+	// ALU
+	wire zero, overflow, CarryOut, negative;
+	wire [31:0] ALUoutput, constCPU, BussB;
+
+	// MEM
+	wire [31:0] memData;
+	
+	// -------- INSTRUCTION FETCH --------
+
+	// determines value of PC. If JR set equal to ALUoutput, otherwise keep previous PC value
+	mux2_1_30Bit detPCMux (.out(PCnotJR), .in0({PC}), .in1(readRs[31:2]), .sel(JR));
+	
+	// determines control for valToAdderMux. Positive if branching and Reg[rs] is negative 
+	and #50 (valToAdderCtrl, Branch, negative);
+	
+	// determines value sent to added to PC. 
+	mux2_1_30Bit valToAdderMux (.out(constCtrl), .in0(30'b0), .in1({16'b0, imm16}), .sel(valToAdderCtrl));
+	
+	// 30 bit adder that updates program counter
+	adder30Bit adder30 (.out(PCnoJump), .cin(1'b1), .in0(PC), .in1(constCtrl));
+	
+	// determines PC based on whether the instruction is a jump
+	mux2_1_30Bit jumpMux (.out(PC), .in0(PCnoJump), .in1({PC[29:26], jumpTarget}), .sel(Jump));
+	
+	//Instruction memory, gets instruction at PC
+	InstructionMem getInstr (.instruction, .address({PC, 2'b00}));
+	
+	//GET VALUES FROM FETCH: Rs, Rt, imm16 etc
+	controls calcCtrls (.Branch, .Jump, .JR, .ALUSource, .ALUControl, .RegWrite, .MemWrite, .MemToReg, .RegDest, .instruction);
+	
+	
+	// -------- DATA PATH --------
+	
+	// determines which register address is writen to in regfile
+	mux2_1_5Bit regDestMux (.out(WriteRegAddr), .in0(Rt), .in1(Rd), .sel(RegDest));
+	
+	// register file of CPU. Can read 2 values
+	regfile rf (.ReadData1(Rs), .ReadData2(Rt), .WriteData, 
+			  .ReadRegister1(readRs), .ReadRegister2(readRt), .WriteRegister(WriteRegAddr),
+			  .RegWrite, .clk);
+
+			  
+	// Determines if sign extended 16 bit or 32 bit 0 is sent as parameter		  
+	mux2_1_32Bit signImmMux (.out(constCPU), .in0({16'b0, imm16}), .in1(32'b0), .sel(Branch));
+	
+	// Determines if the constant from signImmMux or the 2nd reg value is sent into ALU on BussB
+	mux2_1_32Bit ALUSourceMux (.out(BussB), .in0(readRt), .in1(constCPU), .sel(ALUSource));
+	
+	// ALU for CPU		  
+	alu aluComp (.Output(ALUoutput), .zero, .overflow, .CarryOut, .negative, .BussA(readRs), .BussB, .ALUControl);
+	
+	// data memory for CPU
+	dataMem datMem(.data(memData), .address(ALUoutput), .writedata(readRt), .writeenable(MemWrite), .clk);
+	
+	// determines whether the memory output or ALUoutput is sent to be written to the regfile
+	mux2_1_32Bit memToRegMux (.out(WriteData), .in0(ALUoutput), .in1(memData), .sel(MemToReg));
+endmodule	
+
+

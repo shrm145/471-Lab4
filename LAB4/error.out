@@ -1,0 +1,23 @@
+// Error cases
+
+// instructions not supported by CPU
+11111111111111111111111111111111 
+00000000000000000000000000000000
+	
+// Jump to register that has negative value
+// store negative number at reg[10000]
+00100000000100001111111111000000
+00000010000000000000000000001000
+
+// Subu with non-zero shamt
+00000000000100001000101100100011
+
+//Jump out of bounds of program
+00001011111111111111111111111111 
+
+// Jump to register with no stored value. 
+// Should jump to first instruction and loop...
+00001000000000000000000000001100
+
+	
+

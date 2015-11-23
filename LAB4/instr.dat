@@ -1,0 +1,21 @@
+// Test of addi instruction, with a single j instruction at the end to have it loop forever.
+// Requires:
+//	addi & j instructions
+// Expected results:
+// $s1 = 1
+// $s2 = 2
+// $s3 = 3
+// $s4 = -2
+/*
+I-Type
+OP    RS   RT   Imm16
+12345612345123451234567890123456
+*/
+									//MAIN:
+00100000000100000000000000000000	//addi $s0, $zero, 0	// $s0 = 0
+00100010000100010000000000000001	//addi $s1, $s0, 1	// $s1 = 1
+00100010001100100000000000000001	//addi $s2, $s1, 1	// $s2 = 2
+00100010001100110000000000000010	//addi $s3, $s1, 2	// $s3 = 3
+00100010001101001111111111111101	//addi $s4, $s1, -3	// $s4 = -2
+00001000000000000000000000000101  	//HALT:	j HALT (HALT = 5)
+00100000000000000000000000000000	//addi $zero, $zero, 0		// Bogus instruction � pipelined CPU may need it

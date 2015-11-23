@@ -1,0 +1,3 @@
+Warning (10030): Net "instrmem.data_a" at InstructionMem.sv(9) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "instrmem.waddr_a" at InstructionMem.sv(9) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "instrmem.we_a" at InstructionMem.sv(9) has no driver or initial value, using a default initial value '0'

@@ -1,0 +1,5 @@
+module controls (Branch, Jump, JR, ALUSource, ALUControl, RegWrite, MemWrite, MemToReg, RegDest, Instruction, clk, reset);
+	input clk, reset;
+	input [31:0] instruction;
+	output Branch, Jump, JR, ALUSource, ALUControl, RegWrite, MemWrite, MemToReg, RegDest;
+	

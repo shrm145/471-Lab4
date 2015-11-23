@@ -1,0 +1,25 @@
+`timescale 1 ps / 100 fs
+
+module adder30Bit #(parameter WIDTH = 30)(out, cin, in0, in1);
+	output [WIDTH-1:0] out;
+	//output cout, overflow;
+	input [WIDTH-1:0] in0, in1;
+	input cin;
+	
+	wire[WIDTH:0] carryValues; // contains carry in and carry out values
+	wire [WIDTH-1:0] in1ToAdder, notIn1, tempOut;
+	
+	assign carryValues[0] = cin;
+	
+	// compute sum of each bit to calculate 32 bit sum
+	genvar i;	
+	generate
+		for(i=0; i<WIDTH; i++) begin : eachBit
+			
+			adder addrBit (.sum(tempOut[i]), .cout(carryValues[i+1]), .a(in0[i]), .b(in1ToAdder[i]), .cin(carryValues[i]));
+		end
+	endgenerate
+	
+	assign out = tempOut;	
+	
+endmodule 
