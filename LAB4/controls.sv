@@ -55,7 +55,7 @@ module controls (Branch, Jump, JR, ALUSource, ALUControl, RegWrite, MemWrite, Me
 				Branch = 	1'b0;
 				Jump = 		1'b0;
 				JR = 			1'b0; 
-				ALUControl= 2'b11; //sltu 
+				ALUControl= 2'b10; //sltu 
 			end
 			else begin // dont write, jump or branch
 				RegDest = 	1'bX;
@@ -120,11 +120,11 @@ module controls (Branch, Jump, JR, ALUSource, ALUControl, RegWrite, MemWrite, Me
 		
 		else if (op == 6'b101011) begin // SW (op = 43)
 			RegDest = 	1'bX;
-			ALUSource = 1'b1;
+			ALUSource = 1'bX;
 			RegWrite = 	1'b0;
 			MemWrite = 	1'b1; 
 			MemToReg = 	1'bX;
-			Branch = 	1'b0;
+			Branch = 	1'bX;
 			Jump = 		1'b0;
 			JR = 			1'b0; 
 			ALUControl= 2'b00; //add

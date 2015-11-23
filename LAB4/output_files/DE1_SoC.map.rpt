@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE1_SoC
-Thu Nov 19 10:49:44 2015
+Thu Nov 19 10:54:46 2015
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Full Version
 
 
@@ -265,7 +265,7 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Nov 19 10:49:44 2015       ;
+; Analysis & Synthesis Status     ; Successful - Thu Nov 19 10:54:46 2015       ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Full Version ;
 ; Revision Name                   ; DE1_SoC                                     ;
 ; Top-level Entity Name           ; CPU                                         ;
@@ -390,45 +390,45 @@ agreement for further details.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                           ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                       ; Library ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------+---------+
-; D_FF.sv                          ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/D_FF.sv           ;         ;
-; decoder4x16.sv                   ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/decoder4x16.sv    ;         ;
-; mux16_1.sv                       ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/mux16_1.sv        ;         ;
-; decoder5x32.sv                   ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/decoder5x32.sv    ;         ;
-; DFF_32.sv                        ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/DFF_32.sv         ;         ;
-; mux32_32.sv                      ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/mux32_32.sv       ;         ;
-; regfile.sv                       ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/regfile.sv        ;         ;
-; mux32_1.sv                       ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/mux32_1.sv        ;         ;
-; decoder2x4.sv                    ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/decoder2x4.sv     ;         ;
-; zeroFlag.sv                      ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/zeroFlag.sv       ;         ;
-; nor32Bit.sv                      ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/nor32Bit.sv       ;         ;
-; mux4_1_32Bit.sv                  ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/mux4_1_32Bit.sv   ;         ;
-; mux4_1.sv                        ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/mux4_1.sv         ;         ;
-; mux2_1Bit.sv                     ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/mux2_1Bit.sv      ;         ;
-; mux2_1_32Bit.sv                  ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/mux2_1_32Bit.sv   ;         ;
-; mux2_1.sv                        ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/mux2_1.sv         ;         ;
-; calcSltu.sv                      ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/calcSltu.sv       ;         ;
-; alu.sv                           ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/alu.sv            ;         ;
-; adder32Bit.sv                    ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/adder32Bit.sv     ;         ;
-; adder.sv                         ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/adder.sv          ;         ;
-; dataMem.sv                       ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/dataMem.sv        ;         ;
-; InstructionMem.sv                ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/InstructionMem.sv ;         ;
-; CPU.sv                           ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/CPU.sv            ;         ;
-; controls.sv                      ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/controls.sv       ;         ;
-; adder30bit.sv                    ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/adder30bit.sv     ;         ;
-; mux2_1_30Bit.sv                  ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/mux2_1_30Bit.sv   ;         ;
-; mux2_1_5Bit.sv                   ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/mux2_1_5Bit.sv    ;         ;
-; dataPath.sv                      ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/dataPath.sv       ;         ;
-; signExtnd.sv                     ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/signExtnd.sv      ;         ;
-; PC.sv                            ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/PC.sv             ;         ;
-; instrFU.sv                       ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/LAB 3 version1/LAB3/instrFU.sv        ;         ;
-; test03.out                       ; yes             ; Auto-Found File              ; U:/EE471labs/LAB 3 version1/LAB3/test03.out        ;         ;
-; test04.out                       ; yes             ; Auto-Found File              ; U:/EE471labs/LAB 3 version1/LAB3/test04.out        ;         ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                       ;
++---------------------------------------------------------+-----------------+------------------------------+---------------------------------------------------------+---------+
+; File Name with User-Entered Path                        ; Used in Netlist ; File Type                    ; File Name with Absolute Path                            ; Library ;
++---------------------------------------------------------+-----------------+------------------------------+---------------------------------------------------------+---------+
+; //ee/student/Home/bartzm/Desktop/LAB3/D_FF.sv           ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/D_FF.sv           ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/decoder4x16.sv    ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/decoder4x16.sv    ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/mux16_1.sv        ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/mux16_1.sv        ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/decoder5x32.sv    ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/decoder5x32.sv    ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/DFF_32.sv         ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/DFF_32.sv         ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/mux32_32.sv       ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/mux32_32.sv       ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/regfile.sv        ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/regfile.sv        ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/mux32_1.sv        ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/mux32_1.sv        ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/decoder2x4.sv     ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/decoder2x4.sv     ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/zeroFlag.sv       ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/zeroFlag.sv       ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/nor32Bit.sv       ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/nor32Bit.sv       ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/mux4_1_32Bit.sv   ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/mux4_1_32Bit.sv   ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/mux4_1.sv         ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/mux4_1.sv         ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/mux2_1Bit.sv      ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/mux2_1Bit.sv      ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/mux2_1_32Bit.sv   ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/mux2_1_32Bit.sv   ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/mux2_1.sv         ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/mux2_1.sv         ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/calcSltu.sv       ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/calcSltu.sv       ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/alu.sv            ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/alu.sv            ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/adder32Bit.sv     ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/adder32Bit.sv     ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/adder.sv          ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/adder.sv          ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/dataMem.sv        ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/dataMem.sv        ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/InstructionMem.sv ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/InstructionMem.sv ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/CPU.sv            ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/CPU.sv            ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/controls.sv       ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/controls.sv       ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/adder30bit.sv     ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/adder30bit.sv     ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/mux2_1_30Bit.sv   ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/mux2_1_30Bit.sv   ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/mux2_1_5Bit.sv    ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/mux2_1_5Bit.sv    ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/dataPath.sv       ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/dataPath.sv       ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/signExtnd.sv      ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/signExtnd.sv      ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/PC.sv             ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/PC.sv             ;         ;
+; //ee/student/Home/bartzm/Desktop/LAB3/instrFU.sv        ; yes             ; User SystemVerilog HDL File  ; //ee/student/Home/bartzm/Desktop/LAB3/instrFU.sv        ;         ;
+; test03.out                                              ; yes             ; Auto-Found File              ; //ee/student/Home/bartzm/Desktop/LAB3/test03.out        ;         ;
+; test05.out                                              ; yes             ; Auto-Found File              ; //ee/student/Home/bartzm/Desktop/LAB3/test05.out        ;         ;
++---------------------------------------------------------+-----------------+------------------------------+---------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -2669,7 +2669,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -2679,7 +2679,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Full Version
-    Info: Processing started: Thu Nov 19 10:49:14 2015
+    Info: Processing started: Thu Nov 19 10:54:04 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
 Info (12021): Found 1 design units, including 1 entities, in source file d_ff.sv
@@ -2788,7 +2788,7 @@ Info (12128): Elaborating entity "signExtnd" for hierarchy "instrFU:getinstr|sig
 Info (12128): Elaborating entity "adder30Bit" for hierarchy "instrFU:getinstr|adder30Bit:adder30"
 Info (12128): Elaborating entity "adder" for hierarchy "instrFU:getinstr|adder30Bit:adder30|adder:eachBit[0].addrBit"
 Info (12128): Elaborating entity "InstructionMem" for hierarchy "instrFU:getinstr|InstructionMem:getInstr"
-Warning (10850): Verilog HDL warning at InstructionMem.sv(50): number of words (32) in memory file does not match the number of elements in the address range [0:1023]
+Warning (10850): Verilog HDL warning at InstructionMem.sv(50): number of words (13) in memory file does not match the number of elements in the address range [0:1023]
 Info (12128): Elaborating entity "dataPath" for hierarchy "dataPath:data"
 Info (12128): Elaborating entity "mux2_1_5Bit" for hierarchy "dataPath:data|mux2_1_5Bit:regDestMux"
 Info (12128): Elaborating entity "regfile" for hierarchy "dataPath:data|regfile:rf"
@@ -2822,22 +2822,22 @@ Warning (10230): Verilog HDL assignment warning at test03.out(9): truncated valu
 Warning (10230): Verilog HDL assignment warning at test03.out(10): truncated value with size 128 to match size of target (8)
 Warning (10855): Verilog HDL warning at dataMem.sv(57): initial value for variable datamem should be constant
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Info (144001): Generated suppressed messages file U:/EE471labs/LAB 3 version1/LAB3/output_files/DE1_SoC.map.smsg
+Info (144001): Generated suppressed messages file //ee/student/Home/bartzm/Desktop/LAB3/output_files/DE1_SoC.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Info (21057): Implemented 2 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 0 output pins
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 14 warnings
-    Info: Peak virtual memory: 707 megabytes
-    Info: Processing ended: Thu Nov 19 10:49:45 2015
-    Info: Elapsed time: 00:00:31
-    Info: Total CPU time (on all processors): 00:00:10
+    Info: Peak virtual memory: 734 megabytes
+    Info: Processing ended: Thu Nov 19 10:54:47 2015
+    Info: Elapsed time: 00:00:43
+    Info: Total CPU time (on all processors): 00:00:14
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in U:/EE471labs/LAB 3 version1/LAB3/output_files/DE1_SoC.map.smsg.
+The suppressed messages can be found in //ee/student/Home/bartzm/Desktop/LAB3/output_files/DE1_SoC.map.smsg.
 
 

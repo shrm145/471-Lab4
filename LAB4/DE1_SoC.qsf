@@ -999,3 +999,11 @@ set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_RESET_N
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_P
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_N
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE //ee/student/Home/bartzm/Desktop/LAB3/OneRegister.sv
+set_global_assignment -name SYSTEMVERILOG_FILE //ee/student/Home/bartzm/Desktop/LAB3/TwoRegisters.sv
+set_global_assignment -name SYSTEMVERILOG_FILE //ee/student/Home/bartzm/Desktop/LAB3/ThreeRegisters.sv
+set_global_assignment -name SYSTEMVERILOG_FILE //ee/student/Home/bartzm/Desktop/LAB3/Decode.sv
+set_global_assignment -name SYSTEMVERILOG_FILE //ee/student/Home/bartzm/Desktop/LAB3/DecodeAndWrite.sv
+set_global_assignment -name SYSTEMVERILOG_FILE //ee/student/Home/bartzm/Desktop/LAB3/Register.sv
+set_global_assignment -name SYSTEMVERILOG_FILE //ee/student/Home/bartzm/Desktop/LAB3/Execute.sv
+set_global_assignment -name SYSTEMVERILOG_FILE //ee/student/Home/bartzm/Desktop/LAB3/PipelineControls.sv

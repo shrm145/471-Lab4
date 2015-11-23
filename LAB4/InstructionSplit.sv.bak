@@ -1,3 +1,0 @@
-module InstructionSplit( Rs, Rt, Rd, imm16, jumpTarget, instruction);
-
-	input 

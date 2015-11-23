@@ -47,7 +47,7 @@ module InstructionMem(instruction, address);
 	end
 
 	initial begin
-		$readmemb("error.out", instrmem);
+		$readmemb("test05.out", instrmem);
 	end
 endmodule
 

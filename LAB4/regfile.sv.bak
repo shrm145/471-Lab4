@@ -1,4 +1,9 @@
-module regfile (ReadData1, ReadData2, WriteData, 
+// Michaela Bartz and Shruti Misra
+// Lab 3
+
+`timescale 1 ps / 100 fs
+
+module regfile (regValues, ReadData1, ReadData2, WriteData, 
 			  ReadRegister1, ReadRegister2, WriteRegister,
 			  RegWrite, clk);
 			  
@@ -6,11 +11,14 @@ module regfile (ReadData1, ReadData2, WriteData,
 	input [31:0] WriteData;
 	input RegWrite, clk;
 	output [31:0] ReadData1, ReadData2;
+	output [31:0][31:0] regValues;	
 	
 	wire [31:0] regEnable;  			// determines which register is being written to
 	wire [31:0][31:0] regVal;			// 32 registers with 32 bits
 	
 	parameter WIDTH = 32;
+	
+	assign regValues = regVal;
 
 	decoder5x32 dec1 (.out(regEnable), .in(WriteRegister), .enable(RegWrite));
 	
@@ -94,7 +102,6 @@ endmodule
 */
 
 // Test bench for Register file
-`timescale 1 ps / 100 fs
 
 module regstim(); 		
 
@@ -104,13 +111,14 @@ module regstim();
 	reg [31:0] WriteData;
 	reg RegWrite, clk;
 	wire [31:0] ReadData1, ReadData2;
+	wire [31:0][31:0] regValues;
 
 	integer i;
 
 	// Your register file MUST be named "regfile".
 	// Also you must make sure that the port declarations
 	// match up with the module instance in this stimulus file.
-	regfile reg1(.ReadData1, .ReadData2, .WriteData, 
+	regfile reg1(.regValues, .ReadData1, .ReadData2, .WriteData, 
 			  .ReadRegister1, .ReadRegister2, .WriteRegister,
 			  .RegWrite, .clk);
 
