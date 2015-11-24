@@ -1,0 +1,8 @@
+module Memory (memAddr1, memData1, memAddr, storedRt2, clk, reset);
+	// data memory for CPU
+	dataMem datMem(.data(memData), .address(memAddr), .writedata(storedRt2), .writeenable(MemWrite), .clk);
+	
+	// Pipelining registers
+	register32Bit memoryData (.q(memData1), .d(memData), .reset, .clk);
+	register32Bit memoryAddr (.q(memAddr1), .d(memAddr), .reset, .clk);
+endmodule 
