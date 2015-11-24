@@ -1006,5 +1006,5 @@ set_global_assignment -name SYSTEMVERILOG_FILE //ee/student/Home/bartzm/Desktop/
 set_global_assignment -name SYSTEMVERILOG_FILE //ee/student/Home/bartzm/Desktop/LAB3/DecodeAndWrite.sv
 set_global_assignment -name SYSTEMVERILOG_FILE //ee/student/Home/bartzm/Desktop/LAB3/Register.sv
 set_global_assignment -name SYSTEMVERILOG_FILE //ee/student/Home/bartzm/Desktop/LAB3/Execute.sv
-set_global_assignment -name SYSTEMVERILOG_FILE //ee/student/Home/bartzm/Desktop/LAB3/PipelineControls.sv
 set_global_assignment -name SYSTEMVERILOG_FILE register32Bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE PipelineControls.sv
