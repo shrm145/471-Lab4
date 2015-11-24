@@ -8,27 +8,28 @@ module dataPath(regRS, negative, zero, CarryOut, overflow, Rs, Rt, Rd, imm16, Br
 	input Branch, ALUSource, RegWrite, MemWrite, MemToReg, RegDest;
 	input clk;
 	input [1:0] ALUControl;
-
-	
 	input [4:0] Rs, Rt, Rd;
 	input [15:0] imm16;
 	
-	// REGFILE
+	// RegFile wires
 	wire [31:0] WriteData;
 	wire [31:0] readRs, readRt;
 	wire [4:0] WriteRegAddr;
 	wire [31:0] signExImm16;
 	
-	// ALU
+	// ALU wires
 	wire [31:0] ALUoutput, constCPU, BussB;
 
-	// MEM
+	// Memory wires
 	wire [31:0] memData;
 	
-	// PIPELINING WIRES
-	wire [31:0] toALU1, toALU2, storedRt, dataIn, dataOut, memAddr, writeVal;
+	// Pipelining wires
+	wire [31:0] toALU1, toALU2, storedRt1, storedRt2, dataIn, dataOut, memAddr, memAddr1, writeVal, memData1;
 	
 	assign regRS = readRs[31:2];	
+	
+	
+	// ------ REG DECODE / WRITEBACK STAGE ------
 
 	// determines which register address is writen to in regfile
 	mux2_1_5Bit regDestMux (.out(WriteRegAddr), .in0(Rt), .in1(Rd), .sel(RegDest));
@@ -38,7 +39,7 @@ module dataPath(regRS, negative, zero, CarryOut, overflow, Rs, Rt, Rd, imm16, Br
 			  .ReadRegister1(Rs), .ReadRegister2(Rt), .WriteRegister(WriteRegAddr),
 			  .RegWrite, .clk(~clk);
 
-	// NEED SIGN EXTEND HERE (output to in0 ob signImmMux below)
+	// Sign extends imm16 value to 32 bit value
 	signExtnd extImm16 (.outExtnd(signExImm16), .inExtnd(imm16));
 			  
 	// Determines if sign extended 16 bit or 32 bit 0 is sent as parameter		  
@@ -47,15 +48,36 @@ module dataPath(regRS, negative, zero, CarryOut, overflow, Rs, Rt, Rd, imm16, Br
 	// Determines if the constant from signImmMux or the 2nd reg value is sent into ALU on BussB
 	mux2_1_32Bit ALUSourceMux (.out(BussB), .in0(readRt), .in1(constCPU), .sel(ALUSource));
 	
+	// Pipelining registers
+	register32Bit ALUin1 (.q(toALU1), .d(readRs), .reset, .clk);
+	register32Bit ALUin2 (.q(toALU2), .d(BussB), .reset, .clk);
+	register32Bit RT1 (.q(storedRt1), .d(readRt), .reset, .clk);
+	
+	
+	// ------ EXECUTE STAGE ------
 	
 	// ALU for CPU		  
-	alu aluComp (.Output(ALUoutput), .zero, .overflow, .CarryOut, .negative, .BussA(readRs), .BussB, .ALUControl);
+	alu aluComp (.Output(ALUoutput), .zero, .overflow, .CarryOut, .negative, .BussA(toALU1), .BussB(toALU2), .ALUControl);
+	
+	// Pipelining registers
+	register32Bit ALUtoMem (.q(memAddr), .d(ALUoutput), .reset, .clk);
+	register32Bit RT2 (.q(storedRt2), .d(storedRt1), .reset, .clk);
+	
+	
+	// ------ MEMORY STAGE ------
 	
 	// data memory for CPU
-	dataMem datMem(.data(memData), .address(ALUoutput), .writedata(readRt), .writeenable(MemWrite), .clk);
+	dataMem datMem(.data(memData), .address(memAddr), .writedata(storedRt2), .writeenable(MemWrite), .clk);
+	
+	// Pipelining registers
+	register32Bit memoryData (.q(memData1), .d(memData), .reset, .clk);
+	register32Bit memoryAddr (.q(memAddr1), .d(memAddr), .reset, .clk);
+	
+	
+	// ------ WRITEBACK STAGE ------
 	
 	// determines whether the memory output or ALUoutput is sent to be written to the regfile
-	mux2_1_32Bit memToRegMux (.out(WriteData), .in0(ALUoutput), .in1(memData), .sel(MemToReg));
+	mux2_1_32Bit memToRegMux (.out(WriteData), .in0(memAddr1), .in1(memData1), .sel(MemToReg));
 	
 endmodule 
 
