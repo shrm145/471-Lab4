@@ -1,4 +1,4 @@
-module PipelineExecute(  MemWrite_mem, MemToReg_mem, RegDest_mem, RegWrite_mem, 
+module PipelineExecute( MemWrite_mem, MemToReg_mem, RegDest_mem, RegWrite_mem, 
                          MemWrite_ex, MemToReg_ex, RegDest_ex, RegWrite_ex, clk, reset);
 								
   output  MemWrite_mem, MemToReg_mem, RegDest_mem, RegWrite_mem;

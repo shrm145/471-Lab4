@@ -166,10 +166,53 @@ do CPU_runlab.do
 # 
 # Top level modules:
 # 	ALUStimulus
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineExecute
+# 
+# Top level modules:
+# 	PipelineExecute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineMem
+# 
+# Top level modules:
+# 	PipelineMem
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineDecode
+# 
+# Top level modules:
+# 	PipelineDecode
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Execute
+# 
+# Top level modules:
+# 	Execute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Memory
+# 
+# Top level modules:
+# 	Memory
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module DecodeReg
+# 
+# Top level modules:
+# 	DecodeReg
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineControls
+# 
+# Top level modules:
+# 	PipelineControls
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module register32Bit
+# -- Compiling module register32Bit_testbench
+# 
+# Top level modules:
+# 	register32Bit
+# 	register32Bit_testbench
 # vsim -lib work -voptargs=\"+acc\" -t 1ps CPU_testbench 
 # Loading sv_std.std
 # Loading work.CPU_testbench
 # Loading work.CPU
+# Loading work.register32Bit
 # Loading work.controls
 # Loading work.instrFU
 # Loading work.PC
@@ -178,6 +221,7 @@ do CPU_runlab.do
 # Loading work.adder30Bit
 # Loading work.InstructionMem
 # Loading work.dataPath
+# Loading work.DecodeReg
 # Loading work.mux2_1_5Bit
 # Loading work.regfile
 # Loading work.decoder5x32
@@ -186,6 +230,8 @@ do CPU_runlab.do
 # Loading work.DFF_32
 # Loading work.mux32_32
 # Loading work.mux2_1_32Bit
+# Loading work.PipelineDecode
+# Loading work.Execute
 # Loading work.alu
 # Loading work.adder32Bit
 # Loading work.nor32Bit
@@ -193,33 +239,103 @@ do CPU_runlab.do
 # Loading work.mux2_1Bit
 # Loading work.mux4_1_32Bit
 # Loading work.zeroFlag
+# Loading work.PipelineExecute
+# Loading work.Memory
 # Loading work.dataMem
+# Loading work.PipelineMem
 # Loading work.D_FF
 # Loading work.adder
 # Loading work.mux2_1
 # Loading work.mux32_1
 # Loading work.mux16_1
 # Loading work.mux4_1
-# ** Warning: (vsim-3017) ./dataPath.sv(37): [TFMPC] - Too few port connections. Expected 9, found 8.
+# ** Warning: (vsim-3017) ./CPU.sv(34): [TFMPC] - Too few port connections. Expected 18, found 17.
 # 
-#         Region: /CPU_testbench/dut/data/rf
-# ** Warning: (vsim-3722) ./dataPath.sv(37): [TFMPC] - Missing connection for port 'regValues'.
+#         Region: /CPU_testbench/dut/data
+# ** Warning: (vsim-3722) ./CPU.sv(34): [TFMPC] - Missing connection for port 'reset'.
+# 
+# ** Warning: (vsim-3017) ./DecodeReg.sv(21): [TFMPC] - Too few port connections. Expected 9, found 8.
+# 
+#         Region: /CPU_testbench/dut/data/decStage/rf
+# ** Warning: (vsim-3722) ./DecodeReg.sv(21): [TFMPC] - Missing connection for port 'regValues'.
 # 
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 # 
 #           File in use by: bartzm  Hostname: EE-361PC14  ProcessID: 4448
 # 
-#           Attempting to use alternate WLF file "./wlftq4m59k".
+#           Attempting to use alternate WLF file "./wlft1gv52b".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlftq4m59k
+#           Using alternate file: ./wlft1gv52b
 # 
+# ** Error: (vish-4014) No objects found matching '/CPU_testbench/regValues'.
+# Executing ONERROR command at macro ./CPU_wave.do line 4
+# ** Error: (vish-4014) No objects found matching '/CPU_testbench/Instructions'.
+# Executing ONERROR command at macro ./CPU_wave.do line 5
+# ** Error: (vish-4014) No objects found matching '/CPU_testbench/dut/data/rf/regValues'.
+# Executing ONERROR command at macro ./CPU_wave.do line 7
+# ** Error: (vish-4014) No objects found matching '/CPU_testbench/dut/data/rf/ReadRegister1'.
+# Executing ONERROR command at macro ./CPU_wave.do line 8
+# ** Error: (vish-4014) No objects found matching '/CPU_testbench/dut/data/rf/ReadRegister2'.
+# Executing ONERROR command at macro ./CPU_wave.do line 9
+# ** Error: (vish-4014) No objects found matching '/CPU_testbench/dut/data/rf/WriteRegister'.
+# Executing ONERROR command at macro ./CPU_wave.do line 10
+# ** Error: (vish-4014) No objects found matching '/CPU_testbench/dut/data/rf/WriteData'.
+# Executing ONERROR command at macro ./CPU_wave.do line 11
+# ** Error: (vish-4014) No objects found matching '/CPU_testbench/dut/data/rf/ReadData1'.
+# Executing ONERROR command at macro ./CPU_wave.do line 12
+# ** Error: (vish-4014) No objects found matching '/CPU_testbench/dut/data/rf/ReadData2'.
+# Executing ONERROR command at macro ./CPU_wave.do line 13
+# ** Error: (vish-4014) No objects found matching '/CPU_testbench/dut/data/rf/regEnable'.
+# Executing ONERROR command at macro ./CPU_wave.do line 14
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
-# Break in Module CPU_testbench at ./CPU.sv line 78
-# Simulation Breakpoint: Break in Module CPU_testbench at ./CPU.sv line 78
-# MACRO ./CPU_runlab.do PAUSED at line 63
+# Break in Module CPU_testbench at ./CPU.sv line 73
+# Simulation Breakpoint: Break in Module CPU_testbench at ./CPU.sv line 73
+# MACRO ./CPU_runlab.do PAUSED at line 73
+add wave -position end  sim:/CPU_testbench/reset
+add wave -position end  sim:/CPU_testbench/dut/data/ALUoutput
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/ALUSrc_ex
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/Branch_ex
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/ALUControl0_ex
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/ALUControl1_ex
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/MemWrite_ex
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/MemToReg_ex
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/RegDest_ex
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/RegWrite_ex
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/ALUSrc_dec
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/Branch_dec
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/ALUControl0_dec
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/ALUControl1_dec
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/MemWrite_dec
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/MemToReg_dec
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/RegDest_dec
+add wave -position end  sim:/CPU_testbench/dut/data/decCtrls/RegWrite_dec
+add wave -position insertpoint  \
+sim:/CPU_testbench/dut/data/exCtrls/MemWrite_mem \
+sim:/CPU_testbench/dut/data/exCtrls/MemToReg_mem \
+sim:/CPU_testbench/dut/data/exCtrls/RegDest_mem \
+sim:/CPU_testbench/dut/data/exCtrls/RegWrite_mem \
+sim:/CPU_testbench/dut/data/exCtrls/MemWrite_ex \
+sim:/CPU_testbench/dut/data/exCtrls/MemToReg_ex \
+sim:/CPU_testbench/dut/data/exCtrls/RegDest_ex
+add wave -position insertpoint  \
+sim:/CPU_testbench/dut/data/memCtrls/RegDest_wr \
+sim:/CPU_testbench/dut/data/memCtrls/RegWrite_wr \
+sim:/CPU_testbench/dut/data/memCtrls/RegDest_mem \
+sim:/CPU_testbench/dut/data/memCtrls/RegWrite_mem
+add wave -position insertpoint  \
+sim:/CPU_testbench/dut/data/decStage/toALU1 \
+sim:/CPU_testbench/dut/data/decStage/toALU2 \
+sim:/CPU_testbench/dut/data/decStage/storedRt1
+add wave -position insertpoint  \
+sim:/CPU_testbench/dut/data/exStage/memAddr \
+sim:/CPU_testbench/dut/data/exStage/storedRt2
+add wave -position insertpoint  \
+sim:/CPU_testbench/dut/data/memStage/writeToReg
+add wave -position end  sim:/CPU_testbench/dut/data/decStage/rf/regValues
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf U:/EE471labs/lab4.3/LAB4/CPU_wave.do
 do CPU_runlab.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
@@ -387,10 +503,53 @@ do CPU_runlab.do
 # 
 # Top level modules:
 # 	ALUStimulus
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineExecute
+# 
+# Top level modules:
+# 	PipelineExecute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineMem
+# 
+# Top level modules:
+# 	PipelineMem
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineDecode
+# 
+# Top level modules:
+# 	PipelineDecode
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Execute
+# 
+# Top level modules:
+# 	Execute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Memory
+# 
+# Top level modules:
+# 	Memory
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module DecodeReg
+# 
+# Top level modules:
+# 	DecodeReg
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineControls
+# 
+# Top level modules:
+# 	PipelineControls
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module register32Bit
+# -- Compiling module register32Bit_testbench
+# 
+# Top level modules:
+# 	register32Bit
+# 	register32Bit_testbench
 # vsim -lib work -voptargs=\"+acc\" -t 1ps CPU_testbench 
 # Loading sv_std.std
 # Loading work.CPU_testbench
 # Loading work.CPU
+# Loading work.register32Bit
 # Loading work.controls
 # Loading work.instrFU
 # Loading work.PC
@@ -399,6 +558,7 @@ do CPU_runlab.do
 # Loading work.adder30Bit
 # Loading work.InstructionMem
 # Loading work.dataPath
+# Loading work.DecodeReg
 # Loading work.mux2_1_5Bit
 # Loading work.regfile
 # Loading work.decoder5x32
@@ -407,6 +567,8 @@ do CPU_runlab.do
 # Loading work.DFF_32
 # Loading work.mux32_32
 # Loading work.mux2_1_32Bit
+# Loading work.PipelineDecode
+# Loading work.Execute
 # Loading work.alu
 # Loading work.adder32Bit
 # Loading work.nor32Bit
@@ -414,37 +576,43 @@ do CPU_runlab.do
 # Loading work.mux2_1Bit
 # Loading work.mux4_1_32Bit
 # Loading work.zeroFlag
+# Loading work.PipelineExecute
+# Loading work.Memory
 # Loading work.dataMem
+# Loading work.PipelineMem
 # Loading work.D_FF
 # Loading work.adder
 # Loading work.mux2_1
 # Loading work.mux32_1
 # Loading work.mux16_1
 # Loading work.mux4_1
-# ** Warning: (vsim-3017) ./dataPath.sv(35): [TFMPC] - Too few port connections. Expected 9, found 8.
+# ** Warning: (vsim-3017) ./CPU.sv(34): [TFMPC] - Too few port connections. Expected 18, found 17.
 # 
-#         Region: /CPU_testbench/dut/data/rf
-# ** Warning: (vsim-3722) ./dataPath.sv(35): [TFMPC] - Missing connection for port 'regValues'.
+#         Region: /CPU_testbench/dut/data
+# ** Warning: (vsim-3722) ./CPU.sv(34): [TFMPC] - Missing connection for port 'reset'.
+# 
+# ** Warning: (vsim-3017) ./DecodeReg.sv(21): [TFMPC] - Too few port connections. Expected 9, found 8.
+# 
+#         Region: /CPU_testbench/dut/data/decStage/rf
+# ** Warning: (vsim-3722) ./DecodeReg.sv(21): [TFMPC] - Missing connection for port 'regValues'.
 # 
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 # 
 #           File in use by: bartzm  Hostname: EE-361PC14  ProcessID: 4448
 # 
-#           Attempting to use alternate WLF file "./wlft27v3a7".
+#           Attempting to use alternate WLF file "./wlftqyvg6b".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlft27v3a7
+#           Using alternate file: ./wlftqyvg6b
 # 
-# ** Error: (vish-4014) No objects found matching '/CPU_testbench/regValues'.
-# Executing ONERROR command at macro ./CPU_wave.do line 4
-# ** Error: (vish-4014) No objects found matching '/CPU_testbench/Instructions'.
-# Executing ONERROR command at macro ./CPU_wave.do line 5
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
 # Break in Module CPU_testbench at ./CPU.sv line 73
 # Simulation Breakpoint: Break in Module CPU_testbench at ./CPU.sv line 73
-# MACRO ./CPU_runlab.do PAUSED at line 63
+# MACRO ./CPU_runlab.do PAUSED at line 73
+add wave -position end  sim:/CPU_testbench/dut/data/decStage/rf/regVal
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf U:/EE471labs/lab4.3/LAB4/CPU_wave.do
 do CPU_runlab.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
@@ -612,10 +780,53 @@ do CPU_runlab.do
 # 
 # Top level modules:
 # 	ALUStimulus
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineExecute
+# 
+# Top level modules:
+# 	PipelineExecute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineMem
+# 
+# Top level modules:
+# 	PipelineMem
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineDecode
+# 
+# Top level modules:
+# 	PipelineDecode
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Execute
+# 
+# Top level modules:
+# 	Execute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Memory
+# 
+# Top level modules:
+# 	Memory
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module DecodeReg
+# 
+# Top level modules:
+# 	DecodeReg
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineControls
+# 
+# Top level modules:
+# 	PipelineControls
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module register32Bit
+# -- Compiling module register32Bit_testbench
+# 
+# Top level modules:
+# 	register32Bit
+# 	register32Bit_testbench
 # vsim -lib work -voptargs=\"+acc\" -t 1ps CPU_testbench 
 # Loading sv_std.std
 # Loading work.CPU_testbench
 # Loading work.CPU
+# Loading work.register32Bit
 # Loading work.controls
 # Loading work.instrFU
 # Loading work.PC
@@ -624,6 +835,7 @@ do CPU_runlab.do
 # Loading work.adder30Bit
 # Loading work.InstructionMem
 # Loading work.dataPath
+# Loading work.DecodeReg
 # Loading work.mux2_1_5Bit
 # Loading work.regfile
 # Loading work.decoder5x32
@@ -632,6 +844,8 @@ do CPU_runlab.do
 # Loading work.DFF_32
 # Loading work.mux32_32
 # Loading work.mux2_1_32Bit
+# Loading work.PipelineDecode
+# Loading work.Execute
 # Loading work.alu
 # Loading work.adder32Bit
 # Loading work.nor32Bit
@@ -639,37 +853,43 @@ do CPU_runlab.do
 # Loading work.mux2_1Bit
 # Loading work.mux4_1_32Bit
 # Loading work.zeroFlag
+# Loading work.PipelineExecute
+# Loading work.Memory
 # Loading work.dataMem
+# Loading work.PipelineMem
 # Loading work.D_FF
 # Loading work.adder
 # Loading work.mux2_1
 # Loading work.mux32_1
 # Loading work.mux16_1
 # Loading work.mux4_1
-# ** Warning: (vsim-3017) ./dataPath.sv(35): [TFMPC] - Too few port connections. Expected 9, found 8.
+# ** Warning: (vsim-3017) ./CPU.sv(34): [TFMPC] - Too few port connections. Expected 18, found 17.
 # 
-#         Region: /CPU_testbench/dut/data/rf
-# ** Warning: (vsim-3722) ./dataPath.sv(35): [TFMPC] - Missing connection for port 'regValues'.
+#         Region: /CPU_testbench/dut/data
+# ** Warning: (vsim-3722) ./CPU.sv(34): [TFMPC] - Missing connection for port 'reset'.
+# 
+# ** Warning: (vsim-3017) ./DecodeReg.sv(21): [TFMPC] - Too few port connections. Expected 9, found 8.
+# 
+#         Region: /CPU_testbench/dut/data/decStage/rf
+# ** Warning: (vsim-3722) ./DecodeReg.sv(21): [TFMPC] - Missing connection for port 'regValues'.
 # 
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 # 
 #           File in use by: bartzm  Hostname: EE-361PC14  ProcessID: 4448
 # 
-#           Attempting to use alternate WLF file "./wlft0xhx2r".
+#           Attempting to use alternate WLF file "./wlft6xkrk7".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlft0xhx2r
+#           Using alternate file: ./wlft6xkrk7
 # 
-# ** Error: (vish-4014) No objects found matching '/CPU_testbench/regValues'.
-# Executing ONERROR command at macro ./CPU_wave.do line 4
-# ** Error: (vish-4014) No objects found matching '/CPU_testbench/Instructions'.
-# Executing ONERROR command at macro ./CPU_wave.do line 5
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
 # Break in Module CPU_testbench at ./CPU.sv line 73
 # Simulation Breakpoint: Break in Module CPU_testbench at ./CPU.sv line 73
-# MACRO ./CPU_runlab.do PAUSED at line 63
+# MACRO ./CPU_runlab.do PAUSED at line 73
+so CPU_runlab.do
+# ambiguous command name "so": socket source
 do CPU_runlab.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
@@ -834,3 +1054,1297 @@ do CPU_runlab.do
 # Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
 # -- Compiling module alu
 # -- Compiling module ALUStimulus
+# 
+# Top level modules:
+# 	ALUStimulus
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineExecute
+# 
+# Top level modules:
+# 	PipelineExecute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineMem
+# 
+# Top level modules:
+# 	PipelineMem
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineDecode
+# 
+# Top level modules:
+# 	PipelineDecode
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Execute
+# 
+# Top level modules:
+# 	Execute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Memory
+# 
+# Top level modules:
+# 	Memory
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module DecodeReg
+# 
+# Top level modules:
+# 	DecodeReg
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineControls
+# 
+# Top level modules:
+# 	PipelineControls
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module register32Bit
+# -- Compiling module register32Bit_testbench
+# 
+# Top level modules:
+# 	register32Bit
+# 	register32Bit_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps CPU_testbench 
+# Loading sv_std.std
+# Loading work.CPU_testbench
+# Loading work.CPU
+# Loading work.register32Bit
+# Loading work.controls
+# Loading work.instrFU
+# Loading work.PC
+# Loading work.mux2_1_30Bit
+# Loading work.signExtnd
+# Loading work.adder30Bit
+# Loading work.InstructionMem
+# Loading work.dataPath
+# Loading work.DecodeReg
+# Loading work.mux2_1_5Bit
+# Loading work.regfile
+# Loading work.decoder5x32
+# Loading work.decoder4x16
+# Loading work.decoder2x4
+# Loading work.DFF_32
+# Loading work.mux32_32
+# Loading work.mux2_1_32Bit
+# Loading work.PipelineDecode
+# Loading work.Execute
+# Loading work.alu
+# Loading work.adder32Bit
+# Loading work.nor32Bit
+# Loading work.calcSltu
+# Loading work.mux2_1Bit
+# Loading work.mux4_1_32Bit
+# Loading work.zeroFlag
+# Loading work.PipelineExecute
+# Loading work.Memory
+# Loading work.dataMem
+# Loading work.PipelineMem
+# Loading work.D_FF
+# Loading work.adder
+# Loading work.mux2_1
+# Loading work.mux32_1
+# Loading work.mux16_1
+# Loading work.mux4_1
+# ** Warning: (vsim-3017) ./CPU.sv(34): [TFMPC] - Too few port connections. Expected 18, found 17.
+# 
+#         Region: /CPU_testbench/dut/data
+# ** Warning: (vsim-3722) ./CPU.sv(34): [TFMPC] - Missing connection for port 'reset'.
+# 
+# ** Warning: (vsim-3017) ./DecodeReg.sv(21): [TFMPC] - Too few port connections. Expected 9, found 8.
+# 
+#         Region: /CPU_testbench/dut/data/decStage/rf
+# ** Warning: (vsim-3722) ./DecodeReg.sv(21): [TFMPC] - Missing connection for port 'regValues'.
+# 
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+# 
+#           File in use by: bartzm  Hostname: EE-361PC14  ProcessID: 4448
+# 
+#           Attempting to use alternate WLF file "./wlft8493xm".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+# 
+#           Using alternate file: ./wlft8493xm
+# 
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# Break in Module CPU_testbench at ./CPU.sv line 73
+# Simulation Breakpoint: Break in Module CPU_testbench at ./CPU.sv line 73
+# MACRO ./CPU_runlab.do PAUSED at line 73
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf U:/EE471labs/lab4.3/LAB4/CPU_wave.do
+add wave -position 37  sim:/CPU_testbench/dut/data/decStage/Rs
+add wave -position 38  sim:/CPU_testbench/dut/data/decStage/Rt
+add wave -position 39  sim:/CPU_testbench/dut/data/decStage/Rd
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf U:/EE471labs/lab4.3/LAB4/CPU_wave.do
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf U:/EE471labs/lab4.3/LAB4/CPU_wave.do
+do CPU_runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module CPU
+# -- Compiling module CPU_testbench
+# 
+# Top level modules:
+# 	CPU_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module controls
+# -- Compiling module controls_testbench
+# 
+# Top level modules:
+# 	controls_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module dataPath
+# -- Compiling module dataPath_testbench
+# 
+# Top level modules:
+# 	dataPath_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_5Bit
+# -- Compiling module mux2_1_5Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_5Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_32Bit
+# -- Compiling module mux2_1_32Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module instructionFetch
+# -- Compiling module instructionFetch_testbench
+# 
+# Top level modules:
+# 	instructionFetch_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_30Bit
+# -- Compiling module mux2_1_30Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_30Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder30Bit
+# -- Compiling module adder30Bit_testbench
+# 
+# Top level modules:
+# 	adder30Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module InstructionMem
+# -- Compiling module instrmemstimulus
+# 
+# Top level modules:
+# 	instrmemstimulus
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux32_1
+# -- Compiling module mux32_1_testbench
+# 
+# Top level modules:
+# 	mux32_1_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux32_32
+# -- Compiling module mux32_32_testbench
+# 
+# Top level modules:
+# 	mux32_32_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux16_1
+# -- Compiling module mux16_1_testbench
+# 
+# Top level modules:
+# 	mux16_1_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder5x32
+# -- Compiling module decoder5x32_testbench
+# 
+# Top level modules:
+# 	decoder5x32_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder4x16
+# 
+# Top level modules:
+# 	decoder4x16
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder2x4
+# 
+# Top level modules:
+# 	decoder2x4
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module D_FF
+# 
+# Top level modules:
+# 	D_FF
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1
+# -- Compiling module mux2_1_testbench
+# 
+# Top level modules:
+# 	mux2_1_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module DFF_32
+# -- Compiling module DFF_32_testbench
+# 
+# Top level modules:
+# 	DFF_32_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module regfile
+# -- Compiling module regstim
+# 
+# Top level modules:
+# 	regstim
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1Bit
+# -- Compiling module mux2_1Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_32Bit
+# -- Compiling module mux2_1_32Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux4_1_32Bit
+# 
+# Top level modules:
+# 	mux4_1_32Bit
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module zeroFlag
+# -- Compiling module zeroFlag_testbench
+# 
+# Top level modules:
+# 	zeroFlag_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder32Bit
+# -- Compiling module adder32Bit_testbench
+# 
+# Top level modules:
+# 	adder32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module calcSltu
+# -- Compiling module calcSltu_testbench
+# 
+# Top level modules:
+# 	calcSltu_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module nor32Bit
+# -- Compiling module nor32Bit_testbench
+# 
+# Top level modules:
+# 	nor32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module alu
+# -- Compiling module ALUStimulus
+# 
+# Top level modules:
+# 	ALUStimulus
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineExecute
+# 
+# Top level modules:
+# 	PipelineExecute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineMem
+# 
+# Top level modules:
+# 	PipelineMem
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineDecode
+# 
+# Top level modules:
+# 	PipelineDecode
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Execute
+# 
+# Top level modules:
+# 	Execute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Memory
+# 
+# Top level modules:
+# 	Memory
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module DecodeReg
+# 
+# Top level modules:
+# 	DecodeReg
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineControls
+# 
+# Top level modules:
+# 	PipelineControls
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module register32Bit
+# -- Compiling module register32Bit_testbench
+# 
+# Top level modules:
+# 	register32Bit
+# 	register32Bit_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps CPU_testbench 
+# Loading sv_std.std
+# Loading work.CPU_testbench
+# Loading work.CPU
+# Loading work.register32Bit
+# Loading work.controls
+# Loading work.instrFU
+# Loading work.PC
+# Loading work.mux2_1_30Bit
+# Loading work.signExtnd
+# Loading work.adder30Bit
+# Loading work.InstructionMem
+# Loading work.dataPath
+# Loading work.DecodeReg
+# Loading work.mux2_1_5Bit
+# Loading work.regfile
+# Loading work.decoder5x32
+# Loading work.decoder4x16
+# Loading work.decoder2x4
+# Loading work.DFF_32
+# Loading work.mux32_32
+# Loading work.mux2_1_32Bit
+# Loading work.PipelineDecode
+# Loading work.Execute
+# Loading work.alu
+# Loading work.adder32Bit
+# Loading work.nor32Bit
+# Loading work.calcSltu
+# Loading work.mux2_1Bit
+# Loading work.mux4_1_32Bit
+# Loading work.zeroFlag
+# Loading work.PipelineExecute
+# Loading work.Memory
+# Loading work.dataMem
+# Loading work.PipelineMem
+# Loading work.D_FF
+# Loading work.adder
+# Loading work.mux2_1
+# Loading work.mux32_1
+# Loading work.mux16_1
+# Loading work.mux4_1
+# ** Warning: (vsim-3017) ./CPU.sv(34): [TFMPC] - Too few port connections. Expected 18, found 17.
+# 
+#         Region: /CPU_testbench/dut/data
+# ** Warning: (vsim-3722) ./CPU.sv(34): [TFMPC] - Missing connection for port 'reset'.
+# 
+# ** Warning: (vsim-3017) ./DecodeReg.sv(21): [TFMPC] - Too few port connections. Expected 9, found 8.
+# 
+#         Region: /CPU_testbench/dut/data/decStage/rf
+# ** Warning: (vsim-3722) ./DecodeReg.sv(21): [TFMPC] - Missing connection for port 'regValues'.
+# 
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+# 
+#           File in use by: bartzm  Hostname: EE-361PC14  ProcessID: 4448
+# 
+#           Attempting to use alternate WLF file "./wlftw3k95z".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+# 
+#           Using alternate file: ./wlftw3k95z
+# 
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# Break in Module CPU_testbench at ./CPU.sv line 73
+# Simulation Breakpoint: Break in Module CPU_testbench at ./CPU.sv line 73
+# MACRO ./CPU_runlab.do PAUSED at line 73
+add wave -position 40  sim:/CPU_testbench/dut/data/decStage/rf/WriteRegister
+add wave -position 41  sim:/CPU_testbench/dut/data/decStage/rf/WriteData
+add wave -position 42  sim:/CPU_testbench/dut/data/decStage/rf/RegWrite
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf U:/EE471labs/lab4.3/LAB4/CPU_wave.do
+do CPU_runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module CPU
+# -- Compiling module CPU_testbench
+# 
+# Top level modules:
+# 	CPU_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module controls
+# -- Compiling module controls_testbench
+# 
+# Top level modules:
+# 	controls_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module dataPath
+# -- Compiling module dataPath_testbench
+# 
+# Top level modules:
+# 	dataPath_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_5Bit
+# -- Compiling module mux2_1_5Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_5Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_32Bit
+# -- Compiling module mux2_1_32Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module instructionFetch
+# -- Compiling module instructionFetch_testbench
+# 
+# Top level modules:
+# 	instructionFetch_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_30Bit
+# -- Compiling module mux2_1_30Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_30Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder30Bit
+# -- Compiling module adder30Bit_testbench
+# 
+# Top level modules:
+# 	adder30Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module InstructionMem
+# -- Compiling module instrmemstimulus
+# 
+# Top level modules:
+# 	instrmemstimulus
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux32_1
+# -- Compiling module mux32_1_testbench
+# 
+# Top level modules:
+# 	mux32_1_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux32_32
+# -- Compiling module mux32_32_testbench
+# 
+# Top level modules:
+# 	mux32_32_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux16_1
+# -- Compiling module mux16_1_testbench
+# 
+# Top level modules:
+# 	mux16_1_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder5x32
+# -- Compiling module decoder5x32_testbench
+# 
+# Top level modules:
+# 	decoder5x32_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder4x16
+# 
+# Top level modules:
+# 	decoder4x16
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder2x4
+# 
+# Top level modules:
+# 	decoder2x4
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module D_FF
+# 
+# Top level modules:
+# 	D_FF
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1
+# -- Compiling module mux2_1_testbench
+# 
+# Top level modules:
+# 	mux2_1_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module DFF_32
+# -- Compiling module DFF_32_testbench
+# 
+# Top level modules:
+# 	DFF_32_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module regfile
+# -- Compiling module regstim
+# 
+# Top level modules:
+# 	regstim
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1Bit
+# -- Compiling module mux2_1Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_32Bit
+# -- Compiling module mux2_1_32Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux4_1_32Bit
+# 
+# Top level modules:
+# 	mux4_1_32Bit
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module zeroFlag
+# -- Compiling module zeroFlag_testbench
+# 
+# Top level modules:
+# 	zeroFlag_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder32Bit
+# -- Compiling module adder32Bit_testbench
+# 
+# Top level modules:
+# 	adder32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module calcSltu
+# -- Compiling module calcSltu_testbench
+# 
+# Top level modules:
+# 	calcSltu_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module nor32Bit
+# -- Compiling module nor32Bit_testbench
+# 
+# Top level modules:
+# 	nor32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module alu
+# -- Compiling module ALUStimulus
+# 
+# Top level modules:
+# 	ALUStimulus
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineExecute
+# 
+# Top level modules:
+# 	PipelineExecute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineMem
+# 
+# Top level modules:
+# 	PipelineMem
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineDecode
+# 
+# Top level modules:
+# 	PipelineDecode
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Execute
+# 
+# Top level modules:
+# 	Execute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Memory
+# 
+# Top level modules:
+# 	Memory
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module DecodeReg
+# 
+# Top level modules:
+# 	DecodeReg
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineControls
+# 
+# Top level modules:
+# 	PipelineControls
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module register32Bit
+# -- Compiling module register32Bit_testbench
+# 
+# Top level modules:
+# 	register32Bit
+# 	register32Bit_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps CPU_testbench 
+# Loading sv_std.std
+# Loading work.CPU_testbench
+# Loading work.CPU
+# Loading work.register32Bit
+# Loading work.controls
+# Loading work.instrFU
+# Loading work.PC
+# Loading work.mux2_1_30Bit
+# Loading work.signExtnd
+# Loading work.adder30Bit
+# Loading work.InstructionMem
+# Loading work.dataPath
+# Loading work.DecodeReg
+# Loading work.mux2_1_5Bit
+# Loading work.regfile
+# Loading work.decoder5x32
+# Loading work.decoder4x16
+# Loading work.decoder2x4
+# Loading work.DFF_32
+# Loading work.mux32_32
+# Loading work.mux2_1_32Bit
+# Loading work.PipelineDecode
+# Loading work.Execute
+# Loading work.alu
+# Loading work.adder32Bit
+# Loading work.nor32Bit
+# Loading work.calcSltu
+# Loading work.mux2_1Bit
+# Loading work.mux4_1_32Bit
+# Loading work.zeroFlag
+# Loading work.PipelineExecute
+# Loading work.Memory
+# Loading work.dataMem
+# Loading work.PipelineMem
+# Loading work.D_FF
+# Loading work.adder
+# Loading work.mux2_1
+# Loading work.mux32_1
+# Loading work.mux16_1
+# Loading work.mux4_1
+# ** Warning: (vsim-3017) ./CPU.sv(34): [TFMPC] - Too few port connections. Expected 18, found 17.
+# 
+#         Region: /CPU_testbench/dut/data
+# ** Warning: (vsim-3722) ./CPU.sv(34): [TFMPC] - Missing connection for port 'reset'.
+# 
+# ** Warning: (vsim-3017) ./DecodeReg.sv(21): [TFMPC] - Too few port connections. Expected 9, found 8.
+# 
+#         Region: /CPU_testbench/dut/data/decStage/rf
+# ** Warning: (vsim-3722) ./DecodeReg.sv(21): [TFMPC] - Missing connection for port 'regValues'.
+# 
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+# 
+#           File in use by: bartzm  Hostname: EE-361PC14  ProcessID: 4448
+# 
+#           Attempting to use alternate WLF file "./wlftmf8vrr".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+# 
+#           Using alternate file: ./wlftmf8vrr
+# 
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# Break in Module CPU_testbench at ./CPU.sv line 73
+# Simulation Breakpoint: Break in Module CPU_testbench at ./CPU.sv line 73
+# MACRO ./CPU_runlab.do PAUSED at line 73
+do CPU_runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module CPU
+# -- Compiling module CPU_testbench
+# 
+# Top level modules:
+# 	CPU_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module controls
+# -- Compiling module controls_testbench
+# 
+# Top level modules:
+# 	controls_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module dataPath
+# -- Compiling module dataPath_testbench
+# 
+# Top level modules:
+# 	dataPath_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_5Bit
+# -- Compiling module mux2_1_5Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_5Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_32Bit
+# -- Compiling module mux2_1_32Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module instructionFetch
+# -- Compiling module instructionFetch_testbench
+# 
+# Top level modules:
+# 	instructionFetch_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_30Bit
+# -- Compiling module mux2_1_30Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_30Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder30Bit
+# -- Compiling module adder30Bit_testbench
+# 
+# Top level modules:
+# 	adder30Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module InstructionMem
+# -- Compiling module instrmemstimulus
+# 
+# Top level modules:
+# 	instrmemstimulus
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux32_1
+# -- Compiling module mux32_1_testbench
+# 
+# Top level modules:
+# 	mux32_1_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux32_32
+# -- Compiling module mux32_32_testbench
+# 
+# Top level modules:
+# 	mux32_32_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux16_1
+# -- Compiling module mux16_1_testbench
+# 
+# Top level modules:
+# 	mux16_1_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder5x32
+# -- Compiling module decoder5x32_testbench
+# 
+# Top level modules:
+# 	decoder5x32_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder4x16
+# 
+# Top level modules:
+# 	decoder4x16
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder2x4
+# 
+# Top level modules:
+# 	decoder2x4
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module D_FF
+# 
+# Top level modules:
+# 	D_FF
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1
+# -- Compiling module mux2_1_testbench
+# 
+# Top level modules:
+# 	mux2_1_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module DFF_32
+# -- Compiling module DFF_32_testbench
+# 
+# Top level modules:
+# 	DFF_32_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module regfile
+# -- Compiling module regstim
+# 
+# Top level modules:
+# 	regstim
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1Bit
+# -- Compiling module mux2_1Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_32Bit
+# -- Compiling module mux2_1_32Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux4_1_32Bit
+# 
+# Top level modules:
+# 	mux4_1_32Bit
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module zeroFlag
+# -- Compiling module zeroFlag_testbench
+# 
+# Top level modules:
+# 	zeroFlag_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder32Bit
+# -- Compiling module adder32Bit_testbench
+# 
+# Top level modules:
+# 	adder32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module calcSltu
+# -- Compiling module calcSltu_testbench
+# 
+# Top level modules:
+# 	calcSltu_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module nor32Bit
+# -- Compiling module nor32Bit_testbench
+# 
+# Top level modules:
+# 	nor32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module alu
+# -- Compiling module ALUStimulus
+# 
+# Top level modules:
+# 	ALUStimulus
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineExecute
+# 
+# Top level modules:
+# 	PipelineExecute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineMem
+# 
+# Top level modules:
+# 	PipelineMem
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineDecode
+# 
+# Top level modules:
+# 	PipelineDecode
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Execute
+# 
+# Top level modules:
+# 	Execute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Memory
+# 
+# Top level modules:
+# 	Memory
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module DecodeReg
+# 
+# Top level modules:
+# 	DecodeReg
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineControls
+# 
+# Top level modules:
+# 	PipelineControls
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module register32Bit
+# -- Compiling module register32Bit_testbench
+# 
+# Top level modules:
+# 	register32Bit
+# 	register32Bit_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps CPU_testbench 
+# Loading sv_std.std
+# Loading work.CPU_testbench
+# Loading work.CPU
+# Loading work.register32Bit
+# Loading work.controls
+# Loading work.instrFU
+# Loading work.PC
+# Loading work.mux2_1_30Bit
+# Loading work.signExtnd
+# Loading work.adder30Bit
+# Loading work.InstructionMem
+# Loading work.dataPath
+# Loading work.DecodeReg
+# Loading work.regfile
+# Loading work.decoder5x32
+# Loading work.decoder4x16
+# Loading work.decoder2x4
+# Loading work.DFF_32
+# Loading work.mux32_32
+# Loading work.mux2_1_32Bit
+# Loading work.PipelineDecode
+# Loading work.Execute
+# Loading work.alu
+# Loading work.adder32Bit
+# Loading work.nor32Bit
+# Loading work.calcSltu
+# Loading work.mux2_1Bit
+# Loading work.mux4_1_32Bit
+# Loading work.zeroFlag
+# Loading work.PipelineExecute
+# Loading work.Memory
+# Loading work.dataMem
+# Loading work.PipelineMem
+# Loading work.mux2_1_5Bit
+# Loading work.D_FF
+# Loading work.adder
+# Loading work.mux2_1
+# Loading work.mux32_1
+# Loading work.mux16_1
+# Loading work.mux4_1
+# ** Warning: (vsim-3017) ./CPU.sv(34): [TFMPC] - Too few port connections. Expected 18, found 17.
+# 
+#         Region: /CPU_testbench/dut/data
+# ** Warning: (vsim-3722) ./CPU.sv(34): [TFMPC] - Missing connection for port 'reset'.
+# 
+# ** Warning: (vsim-3017) ./DecodeReg.sv(21): [TFMPC] - Too few port connections. Expected 9, found 8.
+# 
+#         Region: /CPU_testbench/dut/data/decStage/rf
+# ** Warning: (vsim-3722) ./DecodeReg.sv(21): [TFMPC] - Missing connection for port 'regValues'.
+# 
+# ** Warning: (vsim-3015) ./DecodeReg.sv(36): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'q'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/decStage/RT
+# ** Warning: (vsim-3015) ./DecodeReg.sv(36): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'd'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/decStage/RT
+# ** Warning: (vsim-3015) ./DecodeReg.sv(37): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'q'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/decStage/RD
+# ** Warning: (vsim-3015) ./DecodeReg.sv(37): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'd'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/decStage/RD
+# ** Warning: (vsim-3015) ./Execute.sv(19): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'q'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/exStage/RT1
+# ** Warning: (vsim-3015) ./Execute.sv(19): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'd'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/exStage/RT1
+# ** Warning: (vsim-3015) ./Execute.sv(20): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'q'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/exStage/RD1
+# ** Warning: (vsim-3015) ./Execute.sv(20): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'd'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/exStage/RD1
+# ** Warning: (vsim-3015) ./Memory.sv(18): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'q'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/memStage/RT2
+# ** Warning: (vsim-3015) ./Memory.sv(18): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'd'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/memStage/RT2
+# ** Warning: (vsim-3015) ./Memory.sv(19): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'q'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/memStage/RD2
+# ** Warning: (vsim-3015) ./Memory.sv(19): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'd'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/memStage/RD2
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+# 
+#           File in use by: bartzm  Hostname: EE-361PC14  ProcessID: 4448
+# 
+#           Attempting to use alternate WLF file "./wlftvq14ak".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+# 
+#           Using alternate file: ./wlftvq14ak
+# 
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# Break in Module CPU_testbench at ./CPU.sv line 73
+# Simulation Breakpoint: Break in Module CPU_testbench at ./CPU.sv line 73
+# MACRO ./CPU_runlab.do PAUSED at line 73
+do CPU_runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module CPU
+# -- Compiling module CPU_testbench
+# 
+# Top level modules:
+# 	CPU_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module controls
+# -- Compiling module controls_testbench
+# 
+# Top level modules:
+# 	controls_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module dataPath
+# -- Compiling module dataPath_testbench
+# 
+# Top level modules:
+# 	dataPath_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_5Bit
+# -- Compiling module mux2_1_5Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_5Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_32Bit
+# -- Compiling module mux2_1_32Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module instructionFetch
+# -- Compiling module instructionFetch_testbench
+# 
+# Top level modules:
+# 	instructionFetch_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_30Bit
+# -- Compiling module mux2_1_30Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_30Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder30Bit
+# -- Compiling module adder30Bit_testbench
+# 
+# Top level modules:
+# 	adder30Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module InstructionMem
+# -- Compiling module instrmemstimulus
+# 
+# Top level modules:
+# 	instrmemstimulus
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux32_1
+# -- Compiling module mux32_1_testbench
+# 
+# Top level modules:
+# 	mux32_1_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux32_32
+# -- Compiling module mux32_32_testbench
+# 
+# Top level modules:
+# 	mux32_32_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux16_1
+# -- Compiling module mux16_1_testbench
+# 
+# Top level modules:
+# 	mux16_1_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder5x32
+# -- Compiling module decoder5x32_testbench
+# 
+# Top level modules:
+# 	decoder5x32_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder4x16
+# 
+# Top level modules:
+# 	decoder4x16
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module decoder2x4
+# 
+# Top level modules:
+# 	decoder2x4
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module D_FF
+# 
+# Top level modules:
+# 	D_FF
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1
+# -- Compiling module mux2_1_testbench
+# 
+# Top level modules:
+# 	mux2_1_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module DFF_32
+# -- Compiling module DFF_32_testbench
+# 
+# Top level modules:
+# 	DFF_32_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module regfile
+# -- Compiling module regstim
+# 
+# Top level modules:
+# 	regstim
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1Bit
+# -- Compiling module mux2_1Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux2_1_32Bit
+# -- Compiling module mux2_1_32Bit_testbench
+# 
+# Top level modules:
+# 	mux2_1_32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module mux4_1_32Bit
+# 
+# Top level modules:
+# 	mux4_1_32Bit
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module zeroFlag
+# -- Compiling module zeroFlag_testbench
+# 
+# Top level modules:
+# 	zeroFlag_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module adder32Bit
+# -- Compiling module adder32Bit_testbench
+# 
+# Top level modules:
+# 	adder32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module calcSltu
+# -- Compiling module calcSltu_testbench
+# 
+# Top level modules:
+# 	calcSltu_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module nor32Bit
+# -- Compiling module nor32Bit_testbench
+# 
+# Top level modules:
+# 	nor32Bit_testbench
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module alu
+# -- Compiling module ALUStimulus
+# 
+# Top level modules:
+# 	ALUStimulus
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineExecute
+# 
+# Top level modules:
+# 	PipelineExecute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineMem
+# 
+# Top level modules:
+# 	PipelineMem
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineDecode
+# 
+# Top level modules:
+# 	PipelineDecode
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Execute
+# 
+# Top level modules:
+# 	Execute
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module Memory
+# 
+# Top level modules:
+# 	Memory
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module DecodeReg
+# 
+# Top level modules:
+# 	DecodeReg
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module PipelineControls
+# 
+# Top level modules:
+# 	PipelineControls
+# Model Technology ModelSim ALTERA vlog 10.1e Compiler 2013.06 Jun 12 2013
+# -- Compiling module register32Bit
+# -- Compiling module register32Bit_testbench
+# 
+# Top level modules:
+# 	register32Bit
+# 	register32Bit_testbench
+# vsim -lib work -voptargs=\"+acc\" -t 1ps CPU_testbench 
+# Loading sv_std.std
+# Loading work.CPU_testbench
+# Loading work.CPU
+# Loading work.register32Bit
+# Loading work.controls
+# Loading work.instrFU
+# Loading work.PC
+# Loading work.mux2_1_30Bit
+# Loading work.signExtnd
+# Loading work.adder30Bit
+# Loading work.InstructionMem
+# Loading work.dataPath
+# Loading work.DecodeReg
+# Loading work.regfile
+# Loading work.decoder5x32
+# Loading work.decoder4x16
+# Loading work.decoder2x4
+# Loading work.DFF_32
+# Loading work.mux32_32
+# Loading work.mux2_1_32Bit
+# Loading work.PipelineDecode
+# Loading work.Execute
+# Loading work.alu
+# Loading work.adder32Bit
+# Loading work.nor32Bit
+# Loading work.calcSltu
+# Loading work.mux2_1Bit
+# Loading work.mux4_1_32Bit
+# Loading work.zeroFlag
+# Loading work.PipelineExecute
+# Loading work.Memory
+# Loading work.dataMem
+# Loading work.PipelineMem
+# Loading work.mux2_1_5Bit
+# Loading work.D_FF
+# Loading work.adder
+# Loading work.mux2_1
+# Loading work.mux32_1
+# Loading work.mux16_1
+# Loading work.mux4_1
+# ** Warning: (vsim-3017) ./CPU.sv(34): [TFMPC] - Too few port connections. Expected 18, found 17.
+# 
+#         Region: /CPU_testbench/dut/data
+# ** Warning: (vsim-3722) ./CPU.sv(34): [TFMPC] - Missing connection for port 'reset'.
+# 
+# ** Warning: (vsim-3017) ./DecodeReg.sv(21): [TFMPC] - Too few port connections. Expected 9, found 8.
+# 
+#         Region: /CPU_testbench/dut/data/decStage/rf
+# ** Warning: (vsim-3722) ./DecodeReg.sv(21): [TFMPC] - Missing connection for port 'regValues'.
+# 
+# ** Warning: (vsim-3015) ./DecodeReg.sv(36): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'q'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/decStage/RT
+# ** Warning: (vsim-3015) ./DecodeReg.sv(36): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'd'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/decStage/RT
+# ** Warning: (vsim-3015) ./DecodeReg.sv(37): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'q'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/decStage/RD
+# ** Warning: (vsim-3015) ./DecodeReg.sv(37): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'd'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/decStage/RD
+# ** Warning: (vsim-3015) ./Execute.sv(19): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'q'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/exStage/RT1
+# ** Warning: (vsim-3015) ./Execute.sv(19): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'd'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/exStage/RT1
+# ** Warning: (vsim-3015) ./Execute.sv(20): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'q'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/exStage/RD1
+# ** Warning: (vsim-3015) ./Execute.sv(20): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'd'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/exStage/RD1
+# ** Warning: (vsim-3015) ./Memory.sv(18): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'q'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/memStage/RT2
+# ** Warning: (vsim-3015) ./Memory.sv(18): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'd'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/memStage/RT2
+# ** Warning: (vsim-3015) ./Memory.sv(19): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'q'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/memStage/RD2
+# ** Warning: (vsim-3015) ./Memory.sv(19): [PCDPC] - Port size (32 or 32) does not match connection size (5) for port 'd'. The port definition is at: ./register32Bit.sv(5).
+# 
+#         Region: /CPU_testbench/dut/data/memStage/RD2
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+# 
+#           File in use by: bartzm  Hostname: EE-361PC14  ProcessID: 4448
+# 
+#           Attempting to use alternate WLF file "./wlftj0yam4".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+# 
+#           Using alternate file: ./wlftj0yam4
+# 
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# Break in Module CPU_testbench at ./CPU.sv line 73
+# Simulation Breakpoint: Break in Module CPU_testbench at ./CPU.sv line 73
+# MACRO ./CPU_runlab.do PAUSED at line 73
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf U:/EE471labs/lab4.3/LAB4/CPU_wave.do

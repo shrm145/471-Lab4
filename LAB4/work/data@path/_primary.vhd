@@ -18,6 +18,7 @@ entity dataPath is
         MemToReg        : in     vl_logic;
         RegDest         : in     vl_logic;
         ALUControl      : in     vl_logic_vector(1 downto 0);
+        reset           : in     vl_logic;
         clk             : in     vl_logic
     );
 end dataPath;

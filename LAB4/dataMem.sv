@@ -54,9 +54,9 @@ module dataMem(data, address, writedata, writeenable, clk);
 		temp = {datamem[address],datamem[address+1],datamem[address+2],datamem[address+3]};
 	end
 	
-	initial begin
-		$readmemh("test03.out", datamem);
-	end 
+	/*initial begin
+		$readmemh("data.dat", datamem);
+	end */
 endmodule
 
 

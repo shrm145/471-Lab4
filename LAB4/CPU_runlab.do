@@ -44,6 +44,16 @@ vlog "./calcSltu.sv"
 vlog "./nor32Bit.sv"
 vlog "./alu.sv"
 
+# pipelining
+vlog "./PipelineExecute.sv"
+vlog "./PipelineMem.sv"
+vlog "./PipelineDecode.sv"
+vlog "./Execute.sv"
+vlog "./Memory.sv"
+vlog "./DecodeReg.sv"
+vlog "./PipelineControls.sv"
+vlog "./register32Bit.sv"
+
 # Call vsim to invoke simulator
 #     Make sure the last item on the line is the name of the
 #     testbench module you want to execute.
