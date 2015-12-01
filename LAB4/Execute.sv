@@ -1,5 +1,5 @@
-module Execute (memAddr, storedRt2, Rt_mem, Rd_mem, negative, zero, CarryOut, overflow, ALUControl, toALU1, toALU2, storedRt1, Rt_ex, Rd_ex, reset, clk);
-	output [31:0] memAddr, storedRt2;
+module Execute (ALUoutput_fwd, memAddr, storedRt2, Rt_mem, Rd_mem, negative, zero, CarryOut, overflow, ALUControl, toALU1, toALU2, storedRt1, Rt_ex, Rd_ex, reset, clk);
+	output [31:0] memAddr, storedRt2, ALUoutput_fwd;
 	output negative, zero, CarryOut, overflow;
 	output [4:0] Rt_mem, Rd_mem;
 	input [31:0] toALU1, toALU2, storedRt1;
@@ -8,6 +8,8 @@ module Execute (memAddr, storedRt2, Rt_mem, Rd_mem, negative, zero, CarryOut, ov
 	input [4:0] Rt_ex, Rd_ex;
 	
 	wire [31:0] ALUoutput, constCPU, BussB;
+	
+	assign ALUoutput_fwd = ALUoutput;
 
 	
 	// ALU for CPU		  

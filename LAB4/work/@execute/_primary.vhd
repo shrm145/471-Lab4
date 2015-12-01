@@ -2,6 +2,7 @@ library verilog;
 use verilog.vl_types.all;
 entity Execute is
     port(
+        ALUoutput_fwd   : out    vl_logic_vector(31 downto 0);
         memAddr         : out    vl_logic_vector(31 downto 0);
         storedRt2       : out    vl_logic_vector(31 downto 0);
         Rt_mem          : out    vl_logic_vector(4 downto 0);

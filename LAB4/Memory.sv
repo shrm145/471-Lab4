@@ -1,11 +1,13 @@
-module Memory (writeToReg, Rt_wr, Rd_wr, MemWrite, MemToReg, memAddr, storedRt2, Rt_mem, Rd_mem, clk, reset);
-	output [31:0] writeToReg;
+module Memory (writeData_fwd, writeToReg, Rt_wr, Rd_wr, MemWrite, MemToReg, memAddr, storedRt2, Rt_mem, Rd_mem, clk, reset);
+	output [31:0] writeToReg, writeData_fwd;
 	output [4:0] Rt_wr, Rd_wr;
 	input [31:0] memAddr, storedRt2;
 	input MemWrite, MemToReg; // ctrls
 	input clk, reset;
 	input [4:0] Rt_mem, Rd_mem;
 	wire [31:0] memData, WriteData;
+	
+	assign writeData_fwd = WriteData;
 
 	// data memory for CPU
 	dataMem datMem(.data(memData), .address(memAddr), .writedata(storedRt2), .writeenable(MemWrite), .clk);

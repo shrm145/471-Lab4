@@ -390,40 +390,6 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
 set_global_assignment -name STATE_MACHINE_PROCESSING "USER-ENCODED"
-set_global_assignment -name SYSTEMVERILOG_FILE D_FF.sv
-set_global_assignment -name SYSTEMVERILOG_FILE decoder4x16.sv
-set_global_assignment -name SYSTEMVERILOG_FILE mux16_1.sv
-set_global_assignment -name SYSTEMVERILOG_FILE decoder5x32.sv
-set_global_assignment -name SYSTEMVERILOG_FILE DFF_32.sv
-set_global_assignment -name SYSTEMVERILOG_FILE mux32_32.sv
-set_global_assignment -name SYSTEMVERILOG_FILE regfile.sv
-set_global_assignment -name SYSTEMVERILOG_FILE mux32_1.sv
-set_global_assignment -name SYSTEMVERILOG_FILE decoder2x4.sv
-set_global_assignment -name SYSTEMVERILOG_FILE zeroFlag.sv
-set_global_assignment -name SYSTEMVERILOG_FILE nor32Bit.sv
-set_global_assignment -name SYSTEMVERILOG_FILE nor32_1.sv
-set_global_assignment -name SYSTEMVERILOG_FILE mux4_1_32Bit.sv
-set_global_assignment -name SYSTEMVERILOG_FILE mux4_1.sv
-set_global_assignment -name SYSTEMVERILOG_FILE mux2_1Bit.sv
-set_global_assignment -name SYSTEMVERILOG_FILE mux2_1_32Bit.sv
-set_global_assignment -name SYSTEMVERILOG_FILE mux2_1.sv
-set_global_assignment -name SYSTEMVERILOG_FILE calcSltu.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ALUbit.sv
-set_global_assignment -name SYSTEMVERILOG_FILE alu.sv
-set_global_assignment -name SYSTEMVERILOG_FILE adder32Bit.sv
-set_global_assignment -name SYSTEMVERILOG_FILE adder.sv
-set_global_assignment -name SYSTEMVERILOG_FILE dataMem.sv
-set_global_assignment -name SYSTEMVERILOG_FILE InstructionMem.sv
-set_global_assignment -name SYSTEMVERILOG_FILE CPU.sv
-set_global_assignment -name SYSTEMVERILOG_FILE controls.sv
-set_global_assignment -name SYSTEMVERILOG_FILE adder30bit.sv
-set_global_assignment -name SYSTEMVERILOG_FILE mux2_1_30Bit.sv
-set_global_assignment -name SYSTEMVERILOG_FILE mux2_1_5Bit.sv
-set_global_assignment -name SYSTEMVERILOG_FILE dataPath.sv
-set_global_assignment -name SYSTEMVERILOG_FILE signExtnd.sv
-set_global_assignment -name SYSTEMVERILOG_FILE dataPathTEST.sv
-set_global_assignment -name SYSTEMVERILOG_FILE PC.sv
-set_global_assignment -name SYSTEMVERILOG_FILE instrFU.sv
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_CS_N
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_DIN
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_DOUT
@@ -998,6 +964,41 @@ set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_WE_N
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_RESET_N
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_P
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_N
+set_global_assignment -name SYSTEMVERILOG_FILE forwarding.sv
+set_global_assignment -name SYSTEMVERILOG_FILE D_FF.sv
+set_global_assignment -name SYSTEMVERILOG_FILE decoder4x16.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux16_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE decoder5x32.sv
+set_global_assignment -name SYSTEMVERILOG_FILE DFF_32.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux32_32.sv
+set_global_assignment -name SYSTEMVERILOG_FILE regfile.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux32_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE decoder2x4.sv
+set_global_assignment -name SYSTEMVERILOG_FILE zeroFlag.sv
+set_global_assignment -name SYSTEMVERILOG_FILE nor32Bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE nor32_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux4_1_32Bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux4_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux2_1Bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux2_1_32Bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux2_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE calcSltu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ALUbit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE alu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE adder32Bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE adder.sv
+set_global_assignment -name SYSTEMVERILOG_FILE dataMem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE InstructionMem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE CPU.sv
+set_global_assignment -name SYSTEMVERILOG_FILE controls.sv
+set_global_assignment -name SYSTEMVERILOG_FILE adder30bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux2_1_30Bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux2_1_5Bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE dataPath.sv
+set_global_assignment -name SYSTEMVERILOG_FILE signExtnd.sv
+set_global_assignment -name SYSTEMVERILOG_FILE dataPathTEST.sv
+set_global_assignment -name SYSTEMVERILOG_FILE PC.sv
+set_global_assignment -name SYSTEMVERILOG_FILE instrFU.sv
 set_global_assignment -name SYSTEMVERILOG_FILE register32Bit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE PipelineControls.sv
 set_global_assignment -name SYSTEMVERILOG_FILE DecodeReg.sv

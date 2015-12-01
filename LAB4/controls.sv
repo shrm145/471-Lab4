@@ -14,7 +14,7 @@ module controls (Branch, Jump, JR, ALUSource, ALUControl, RegWrite, MemWrite, Me
 	begin
 		if(op == 6'b000000) begin // R-TYPE
 			if(funct == 6'b001000) begin // JR
-				RegDest = 	1'bX;
+				RegDest = 	1'b0;
 				ALUSource = 1'b1;
 				RegWrite = 	1'b0;
 				MemWrite = 	1'b0; 
@@ -58,7 +58,7 @@ module controls (Branch, Jump, JR, ALUSource, ALUControl, RegWrite, MemWrite, Me
 				ALUControl= 2'b10; //sltu 
 			end
 			else begin // dont write, jump or branch
-				RegDest = 	1'bX;
+				RegDest = 	1'b0;
 				ALUSource = 1'bX;
 				RegWrite = 	1'b0;
 				MemWrite = 	1'b0; 
@@ -71,11 +71,11 @@ module controls (Branch, Jump, JR, ALUSource, ALUControl, RegWrite, MemWrite, Me
 		end
 		
 		else if (op == 6'b000001) begin // BLTZ
-			RegDest = 	1'bX;
+			RegDest = 	1'b0;
 			ALUSource = 1'b1;
 			RegWrite = 	1'b0;
 			MemWrite = 	1'b0; 
-			MemToReg = 	1'bX;
+			MemToReg = 	1'b0;
 			Branch = 	1'b1;
 			Jump = 		1'b0;
 			JR = 			1'b0; 
@@ -83,12 +83,12 @@ module controls (Branch, Jump, JR, ALUSource, ALUControl, RegWrite, MemWrite, Me
 		end 
 		
 		else if (op == 6'b000010) begin // J target
-			RegDest = 	1'bX;
-			ALUSource = 1'bX;
+			RegDest = 	1'b0;
+			ALUSource = 1'b0;
 			RegWrite = 	1'b0;
 			MemWrite = 	1'b0; 
-			MemToReg = 	1'bX;
-			Branch = 	1'bX;
+			MemToReg = 	1'b0;
+			Branch = 	1'b0;
 			Jump = 		1'b1;
 			JR = 			1'b0; 
 			ALUControl= 2'bXX; //dont care
@@ -119,22 +119,22 @@ module controls (Branch, Jump, JR, ALUSource, ALUControl, RegWrite, MemWrite, Me
 		end 
 		
 		else if (op == 6'b101011) begin // SW (op = 43)
-			RegDest = 	1'bX;
-			ALUSource = 1'bX;
+			RegDest = 	1'b0; // RegDest must have value for forwarding unit
+			ALUSource = 1'b1;
 			RegWrite = 	1'b0;
 			MemWrite = 	1'b1; 
-			MemToReg = 	1'bX;
-			Branch = 	1'bX;
+			MemToReg = 	1'b0;
+			Branch = 	1'b0;
 			Jump = 		1'b0;
 			JR = 			1'b0; 
 			ALUControl= 2'b00; //add
 		end 	
 	else begin // dont write or branch or jump
-			RegDest = 	1'bX;
-			ALUSource = 1'bX;
+			RegDest = 	1'b0;
+			ALUSource = 1'b0;
 			RegWrite = 	1'b0;
 			MemWrite = 	1'b0; 
-			MemToReg = 	1'bX;
+			MemToReg = 	1'b0;
 			Branch = 	1'b0;
 			Jump = 		1'b0;
 			JR = 			1'b0; 

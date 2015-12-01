@@ -32,25 +32,30 @@ module dataPath(regRS, negative, zero, CarryOut, overflow, Rs, Rt, Rd, imm16, Br
 	wire ALUSrc_ex, Branch_ex, ALUControl0_ex, ALUControl1_ex, MemWrite_ex, MemToReg_ex, RegDest_ex, RegWrite_ex;
 	wire MemWrite_mem, MemToReg_mem, RegDest_mem, RegWrite_mem;
 	wire RegDest_wr, RegWrite_wr;
+	wire [1:0] RsCtrl, RtCtrl;
+	wire [31:0] writeData_fwd, ALUoutput_fwd;
 
 	
 	// ------ REG DECODE / WRITEBACK STAGE ------
 	
-	DecodeReg decStage (.regRS, .toALU1, .toALU2, .storedRt1, . Rt_ex, .Rd_ex, .ALUSource, .Branch, .regWrite(RegWrite_wr), .writeToReg, .Rd, .Rt, .Rs, .WriteRegAddr, .imm16, .clk, .reset);
+	DecodeReg decStage (.regRS, .toALU1, .toALU2, .storedRt1, . Rt_ex, .Rd_ex, .ALUSource, .Branch, .regWrite(RegWrite_wr), .writeToReg, .Rd, .Rt, .Rs, .WriteRegAddr, .imm16, .writeData_fwd, .ALUoutput_fwd, .RsCtrl, .RtCtrl, .clk, .reset);
+	
+	forwarding Rs_fwd (.forwardCtrl(RsCtrl), .Rt_ex, .Rd_ex, .Rt_mem, .Rd_mem, .regDest_Ex(RegDest_ex), .regDest_Mem(RegDest_mem), .writeEnable_mem(MemWrite_mem), .RegWrite_ex, .Rvalue(Rs));
+	forwarding Rt_fwd (.forwardCtrl(RtCtrl), .Rt_ex, .Rd_ex, .Rt_mem, .Rd_mem, .regDest_Ex(RegDest_ex), .regDest_Mem(RegDest_mem), .writeEnable_mem(MemWrite_mem), .RegWrite_ex, .Rvalue(Rt));
 	
 	PipelineDecode decCtrls (.ALUSrc_ex, .Branch_ex, .ALUControl0_ex, .ALUControl1_ex, .MemWrite_ex, .MemToReg_ex, .RegDest_ex, .RegWrite_ex, 
                         .ALUSrc_dec(ALUSource), .Branch_dec(Branch), .ALUControl0_dec(ALUControl[0]), .ALUControl1_dec(ALUControl[1]), .MemWrite_dec(MemWrite), .MemToReg_dec(MemToReg), .RegDest_dec(RegDest), .RegWrite_dec(RegWrite), .clk, .reset);
 
 	// ------ EXECUTE STAGE ------	
 	
-	Execute exStage(.memAddr, .storedRt2, .Rt_mem, .Rd_mem, .negative, .zero, .CarryOut, .overflow, .ALUControl({ALUControl1_ex, ALUControl0_ex}), .toALU1, .toALU2, .storedRt1, .Rt_ex, .Rd_ex, .reset, .clk);
+	Execute exStage(.ALUoutput_fwd, .memAddr, .storedRt2, .Rt_mem, .Rd_mem, .negative, .zero, .CarryOut, .overflow, .ALUControl({ALUControl1_ex, ALUControl0_ex}), .toALU1, .toALU2, .storedRt1, .Rt_ex, .Rd_ex, .reset, .clk);
 	
 	PipelineExecute exCtrls (.MemWrite_mem, .MemToReg_mem, .RegDest_mem, .RegWrite_mem, 
                          .MemWrite_ex, .MemToReg_ex, .RegDest_ex, .RegWrite_ex, .clk, .reset);
 	
 	// ------ MEMORY STAGE ------
 	
-	Memory memStage (.writeToReg, .Rt_wr, .Rd_wr, .MemWrite(MemWrite_mem), .MemToReg(MemToReg_mem), .memAddr, .storedRt2, .Rt_mem, .Rd_mem, .clk, .reset);
+	Memory memStage (.writeData_fwd, .writeToReg, .Rt_wr, .Rd_wr, .MemWrite(MemWrite_mem), .MemToReg(MemToReg_mem), .memAddr, .storedRt2, .Rt_mem, .Rd_mem, .clk, .reset);
 	
 	PipelineMem memCtrls (.RegDest_wr, .RegWrite_wr, .RegDest_mem, .RegWrite_mem, .clk, .reset);
 	

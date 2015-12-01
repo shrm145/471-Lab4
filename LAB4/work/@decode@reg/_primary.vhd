@@ -17,6 +17,10 @@ entity DecodeReg is
         Rs              : in     vl_logic_vector(4 downto 0);
         WriteRegAddr    : in     vl_logic_vector(4 downto 0);
         imm16           : in     vl_logic_vector(15 downto 0);
+        writeData_fwd   : in     vl_logic_vector(31 downto 0);
+        ALUoutput_fwd   : in     vl_logic_vector(31 downto 0);
+        RsCtrl          : in     vl_logic_vector(1 downto 0);
+        RtCtrl          : in     vl_logic_vector(1 downto 0);
         clk             : in     vl_logic;
         reset           : in     vl_logic
     );

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE1_SoC
-Mon Nov 30 11:44:49 2015
+Tue Dec 01 11:41:35 2015
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Full Version
 
 
@@ -186,79 +186,85 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Full Version
 178. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|regfile:rf|mux32_32:mux2|mux32_1:eachBit[31].mux|mux16_1:mux1
 179. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|mux2_1_32Bit:signImmMux
 180. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|mux2_1_32Bit:ALUSourceMux
-181. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|register32Bit:ALUin1
-182. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|register32Bit:ALUin2
-183. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|register32Bit:RtOut
-184. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|register32Bit:RT
-185. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|register32Bit:RD
-186. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|alu:aluComp
-187. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|alu:aluComp|adder32Bit:adder
-188. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|alu:aluComp|nor32Bit:norCalc
-189. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|alu:aluComp|mux4_1_32Bit:outputCtrl|mux2_1_32Bit:mux0
-190. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|alu:aluComp|mux4_1_32Bit:outputCtrl|mux2_1_32Bit:mux1
-191. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|alu:aluComp|mux4_1_32Bit:outputCtrl|mux2_1_32Bit:master
-192. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|register32Bit:ALUtoMem
-193. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|register32Bit:ReadRt2
-194. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|register32Bit:RT1
-195. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|register32Bit:RD1
-196. Parameter Settings for User Entity Instance: dataPath:data|Memory:memStage|mux2_1_32Bit:memToRegMux
-197. Parameter Settings for User Entity Instance: dataPath:data|Memory:memStage|register32Bit:memoryData
-198. Parameter Settings for User Entity Instance: dataPath:data|Memory:memStage|register32Bit:RT2
-199. Parameter Settings for User Entity Instance: dataPath:data|Memory:memStage|register32Bit:RD2
-200. Parameter Settings for User Entity Instance: dataPath:data|mux2_1_5Bit:regDestMux
-201. Port Connectivity Checks: "dataPath:data|Memory:memStage|register32Bit:RD2"
-202. Port Connectivity Checks: "dataPath:data|Memory:memStage|register32Bit:RT2"
-203. Port Connectivity Checks: "dataPath:data|Execute:exStage|register32Bit:RD1"
-204. Port Connectivity Checks: "dataPath:data|Execute:exStage|register32Bit:RT1"
-205. Port Connectivity Checks: "dataPath:data|Execute:exStage|alu:aluComp|mux4_1_32Bit:outputCtrl"
-206. Port Connectivity Checks: "dataPath:data|PipelineDecode:decCtrls"
-207. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|register32Bit:RD"
-208. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|register32Bit:RT"
-209. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|mux2_1_32Bit:signImmMux"
-210. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[31].dff"
-211. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[30].dff"
-212. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[29].dff"
-213. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[28].dff"
-214. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[27].dff"
-215. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[26].dff"
-216. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[25].dff"
-217. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[24].dff"
-218. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[23].dff"
-219. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[22].dff"
-220. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[21].dff"
-221. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[20].dff"
-222. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[19].dff"
-223. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[18].dff"
-224. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[17].dff"
-225. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[16].dff"
-226. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[15].dff"
-227. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[14].dff"
-228. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[13].dff"
-229. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[12].dff"
-230. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[11].dff"
-231. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[10].dff"
-232. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[9].dff"
-233. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[8].dff"
-234. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[7].dff"
-235. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[6].dff"
-236. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[5].dff"
-237. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[4].dff"
-238. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[3].dff"
-239. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[2].dff"
-240. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[1].dff"
-241. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:zeroReg"
-242. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|decoder5x32:dec1"
-243. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf"
-244. Port Connectivity Checks: "dataPath:data"
-245. Port Connectivity Checks: "instrFU:getinstr|InstructionMem:getInstr"
-246. Port Connectivity Checks: "instrFU:getinstr|adder30Bit:adder30|adder:eachBit[29].addrBit"
-247. Port Connectivity Checks: "instrFU:getinstr|adder30Bit:adder30"
-248. Port Connectivity Checks: "instrFU:getinstr|mux2_1_30Bit:valToAdderMux"
-249. Port Connectivity Checks: "instrFU:getinstr|signExtnd:extImm16"
-250. Post-Synthesis Netlist Statistics for Top Partition
-251. Elapsed Time Per Partition
-252. Analysis & Synthesis Messages
-253. Analysis & Synthesis Suppressed Messages
+181. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0
+182. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1
+183. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master
+184. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0
+185. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1
+186. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master
+187. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|register32Bit:ALUin1
+188. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|register32Bit:ALUin2
+189. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|register32Bit:RtOut
+190. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|register32Bit:RT
+191. Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|register32Bit:RD
+192. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|alu:aluComp
+193. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|alu:aluComp|adder32Bit:adder
+194. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|alu:aluComp|nor32Bit:norCalc
+195. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|alu:aluComp|mux4_1_32Bit:outputCtrl|mux2_1_32Bit:mux0
+196. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|alu:aluComp|mux4_1_32Bit:outputCtrl|mux2_1_32Bit:mux1
+197. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|alu:aluComp|mux4_1_32Bit:outputCtrl|mux2_1_32Bit:master
+198. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|register32Bit:ALUtoMem
+199. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|register32Bit:ReadRt2
+200. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|register32Bit:RT1
+201. Parameter Settings for User Entity Instance: dataPath:data|Execute:exStage|register32Bit:RD1
+202. Parameter Settings for User Entity Instance: dataPath:data|Memory:memStage|mux2_1_32Bit:memToRegMux
+203. Parameter Settings for User Entity Instance: dataPath:data|Memory:memStage|register32Bit:memoryData
+204. Parameter Settings for User Entity Instance: dataPath:data|Memory:memStage|register32Bit:RT2
+205. Parameter Settings for User Entity Instance: dataPath:data|Memory:memStage|register32Bit:RD2
+206. Parameter Settings for User Entity Instance: dataPath:data|mux2_1_5Bit:regDestMux
+207. Port Connectivity Checks: "dataPath:data|Memory:memStage|register32Bit:RD2"
+208. Port Connectivity Checks: "dataPath:data|Memory:memStage|register32Bit:RT2"
+209. Port Connectivity Checks: "dataPath:data|Execute:exStage|register32Bit:RD1"
+210. Port Connectivity Checks: "dataPath:data|Execute:exStage|register32Bit:RT1"
+211. Port Connectivity Checks: "dataPath:data|Execute:exStage|alu:aluComp|mux4_1_32Bit:outputCtrl"
+212. Port Connectivity Checks: "dataPath:data|PipelineDecode:decCtrls"
+213. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|register32Bit:RD"
+214. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|register32Bit:RT"
+215. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|mux2_1_32Bit:signImmMux"
+216. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[31].dff"
+217. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[30].dff"
+218. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[29].dff"
+219. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[28].dff"
+220. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[27].dff"
+221. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[26].dff"
+222. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[25].dff"
+223. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[24].dff"
+224. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[23].dff"
+225. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[22].dff"
+226. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[21].dff"
+227. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[20].dff"
+228. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[19].dff"
+229. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[18].dff"
+230. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[17].dff"
+231. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[16].dff"
+232. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[15].dff"
+233. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[14].dff"
+234. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[13].dff"
+235. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[12].dff"
+236. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[11].dff"
+237. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[10].dff"
+238. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[9].dff"
+239. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[8].dff"
+240. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[7].dff"
+241. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[6].dff"
+242. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[5].dff"
+243. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[4].dff"
+244. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[3].dff"
+245. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[2].dff"
+246. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:eachReg[1].dff"
+247. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|DFF_32:zeroReg"
+248. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf|decoder5x32:dec1"
+249. Port Connectivity Checks: "dataPath:data|DecodeReg:decStage|regfile:rf"
+250. Port Connectivity Checks: "dataPath:data"
+251. Port Connectivity Checks: "instrFU:getinstr|InstructionMem:getInstr"
+252. Port Connectivity Checks: "instrFU:getinstr|adder30Bit:adder30|adder:eachBit[29].addrBit"
+253. Port Connectivity Checks: "instrFU:getinstr|adder30Bit:adder30"
+254. Port Connectivity Checks: "instrFU:getinstr|mux2_1_30Bit:valToAdderMux"
+255. Port Connectivity Checks: "instrFU:getinstr|signExtnd:extImm16"
+256. Post-Synthesis Netlist Statistics for Top Partition
+257. Elapsed Time Per Partition
+258. Analysis & Synthesis Messages
+259. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -285,7 +291,7 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Nov 30 11:44:48 2015       ;
+; Analysis & Synthesis Status     ; Successful - Tue Dec 01 11:41:35 2015       ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Full Version ;
 ; Revision Name                   ; DE1_SoC                                     ;
 ; Top-level Entity Name           ; CPU                                         ;
@@ -415,6 +421,7 @@ agreement for further details.
 +----------------------------------+-----------------+------------------------------+---------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                ; Library ;
 +----------------------------------+-----------------+------------------------------+---------------------------------------------+---------+
+; forwarding.sv                    ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/lab4.3/LAB4/forwarding.sv      ;         ;
 ; D_FF.sv                          ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/lab4.3/LAB4/D_FF.sv            ;         ;
 ; decoder4x16.sv                   ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/lab4.3/LAB4/decoder4x16.sv     ;         ;
 ; mux16_1.sv                       ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/lab4.3/LAB4/mux16_1.sv         ;         ;
@@ -453,7 +460,7 @@ agreement for further details.
 ; PipelineExecute.sv               ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/lab4.3/LAB4/PipelineExecute.sv ;         ;
 ; PipelineMem.sv                   ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/lab4.3/LAB4/PipelineMem.sv     ;         ;
 ; PipelineDecode.sv                ; yes             ; User SystemVerilog HDL File  ; U:/EE471labs/lab4.3/LAB4/PipelineDecode.sv  ;         ;
-; pipelinetest.out                 ; yes             ; Auto-Found File              ; U:/EE471labs/lab4.3/LAB4/pipelinetest.out   ;         ;
+; test08.out                       ; yes             ; Auto-Found File              ; U:/EE471labs/lab4.3/LAB4/test08.out         ;         ;
 +----------------------------------+-----------------+------------------------------+---------------------------------------------+---------+
 
 
@@ -2227,6 +2234,66 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0 ;
++----------------+-------+-----------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                          ;
++----------------+-------+-----------------------------------------------------------------------------------------------+
+; WIDTH          ; 32    ; Signed Integer                                                                                ;
++----------------+-------+-----------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1 ;
++----------------+-------+-----------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                          ;
++----------------+-------+-----------------------------------------------------------------------------------------------+
+; WIDTH          ; 32    ; Signed Integer                                                                                ;
++----------------+-------+-----------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                            ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+; WIDTH          ; 32    ; Signed Integer                                                                                  ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0 ;
++----------------+-------+-----------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                          ;
++----------------+-------+-----------------------------------------------------------------------------------------------+
+; WIDTH          ; 32    ; Signed Integer                                                                                ;
++----------------+-------+-----------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1 ;
++----------------+-------+-----------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                          ;
++----------------+-------+-----------------------------------------------------------------------------------------------+
+; WIDTH          ; 32    ; Signed Integer                                                                                ;
++----------------+-------+-----------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                            ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+; WIDTH          ; 32    ; Signed Integer                                                                                  ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +----------------------------------------------------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: dataPath:data|DecodeReg:decStage|register32Bit:ALUin1 ;
 +----------------+-------+---------------------------------------------------------------------------+
@@ -2896,7 +2963,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -2906,9 +2973,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Full Version
-    Info: Processing started: Mon Nov 30 11:44:17 2015
+    Info: Processing started: Tue Dec 01 11:40:59 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
+Info (12021): Found 1 design units, including 1 entities, in source file forwarding.sv
+    Info (12023): Found entity 1: forwarding
 Info (12021): Found 1 design units, including 1 entities, in source file d_ff.sv
     Info (12023): Found entity 1: D_FF
 Info (12021): Found 1 design units, including 1 entities, in source file decoder4x16.sv
@@ -3033,7 +3102,7 @@ Info (12128): Elaborating entity "signExtnd" for hierarchy "instrFU:getinstr|sig
 Info (12128): Elaborating entity "adder30Bit" for hierarchy "instrFU:getinstr|adder30Bit:adder30"
 Info (12128): Elaborating entity "adder" for hierarchy "instrFU:getinstr|adder30Bit:adder30|adder:eachBit[0].addrBit"
 Info (12128): Elaborating entity "InstructionMem" for hierarchy "instrFU:getinstr|InstructionMem:getInstr"
-Warning (10850): Verilog HDL warning at InstructionMem.sv(50): number of words (12) in memory file does not match the number of elements in the address range [0:1023]
+Warning (10850): Verilog HDL warning at InstructionMem.sv(50): number of words (37) in memory file does not match the number of elements in the address range [0:1023]
 Info (12128): Elaborating entity "dataPath" for hierarchy "dataPath:data"
 Info (12128): Elaborating entity "DecodeReg" for hierarchy "dataPath:data|DecodeReg:decStage"
 Info (12128): Elaborating entity "regfile" for hierarchy "dataPath:data|DecodeReg:decStage|regfile:rf"
@@ -3047,13 +3116,14 @@ Info (12128): Elaborating entity "mux32_1" for hierarchy "dataPath:data|DecodeRe
 Info (12128): Elaborating entity "mux16_1" for hierarchy "dataPath:data|DecodeReg:decStage|regfile:rf|mux32_32:mux1|mux32_1:eachBit[0].mux|mux16_1:mux0"
 Info (12128): Elaborating entity "mux4_1" for hierarchy "dataPath:data|DecodeReg:decStage|regfile:rf|mux32_32:mux1|mux32_1:eachBit[0].mux|mux16_1:mux0|mux4_1:master"
 Info (12128): Elaborating entity "mux2_1_32Bit" for hierarchy "dataPath:data|DecodeReg:decStage|mux2_1_32Bit:signImmMux"
+Info (12128): Elaborating entity "mux4_1_32Bit" for hierarchy "dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward"
+Info (12128): Elaborating entity "forwarding" for hierarchy "dataPath:data|forwarding:Rs_fwd"
 Info (12128): Elaborating entity "PipelineDecode" for hierarchy "dataPath:data|PipelineDecode:decCtrls"
 Info (12128): Elaborating entity "Execute" for hierarchy "dataPath:data|Execute:exStage"
 Info (12128): Elaborating entity "alu" for hierarchy "dataPath:data|Execute:exStage|alu:aluComp"
 Info (12128): Elaborating entity "adder32Bit" for hierarchy "dataPath:data|Execute:exStage|alu:aluComp|adder32Bit:adder"
 Info (12128): Elaborating entity "nor32Bit" for hierarchy "dataPath:data|Execute:exStage|alu:aluComp|nor32Bit:norCalc"
 Info (12128): Elaborating entity "calcSltu" for hierarchy "dataPath:data|Execute:exStage|alu:aluComp|calcSltu:calculateSltu"
-Info (12128): Elaborating entity "mux4_1_32Bit" for hierarchy "dataPath:data|Execute:exStage|alu:aluComp|mux4_1_32Bit:outputCtrl"
 Info (12128): Elaborating entity "zeroFlag" for hierarchy "dataPath:data|Execute:exStage|alu:aluComp|zeroFlag:calcZero"
 Info (12128): Elaborating entity "PipelineExecute" for hierarchy "dataPath:data|PipelineExecute:exCtrls"
 Info (12128): Elaborating entity "Memory" for hierarchy "dataPath:data|Memory:memStage"
@@ -3068,10 +3138,10 @@ Info (21057): Implemented 2 device resources after synthesis - the final resourc
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 0 output pins
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 713 megabytes
-    Info: Processing ended: Mon Nov 30 11:44:49 2015
-    Info: Elapsed time: 00:00:32
-    Info: Total CPU time (on all processors): 00:00:11
+    Info: Peak virtual memory: 709 megabytes
+    Info: Processing ended: Tue Dec 01 11:41:35 2015
+    Info: Elapsed time: 00:00:36
+    Info: Total CPU time (on all processors): 00:00:12
 
 
 +------------------------------------------+

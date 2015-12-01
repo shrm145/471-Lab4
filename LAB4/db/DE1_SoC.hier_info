@@ -2658,15 +2658,25 @@ zero <= Execute:exStage.zero
 CarryOut <= Execute:exStage.CarryOut
 overflow <= Execute:exStage.overflow
 Rs[0] => DecodeReg:decStage.Rs[0]
+Rs[0] => forwarding:Rs_fwd.Rvalue[0]
 Rs[1] => DecodeReg:decStage.Rs[1]
+Rs[1] => forwarding:Rs_fwd.Rvalue[1]
 Rs[2] => DecodeReg:decStage.Rs[2]
+Rs[2] => forwarding:Rs_fwd.Rvalue[2]
 Rs[3] => DecodeReg:decStage.Rs[3]
+Rs[3] => forwarding:Rs_fwd.Rvalue[3]
 Rs[4] => DecodeReg:decStage.Rs[4]
+Rs[4] => forwarding:Rs_fwd.Rvalue[4]
 Rt[0] => DecodeReg:decStage.Rt[0]
+Rt[0] => forwarding:Rt_fwd.Rvalue[0]
 Rt[1] => DecodeReg:decStage.Rt[1]
+Rt[1] => forwarding:Rt_fwd.Rvalue[1]
 Rt[2] => DecodeReg:decStage.Rt[2]
+Rt[2] => forwarding:Rt_fwd.Rvalue[2]
 Rt[3] => DecodeReg:decStage.Rt[3]
+Rt[3] => forwarding:Rt_fwd.Rvalue[3]
 Rt[4] => DecodeReg:decStage.Rt[4]
+Rt[4] => forwarding:Rt_fwd.Rvalue[4]
 Rd[0] => DecodeReg:decStage.Rd[0]
 Rd[1] => DecodeReg:decStage.Rd[1]
 Rd[2] => DecodeReg:decStage.Rd[2]
@@ -2713,36 +2723,36 @@ clk => PipelineMem:memCtrls.clk
 
 
 |CPU|dataPath:data|DecodeReg:decStage
-regRS[0] <= regfile:rf.ReadData1[2]
-regRS[1] <= regfile:rf.ReadData1[3]
-regRS[2] <= regfile:rf.ReadData1[4]
-regRS[3] <= regfile:rf.ReadData1[5]
-regRS[4] <= regfile:rf.ReadData1[6]
-regRS[5] <= regfile:rf.ReadData1[7]
-regRS[6] <= regfile:rf.ReadData1[8]
-regRS[7] <= regfile:rf.ReadData1[9]
-regRS[8] <= regfile:rf.ReadData1[10]
-regRS[9] <= regfile:rf.ReadData1[11]
-regRS[10] <= regfile:rf.ReadData1[12]
-regRS[11] <= regfile:rf.ReadData1[13]
-regRS[12] <= regfile:rf.ReadData1[14]
-regRS[13] <= regfile:rf.ReadData1[15]
-regRS[14] <= regfile:rf.ReadData1[16]
-regRS[15] <= regfile:rf.ReadData1[17]
-regRS[16] <= regfile:rf.ReadData1[18]
-regRS[17] <= regfile:rf.ReadData1[19]
-regRS[18] <= regfile:rf.ReadData1[20]
-regRS[19] <= regfile:rf.ReadData1[21]
-regRS[20] <= regfile:rf.ReadData1[22]
-regRS[21] <= regfile:rf.ReadData1[23]
-regRS[22] <= regfile:rf.ReadData1[24]
-regRS[23] <= regfile:rf.ReadData1[25]
-regRS[24] <= regfile:rf.ReadData1[26]
-regRS[25] <= regfile:rf.ReadData1[27]
-regRS[26] <= regfile:rf.ReadData1[28]
-regRS[27] <= regfile:rf.ReadData1[29]
-regRS[28] <= regfile:rf.ReadData1[30]
-regRS[29] <= regfile:rf.ReadData1[31]
+regRS[0] <= readRs[2].DB_MAX_OUTPUT_PORT_TYPE
+regRS[1] <= readRs[3].DB_MAX_OUTPUT_PORT_TYPE
+regRS[2] <= readRs[4].DB_MAX_OUTPUT_PORT_TYPE
+regRS[3] <= readRs[5].DB_MAX_OUTPUT_PORT_TYPE
+regRS[4] <= readRs[6].DB_MAX_OUTPUT_PORT_TYPE
+regRS[5] <= readRs[7].DB_MAX_OUTPUT_PORT_TYPE
+regRS[6] <= readRs[8].DB_MAX_OUTPUT_PORT_TYPE
+regRS[7] <= readRs[9].DB_MAX_OUTPUT_PORT_TYPE
+regRS[8] <= readRs[10].DB_MAX_OUTPUT_PORT_TYPE
+regRS[9] <= readRs[11].DB_MAX_OUTPUT_PORT_TYPE
+regRS[10] <= readRs[12].DB_MAX_OUTPUT_PORT_TYPE
+regRS[11] <= readRs[13].DB_MAX_OUTPUT_PORT_TYPE
+regRS[12] <= readRs[14].DB_MAX_OUTPUT_PORT_TYPE
+regRS[13] <= readRs[15].DB_MAX_OUTPUT_PORT_TYPE
+regRS[14] <= readRs[16].DB_MAX_OUTPUT_PORT_TYPE
+regRS[15] <= readRs[17].DB_MAX_OUTPUT_PORT_TYPE
+regRS[16] <= readRs[18].DB_MAX_OUTPUT_PORT_TYPE
+regRS[17] <= readRs[19].DB_MAX_OUTPUT_PORT_TYPE
+regRS[18] <= readRs[20].DB_MAX_OUTPUT_PORT_TYPE
+regRS[19] <= readRs[21].DB_MAX_OUTPUT_PORT_TYPE
+regRS[20] <= readRs[22].DB_MAX_OUTPUT_PORT_TYPE
+regRS[21] <= readRs[23].DB_MAX_OUTPUT_PORT_TYPE
+regRS[22] <= readRs[24].DB_MAX_OUTPUT_PORT_TYPE
+regRS[23] <= readRs[25].DB_MAX_OUTPUT_PORT_TYPE
+regRS[24] <= readRs[26].DB_MAX_OUTPUT_PORT_TYPE
+regRS[25] <= readRs[27].DB_MAX_OUTPUT_PORT_TYPE
+regRS[26] <= readRs[28].DB_MAX_OUTPUT_PORT_TYPE
+regRS[27] <= readRs[29].DB_MAX_OUTPUT_PORT_TYPE
+regRS[28] <= readRs[30].DB_MAX_OUTPUT_PORT_TYPE
+regRS[29] <= readRs[31].DB_MAX_OUTPUT_PORT_TYPE
 toALU1[0] <= register32Bit:ALUin1.q[0]
 toALU1[1] <= register32Bit:ALUin1.q[1]
 toALU1[2] <= register32Bit:ALUin1.q[2]
@@ -2925,6 +2935,74 @@ imm16[12] => imm16[12].IN1
 imm16[13] => imm16[13].IN1
 imm16[14] => imm16[14].IN1
 imm16[15] => imm16[15].IN1
+writeData_fwd[0] => writeData_fwd[0].IN2
+writeData_fwd[1] => writeData_fwd[1].IN2
+writeData_fwd[2] => writeData_fwd[2].IN2
+writeData_fwd[3] => writeData_fwd[3].IN2
+writeData_fwd[4] => writeData_fwd[4].IN2
+writeData_fwd[5] => writeData_fwd[5].IN2
+writeData_fwd[6] => writeData_fwd[6].IN2
+writeData_fwd[7] => writeData_fwd[7].IN2
+writeData_fwd[8] => writeData_fwd[8].IN2
+writeData_fwd[9] => writeData_fwd[9].IN2
+writeData_fwd[10] => writeData_fwd[10].IN2
+writeData_fwd[11] => writeData_fwd[11].IN2
+writeData_fwd[12] => writeData_fwd[12].IN2
+writeData_fwd[13] => writeData_fwd[13].IN2
+writeData_fwd[14] => writeData_fwd[14].IN2
+writeData_fwd[15] => writeData_fwd[15].IN2
+writeData_fwd[16] => writeData_fwd[16].IN2
+writeData_fwd[17] => writeData_fwd[17].IN2
+writeData_fwd[18] => writeData_fwd[18].IN2
+writeData_fwd[19] => writeData_fwd[19].IN2
+writeData_fwd[20] => writeData_fwd[20].IN2
+writeData_fwd[21] => writeData_fwd[21].IN2
+writeData_fwd[22] => writeData_fwd[22].IN2
+writeData_fwd[23] => writeData_fwd[23].IN2
+writeData_fwd[24] => writeData_fwd[24].IN2
+writeData_fwd[25] => writeData_fwd[25].IN2
+writeData_fwd[26] => writeData_fwd[26].IN2
+writeData_fwd[27] => writeData_fwd[27].IN2
+writeData_fwd[28] => writeData_fwd[28].IN2
+writeData_fwd[29] => writeData_fwd[29].IN2
+writeData_fwd[30] => writeData_fwd[30].IN2
+writeData_fwd[31] => writeData_fwd[31].IN2
+ALUoutput_fwd[0] => ALUoutput_fwd[0].IN2
+ALUoutput_fwd[1] => ALUoutput_fwd[1].IN2
+ALUoutput_fwd[2] => ALUoutput_fwd[2].IN2
+ALUoutput_fwd[3] => ALUoutput_fwd[3].IN2
+ALUoutput_fwd[4] => ALUoutput_fwd[4].IN2
+ALUoutput_fwd[5] => ALUoutput_fwd[5].IN2
+ALUoutput_fwd[6] => ALUoutput_fwd[6].IN2
+ALUoutput_fwd[7] => ALUoutput_fwd[7].IN2
+ALUoutput_fwd[8] => ALUoutput_fwd[8].IN2
+ALUoutput_fwd[9] => ALUoutput_fwd[9].IN2
+ALUoutput_fwd[10] => ALUoutput_fwd[10].IN2
+ALUoutput_fwd[11] => ALUoutput_fwd[11].IN2
+ALUoutput_fwd[12] => ALUoutput_fwd[12].IN2
+ALUoutput_fwd[13] => ALUoutput_fwd[13].IN2
+ALUoutput_fwd[14] => ALUoutput_fwd[14].IN2
+ALUoutput_fwd[15] => ALUoutput_fwd[15].IN2
+ALUoutput_fwd[16] => ALUoutput_fwd[16].IN2
+ALUoutput_fwd[17] => ALUoutput_fwd[17].IN2
+ALUoutput_fwd[18] => ALUoutput_fwd[18].IN2
+ALUoutput_fwd[19] => ALUoutput_fwd[19].IN2
+ALUoutput_fwd[20] => ALUoutput_fwd[20].IN2
+ALUoutput_fwd[21] => ALUoutput_fwd[21].IN2
+ALUoutput_fwd[22] => ALUoutput_fwd[22].IN2
+ALUoutput_fwd[23] => ALUoutput_fwd[23].IN2
+ALUoutput_fwd[24] => ALUoutput_fwd[24].IN2
+ALUoutput_fwd[25] => ALUoutput_fwd[25].IN2
+ALUoutput_fwd[26] => ALUoutput_fwd[26].IN2
+ALUoutput_fwd[27] => ALUoutput_fwd[27].IN2
+ALUoutput_fwd[28] => ALUoutput_fwd[28].IN2
+ALUoutput_fwd[29] => ALUoutput_fwd[29].IN2
+ALUoutput_fwd[30] => ALUoutput_fwd[30].IN2
+ALUoutput_fwd[31] => ALUoutput_fwd[31].IN2
+RsCtrl[0] => RsCtrl[0].IN1
+RsCtrl[1] => RsCtrl[1].IN1
+RtCtrl[0] => RtCtrl[0].IN1
+RtCtrl[1] => RtCtrl[1].IN1
 clk => register32Bit:ALUin1.clk
 clk => register32Bit:ALUin2.clk
 clk => register32Bit:RtOut.clk
@@ -56198,6 +56276,2658 @@ sel => temp[1].IN1
 sel => temp[0].IN1
 
 
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward
+out[0] <= mux2_1_32Bit:master.out[0]
+out[1] <= mux2_1_32Bit:master.out[1]
+out[2] <= mux2_1_32Bit:master.out[2]
+out[3] <= mux2_1_32Bit:master.out[3]
+out[4] <= mux2_1_32Bit:master.out[4]
+out[5] <= mux2_1_32Bit:master.out[5]
+out[6] <= mux2_1_32Bit:master.out[6]
+out[7] <= mux2_1_32Bit:master.out[7]
+out[8] <= mux2_1_32Bit:master.out[8]
+out[9] <= mux2_1_32Bit:master.out[9]
+out[10] <= mux2_1_32Bit:master.out[10]
+out[11] <= mux2_1_32Bit:master.out[11]
+out[12] <= mux2_1_32Bit:master.out[12]
+out[13] <= mux2_1_32Bit:master.out[13]
+out[14] <= mux2_1_32Bit:master.out[14]
+out[15] <= mux2_1_32Bit:master.out[15]
+out[16] <= mux2_1_32Bit:master.out[16]
+out[17] <= mux2_1_32Bit:master.out[17]
+out[18] <= mux2_1_32Bit:master.out[18]
+out[19] <= mux2_1_32Bit:master.out[19]
+out[20] <= mux2_1_32Bit:master.out[20]
+out[21] <= mux2_1_32Bit:master.out[21]
+out[22] <= mux2_1_32Bit:master.out[22]
+out[23] <= mux2_1_32Bit:master.out[23]
+out[24] <= mux2_1_32Bit:master.out[24]
+out[25] <= mux2_1_32Bit:master.out[25]
+out[26] <= mux2_1_32Bit:master.out[26]
+out[27] <= mux2_1_32Bit:master.out[27]
+out[28] <= mux2_1_32Bit:master.out[28]
+out[29] <= mux2_1_32Bit:master.out[29]
+out[30] <= mux2_1_32Bit:master.out[30]
+out[31] <= mux2_1_32Bit:master.out[31]
+in0[0] => mux2_1_32Bit:mux0.in0[0]
+in0[1] => mux2_1_32Bit:mux0.in0[1]
+in0[2] => mux2_1_32Bit:mux0.in0[2]
+in0[3] => mux2_1_32Bit:mux0.in0[3]
+in0[4] => mux2_1_32Bit:mux0.in0[4]
+in0[5] => mux2_1_32Bit:mux0.in0[5]
+in0[6] => mux2_1_32Bit:mux0.in0[6]
+in0[7] => mux2_1_32Bit:mux0.in0[7]
+in0[8] => mux2_1_32Bit:mux0.in0[8]
+in0[9] => mux2_1_32Bit:mux0.in0[9]
+in0[10] => mux2_1_32Bit:mux0.in0[10]
+in0[11] => mux2_1_32Bit:mux0.in0[11]
+in0[12] => mux2_1_32Bit:mux0.in0[12]
+in0[13] => mux2_1_32Bit:mux0.in0[13]
+in0[14] => mux2_1_32Bit:mux0.in0[14]
+in0[15] => mux2_1_32Bit:mux0.in0[15]
+in0[16] => mux2_1_32Bit:mux0.in0[16]
+in0[17] => mux2_1_32Bit:mux0.in0[17]
+in0[18] => mux2_1_32Bit:mux0.in0[18]
+in0[19] => mux2_1_32Bit:mux0.in0[19]
+in0[20] => mux2_1_32Bit:mux0.in0[20]
+in0[21] => mux2_1_32Bit:mux0.in0[21]
+in0[22] => mux2_1_32Bit:mux0.in0[22]
+in0[23] => mux2_1_32Bit:mux0.in0[23]
+in0[24] => mux2_1_32Bit:mux0.in0[24]
+in0[25] => mux2_1_32Bit:mux0.in0[25]
+in0[26] => mux2_1_32Bit:mux0.in0[26]
+in0[27] => mux2_1_32Bit:mux0.in0[27]
+in0[28] => mux2_1_32Bit:mux0.in0[28]
+in0[29] => mux2_1_32Bit:mux0.in0[29]
+in0[30] => mux2_1_32Bit:mux0.in0[30]
+in0[31] => mux2_1_32Bit:mux0.in0[31]
+in1[0] => mux2_1_32Bit:mux0.in1[0]
+in1[1] => mux2_1_32Bit:mux0.in1[1]
+in1[2] => mux2_1_32Bit:mux0.in1[2]
+in1[3] => mux2_1_32Bit:mux0.in1[3]
+in1[4] => mux2_1_32Bit:mux0.in1[4]
+in1[5] => mux2_1_32Bit:mux0.in1[5]
+in1[6] => mux2_1_32Bit:mux0.in1[6]
+in1[7] => mux2_1_32Bit:mux0.in1[7]
+in1[8] => mux2_1_32Bit:mux0.in1[8]
+in1[9] => mux2_1_32Bit:mux0.in1[9]
+in1[10] => mux2_1_32Bit:mux0.in1[10]
+in1[11] => mux2_1_32Bit:mux0.in1[11]
+in1[12] => mux2_1_32Bit:mux0.in1[12]
+in1[13] => mux2_1_32Bit:mux0.in1[13]
+in1[14] => mux2_1_32Bit:mux0.in1[14]
+in1[15] => mux2_1_32Bit:mux0.in1[15]
+in1[16] => mux2_1_32Bit:mux0.in1[16]
+in1[17] => mux2_1_32Bit:mux0.in1[17]
+in1[18] => mux2_1_32Bit:mux0.in1[18]
+in1[19] => mux2_1_32Bit:mux0.in1[19]
+in1[20] => mux2_1_32Bit:mux0.in1[20]
+in1[21] => mux2_1_32Bit:mux0.in1[21]
+in1[22] => mux2_1_32Bit:mux0.in1[22]
+in1[23] => mux2_1_32Bit:mux0.in1[23]
+in1[24] => mux2_1_32Bit:mux0.in1[24]
+in1[25] => mux2_1_32Bit:mux0.in1[25]
+in1[26] => mux2_1_32Bit:mux0.in1[26]
+in1[27] => mux2_1_32Bit:mux0.in1[27]
+in1[28] => mux2_1_32Bit:mux0.in1[28]
+in1[29] => mux2_1_32Bit:mux0.in1[29]
+in1[30] => mux2_1_32Bit:mux0.in1[30]
+in1[31] => mux2_1_32Bit:mux0.in1[31]
+in2[0] => in2[0].IN1
+in2[1] => in2[1].IN1
+in2[2] => in2[2].IN1
+in2[3] => in2[3].IN1
+in2[4] => in2[4].IN1
+in2[5] => in2[5].IN1
+in2[6] => in2[6].IN1
+in2[7] => in2[7].IN1
+in2[8] => in2[8].IN1
+in2[9] => in2[9].IN1
+in2[10] => in2[10].IN1
+in2[11] => in2[11].IN1
+in2[12] => in2[12].IN1
+in2[13] => in2[13].IN1
+in2[14] => in2[14].IN1
+in2[15] => in2[15].IN1
+in2[16] => in2[16].IN1
+in2[17] => in2[17].IN1
+in2[18] => in2[18].IN1
+in2[19] => in2[19].IN1
+in2[20] => in2[20].IN1
+in2[21] => in2[21].IN1
+in2[22] => in2[22].IN1
+in2[23] => in2[23].IN1
+in2[24] => in2[24].IN1
+in2[25] => in2[25].IN1
+in2[26] => in2[26].IN1
+in2[27] => in2[27].IN1
+in2[28] => in2[28].IN1
+in2[29] => in2[29].IN1
+in2[30] => in2[30].IN1
+in2[31] => in2[31].IN1
+in3[0] => in3[0].IN1
+in3[1] => in3[1].IN1
+in3[2] => in3[2].IN1
+in3[3] => in3[3].IN1
+in3[4] => in3[4].IN1
+in3[5] => in3[5].IN1
+in3[6] => in3[6].IN1
+in3[7] => in3[7].IN1
+in3[8] => in3[8].IN1
+in3[9] => in3[9].IN1
+in3[10] => in3[10].IN1
+in3[11] => in3[11].IN1
+in3[12] => in3[12].IN1
+in3[13] => in3[13].IN1
+in3[14] => in3[14].IN1
+in3[15] => in3[15].IN1
+in3[16] => in3[16].IN1
+in3[17] => in3[17].IN1
+in3[18] => in3[18].IN1
+in3[19] => in3[19].IN1
+in3[20] => in3[20].IN1
+in3[21] => in3[21].IN1
+in3[22] => in3[22].IN1
+in3[23] => in3[23].IN1
+in3[24] => in3[24].IN1
+in3[25] => in3[25].IN1
+in3[26] => in3[26].IN1
+in3[27] => in3[27].IN1
+in3[28] => in3[28].IN1
+in3[29] => in3[29].IN1
+in3[30] => in3[30].IN1
+in3[31] => in3[31].IN1
+sel[0] => sel[0].IN1
+sel[1] => mux2_1_32Bit:master.sel
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0
+out[0] <= mux2_1Bit:eachDec[0].mux0.out
+out[1] <= mux2_1Bit:eachDec[1].mux0.out
+out[2] <= mux2_1Bit:eachDec[2].mux0.out
+out[3] <= mux2_1Bit:eachDec[3].mux0.out
+out[4] <= mux2_1Bit:eachDec[4].mux0.out
+out[5] <= mux2_1Bit:eachDec[5].mux0.out
+out[6] <= mux2_1Bit:eachDec[6].mux0.out
+out[7] <= mux2_1Bit:eachDec[7].mux0.out
+out[8] <= mux2_1Bit:eachDec[8].mux0.out
+out[9] <= mux2_1Bit:eachDec[9].mux0.out
+out[10] <= mux2_1Bit:eachDec[10].mux0.out
+out[11] <= mux2_1Bit:eachDec[11].mux0.out
+out[12] <= mux2_1Bit:eachDec[12].mux0.out
+out[13] <= mux2_1Bit:eachDec[13].mux0.out
+out[14] <= mux2_1Bit:eachDec[14].mux0.out
+out[15] <= mux2_1Bit:eachDec[15].mux0.out
+out[16] <= mux2_1Bit:eachDec[16].mux0.out
+out[17] <= mux2_1Bit:eachDec[17].mux0.out
+out[18] <= mux2_1Bit:eachDec[18].mux0.out
+out[19] <= mux2_1Bit:eachDec[19].mux0.out
+out[20] <= mux2_1Bit:eachDec[20].mux0.out
+out[21] <= mux2_1Bit:eachDec[21].mux0.out
+out[22] <= mux2_1Bit:eachDec[22].mux0.out
+out[23] <= mux2_1Bit:eachDec[23].mux0.out
+out[24] <= mux2_1Bit:eachDec[24].mux0.out
+out[25] <= mux2_1Bit:eachDec[25].mux0.out
+out[26] <= mux2_1Bit:eachDec[26].mux0.out
+out[27] <= mux2_1Bit:eachDec[27].mux0.out
+out[28] <= mux2_1Bit:eachDec[28].mux0.out
+out[29] <= mux2_1Bit:eachDec[29].mux0.out
+out[30] <= mux2_1Bit:eachDec[30].mux0.out
+out[31] <= mux2_1Bit:eachDec[31].mux0.out
+in0[0] => mux2_1Bit:eachDec[0].mux0.in0
+in0[1] => mux2_1Bit:eachDec[1].mux0.in0
+in0[2] => mux2_1Bit:eachDec[2].mux0.in0
+in0[3] => mux2_1Bit:eachDec[3].mux0.in0
+in0[4] => mux2_1Bit:eachDec[4].mux0.in0
+in0[5] => mux2_1Bit:eachDec[5].mux0.in0
+in0[6] => mux2_1Bit:eachDec[6].mux0.in0
+in0[7] => mux2_1Bit:eachDec[7].mux0.in0
+in0[8] => mux2_1Bit:eachDec[8].mux0.in0
+in0[9] => mux2_1Bit:eachDec[9].mux0.in0
+in0[10] => mux2_1Bit:eachDec[10].mux0.in0
+in0[11] => mux2_1Bit:eachDec[11].mux0.in0
+in0[12] => mux2_1Bit:eachDec[12].mux0.in0
+in0[13] => mux2_1Bit:eachDec[13].mux0.in0
+in0[14] => mux2_1Bit:eachDec[14].mux0.in0
+in0[15] => mux2_1Bit:eachDec[15].mux0.in0
+in0[16] => mux2_1Bit:eachDec[16].mux0.in0
+in0[17] => mux2_1Bit:eachDec[17].mux0.in0
+in0[18] => mux2_1Bit:eachDec[18].mux0.in0
+in0[19] => mux2_1Bit:eachDec[19].mux0.in0
+in0[20] => mux2_1Bit:eachDec[20].mux0.in0
+in0[21] => mux2_1Bit:eachDec[21].mux0.in0
+in0[22] => mux2_1Bit:eachDec[22].mux0.in0
+in0[23] => mux2_1Bit:eachDec[23].mux0.in0
+in0[24] => mux2_1Bit:eachDec[24].mux0.in0
+in0[25] => mux2_1Bit:eachDec[25].mux0.in0
+in0[26] => mux2_1Bit:eachDec[26].mux0.in0
+in0[27] => mux2_1Bit:eachDec[27].mux0.in0
+in0[28] => mux2_1Bit:eachDec[28].mux0.in0
+in0[29] => mux2_1Bit:eachDec[29].mux0.in0
+in0[30] => mux2_1Bit:eachDec[30].mux0.in0
+in0[31] => mux2_1Bit:eachDec[31].mux0.in0
+in1[0] => mux2_1Bit:eachDec[0].mux0.in1
+in1[1] => mux2_1Bit:eachDec[1].mux0.in1
+in1[2] => mux2_1Bit:eachDec[2].mux0.in1
+in1[3] => mux2_1Bit:eachDec[3].mux0.in1
+in1[4] => mux2_1Bit:eachDec[4].mux0.in1
+in1[5] => mux2_1Bit:eachDec[5].mux0.in1
+in1[6] => mux2_1Bit:eachDec[6].mux0.in1
+in1[7] => mux2_1Bit:eachDec[7].mux0.in1
+in1[8] => mux2_1Bit:eachDec[8].mux0.in1
+in1[9] => mux2_1Bit:eachDec[9].mux0.in1
+in1[10] => mux2_1Bit:eachDec[10].mux0.in1
+in1[11] => mux2_1Bit:eachDec[11].mux0.in1
+in1[12] => mux2_1Bit:eachDec[12].mux0.in1
+in1[13] => mux2_1Bit:eachDec[13].mux0.in1
+in1[14] => mux2_1Bit:eachDec[14].mux0.in1
+in1[15] => mux2_1Bit:eachDec[15].mux0.in1
+in1[16] => mux2_1Bit:eachDec[16].mux0.in1
+in1[17] => mux2_1Bit:eachDec[17].mux0.in1
+in1[18] => mux2_1Bit:eachDec[18].mux0.in1
+in1[19] => mux2_1Bit:eachDec[19].mux0.in1
+in1[20] => mux2_1Bit:eachDec[20].mux0.in1
+in1[21] => mux2_1Bit:eachDec[21].mux0.in1
+in1[22] => mux2_1Bit:eachDec[22].mux0.in1
+in1[23] => mux2_1Bit:eachDec[23].mux0.in1
+in1[24] => mux2_1Bit:eachDec[24].mux0.in1
+in1[25] => mux2_1Bit:eachDec[25].mux0.in1
+in1[26] => mux2_1Bit:eachDec[26].mux0.in1
+in1[27] => mux2_1Bit:eachDec[27].mux0.in1
+in1[28] => mux2_1Bit:eachDec[28].mux0.in1
+in1[29] => mux2_1Bit:eachDec[29].mux0.in1
+in1[30] => mux2_1Bit:eachDec[30].mux0.in1
+in1[31] => mux2_1Bit:eachDec[31].mux0.in1
+sel => mux2_1Bit:eachDec[0].mux0.sel
+sel => mux2_1Bit:eachDec[1].mux0.sel
+sel => mux2_1Bit:eachDec[2].mux0.sel
+sel => mux2_1Bit:eachDec[3].mux0.sel
+sel => mux2_1Bit:eachDec[4].mux0.sel
+sel => mux2_1Bit:eachDec[5].mux0.sel
+sel => mux2_1Bit:eachDec[6].mux0.sel
+sel => mux2_1Bit:eachDec[7].mux0.sel
+sel => mux2_1Bit:eachDec[8].mux0.sel
+sel => mux2_1Bit:eachDec[9].mux0.sel
+sel => mux2_1Bit:eachDec[10].mux0.sel
+sel => mux2_1Bit:eachDec[11].mux0.sel
+sel => mux2_1Bit:eachDec[12].mux0.sel
+sel => mux2_1Bit:eachDec[13].mux0.sel
+sel => mux2_1Bit:eachDec[14].mux0.sel
+sel => mux2_1Bit:eachDec[15].mux0.sel
+sel => mux2_1Bit:eachDec[16].mux0.sel
+sel => mux2_1Bit:eachDec[17].mux0.sel
+sel => mux2_1Bit:eachDec[18].mux0.sel
+sel => mux2_1Bit:eachDec[19].mux0.sel
+sel => mux2_1Bit:eachDec[20].mux0.sel
+sel => mux2_1Bit:eachDec[21].mux0.sel
+sel => mux2_1Bit:eachDec[22].mux0.sel
+sel => mux2_1Bit:eachDec[23].mux0.sel
+sel => mux2_1Bit:eachDec[24].mux0.sel
+sel => mux2_1Bit:eachDec[25].mux0.sel
+sel => mux2_1Bit:eachDec[26].mux0.sel
+sel => mux2_1Bit:eachDec[27].mux0.sel
+sel => mux2_1Bit:eachDec[28].mux0.sel
+sel => mux2_1Bit:eachDec[29].mux0.sel
+sel => mux2_1Bit:eachDec[30].mux0.sel
+sel => mux2_1Bit:eachDec[31].mux0.sel
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[0].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[1].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[2].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[3].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[4].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[5].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[6].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[7].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[8].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[9].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[10].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[11].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[12].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[13].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[14].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[15].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[16].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[17].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[18].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[19].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[20].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[21].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[22].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[23].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[24].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[25].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[26].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[27].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[28].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[29].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[30].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[31].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1
+out[0] <= mux2_1Bit:eachDec[0].mux0.out
+out[1] <= mux2_1Bit:eachDec[1].mux0.out
+out[2] <= mux2_1Bit:eachDec[2].mux0.out
+out[3] <= mux2_1Bit:eachDec[3].mux0.out
+out[4] <= mux2_1Bit:eachDec[4].mux0.out
+out[5] <= mux2_1Bit:eachDec[5].mux0.out
+out[6] <= mux2_1Bit:eachDec[6].mux0.out
+out[7] <= mux2_1Bit:eachDec[7].mux0.out
+out[8] <= mux2_1Bit:eachDec[8].mux0.out
+out[9] <= mux2_1Bit:eachDec[9].mux0.out
+out[10] <= mux2_1Bit:eachDec[10].mux0.out
+out[11] <= mux2_1Bit:eachDec[11].mux0.out
+out[12] <= mux2_1Bit:eachDec[12].mux0.out
+out[13] <= mux2_1Bit:eachDec[13].mux0.out
+out[14] <= mux2_1Bit:eachDec[14].mux0.out
+out[15] <= mux2_1Bit:eachDec[15].mux0.out
+out[16] <= mux2_1Bit:eachDec[16].mux0.out
+out[17] <= mux2_1Bit:eachDec[17].mux0.out
+out[18] <= mux2_1Bit:eachDec[18].mux0.out
+out[19] <= mux2_1Bit:eachDec[19].mux0.out
+out[20] <= mux2_1Bit:eachDec[20].mux0.out
+out[21] <= mux2_1Bit:eachDec[21].mux0.out
+out[22] <= mux2_1Bit:eachDec[22].mux0.out
+out[23] <= mux2_1Bit:eachDec[23].mux0.out
+out[24] <= mux2_1Bit:eachDec[24].mux0.out
+out[25] <= mux2_1Bit:eachDec[25].mux0.out
+out[26] <= mux2_1Bit:eachDec[26].mux0.out
+out[27] <= mux2_1Bit:eachDec[27].mux0.out
+out[28] <= mux2_1Bit:eachDec[28].mux0.out
+out[29] <= mux2_1Bit:eachDec[29].mux0.out
+out[30] <= mux2_1Bit:eachDec[30].mux0.out
+out[31] <= mux2_1Bit:eachDec[31].mux0.out
+in0[0] => mux2_1Bit:eachDec[0].mux0.in0
+in0[1] => mux2_1Bit:eachDec[1].mux0.in0
+in0[2] => mux2_1Bit:eachDec[2].mux0.in0
+in0[3] => mux2_1Bit:eachDec[3].mux0.in0
+in0[4] => mux2_1Bit:eachDec[4].mux0.in0
+in0[5] => mux2_1Bit:eachDec[5].mux0.in0
+in0[6] => mux2_1Bit:eachDec[6].mux0.in0
+in0[7] => mux2_1Bit:eachDec[7].mux0.in0
+in0[8] => mux2_1Bit:eachDec[8].mux0.in0
+in0[9] => mux2_1Bit:eachDec[9].mux0.in0
+in0[10] => mux2_1Bit:eachDec[10].mux0.in0
+in0[11] => mux2_1Bit:eachDec[11].mux0.in0
+in0[12] => mux2_1Bit:eachDec[12].mux0.in0
+in0[13] => mux2_1Bit:eachDec[13].mux0.in0
+in0[14] => mux2_1Bit:eachDec[14].mux0.in0
+in0[15] => mux2_1Bit:eachDec[15].mux0.in0
+in0[16] => mux2_1Bit:eachDec[16].mux0.in0
+in0[17] => mux2_1Bit:eachDec[17].mux0.in0
+in0[18] => mux2_1Bit:eachDec[18].mux0.in0
+in0[19] => mux2_1Bit:eachDec[19].mux0.in0
+in0[20] => mux2_1Bit:eachDec[20].mux0.in0
+in0[21] => mux2_1Bit:eachDec[21].mux0.in0
+in0[22] => mux2_1Bit:eachDec[22].mux0.in0
+in0[23] => mux2_1Bit:eachDec[23].mux0.in0
+in0[24] => mux2_1Bit:eachDec[24].mux0.in0
+in0[25] => mux2_1Bit:eachDec[25].mux0.in0
+in0[26] => mux2_1Bit:eachDec[26].mux0.in0
+in0[27] => mux2_1Bit:eachDec[27].mux0.in0
+in0[28] => mux2_1Bit:eachDec[28].mux0.in0
+in0[29] => mux2_1Bit:eachDec[29].mux0.in0
+in0[30] => mux2_1Bit:eachDec[30].mux0.in0
+in0[31] => mux2_1Bit:eachDec[31].mux0.in0
+in1[0] => mux2_1Bit:eachDec[0].mux0.in1
+in1[1] => mux2_1Bit:eachDec[1].mux0.in1
+in1[2] => mux2_1Bit:eachDec[2].mux0.in1
+in1[3] => mux2_1Bit:eachDec[3].mux0.in1
+in1[4] => mux2_1Bit:eachDec[4].mux0.in1
+in1[5] => mux2_1Bit:eachDec[5].mux0.in1
+in1[6] => mux2_1Bit:eachDec[6].mux0.in1
+in1[7] => mux2_1Bit:eachDec[7].mux0.in1
+in1[8] => mux2_1Bit:eachDec[8].mux0.in1
+in1[9] => mux2_1Bit:eachDec[9].mux0.in1
+in1[10] => mux2_1Bit:eachDec[10].mux0.in1
+in1[11] => mux2_1Bit:eachDec[11].mux0.in1
+in1[12] => mux2_1Bit:eachDec[12].mux0.in1
+in1[13] => mux2_1Bit:eachDec[13].mux0.in1
+in1[14] => mux2_1Bit:eachDec[14].mux0.in1
+in1[15] => mux2_1Bit:eachDec[15].mux0.in1
+in1[16] => mux2_1Bit:eachDec[16].mux0.in1
+in1[17] => mux2_1Bit:eachDec[17].mux0.in1
+in1[18] => mux2_1Bit:eachDec[18].mux0.in1
+in1[19] => mux2_1Bit:eachDec[19].mux0.in1
+in1[20] => mux2_1Bit:eachDec[20].mux0.in1
+in1[21] => mux2_1Bit:eachDec[21].mux0.in1
+in1[22] => mux2_1Bit:eachDec[22].mux0.in1
+in1[23] => mux2_1Bit:eachDec[23].mux0.in1
+in1[24] => mux2_1Bit:eachDec[24].mux0.in1
+in1[25] => mux2_1Bit:eachDec[25].mux0.in1
+in1[26] => mux2_1Bit:eachDec[26].mux0.in1
+in1[27] => mux2_1Bit:eachDec[27].mux0.in1
+in1[28] => mux2_1Bit:eachDec[28].mux0.in1
+in1[29] => mux2_1Bit:eachDec[29].mux0.in1
+in1[30] => mux2_1Bit:eachDec[30].mux0.in1
+in1[31] => mux2_1Bit:eachDec[31].mux0.in1
+sel => mux2_1Bit:eachDec[0].mux0.sel
+sel => mux2_1Bit:eachDec[1].mux0.sel
+sel => mux2_1Bit:eachDec[2].mux0.sel
+sel => mux2_1Bit:eachDec[3].mux0.sel
+sel => mux2_1Bit:eachDec[4].mux0.sel
+sel => mux2_1Bit:eachDec[5].mux0.sel
+sel => mux2_1Bit:eachDec[6].mux0.sel
+sel => mux2_1Bit:eachDec[7].mux0.sel
+sel => mux2_1Bit:eachDec[8].mux0.sel
+sel => mux2_1Bit:eachDec[9].mux0.sel
+sel => mux2_1Bit:eachDec[10].mux0.sel
+sel => mux2_1Bit:eachDec[11].mux0.sel
+sel => mux2_1Bit:eachDec[12].mux0.sel
+sel => mux2_1Bit:eachDec[13].mux0.sel
+sel => mux2_1Bit:eachDec[14].mux0.sel
+sel => mux2_1Bit:eachDec[15].mux0.sel
+sel => mux2_1Bit:eachDec[16].mux0.sel
+sel => mux2_1Bit:eachDec[17].mux0.sel
+sel => mux2_1Bit:eachDec[18].mux0.sel
+sel => mux2_1Bit:eachDec[19].mux0.sel
+sel => mux2_1Bit:eachDec[20].mux0.sel
+sel => mux2_1Bit:eachDec[21].mux0.sel
+sel => mux2_1Bit:eachDec[22].mux0.sel
+sel => mux2_1Bit:eachDec[23].mux0.sel
+sel => mux2_1Bit:eachDec[24].mux0.sel
+sel => mux2_1Bit:eachDec[25].mux0.sel
+sel => mux2_1Bit:eachDec[26].mux0.sel
+sel => mux2_1Bit:eachDec[27].mux0.sel
+sel => mux2_1Bit:eachDec[28].mux0.sel
+sel => mux2_1Bit:eachDec[29].mux0.sel
+sel => mux2_1Bit:eachDec[30].mux0.sel
+sel => mux2_1Bit:eachDec[31].mux0.sel
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[0].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[1].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[2].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[3].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[4].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[5].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[6].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[7].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[8].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[9].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[10].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[11].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[12].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[13].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[14].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[15].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[16].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[17].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[18].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[19].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[20].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[21].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[22].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[23].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[24].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[25].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[26].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[27].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[28].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[29].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[30].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[31].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master
+out[0] <= mux2_1Bit:eachDec[0].mux0.out
+out[1] <= mux2_1Bit:eachDec[1].mux0.out
+out[2] <= mux2_1Bit:eachDec[2].mux0.out
+out[3] <= mux2_1Bit:eachDec[3].mux0.out
+out[4] <= mux2_1Bit:eachDec[4].mux0.out
+out[5] <= mux2_1Bit:eachDec[5].mux0.out
+out[6] <= mux2_1Bit:eachDec[6].mux0.out
+out[7] <= mux2_1Bit:eachDec[7].mux0.out
+out[8] <= mux2_1Bit:eachDec[8].mux0.out
+out[9] <= mux2_1Bit:eachDec[9].mux0.out
+out[10] <= mux2_1Bit:eachDec[10].mux0.out
+out[11] <= mux2_1Bit:eachDec[11].mux0.out
+out[12] <= mux2_1Bit:eachDec[12].mux0.out
+out[13] <= mux2_1Bit:eachDec[13].mux0.out
+out[14] <= mux2_1Bit:eachDec[14].mux0.out
+out[15] <= mux2_1Bit:eachDec[15].mux0.out
+out[16] <= mux2_1Bit:eachDec[16].mux0.out
+out[17] <= mux2_1Bit:eachDec[17].mux0.out
+out[18] <= mux2_1Bit:eachDec[18].mux0.out
+out[19] <= mux2_1Bit:eachDec[19].mux0.out
+out[20] <= mux2_1Bit:eachDec[20].mux0.out
+out[21] <= mux2_1Bit:eachDec[21].mux0.out
+out[22] <= mux2_1Bit:eachDec[22].mux0.out
+out[23] <= mux2_1Bit:eachDec[23].mux0.out
+out[24] <= mux2_1Bit:eachDec[24].mux0.out
+out[25] <= mux2_1Bit:eachDec[25].mux0.out
+out[26] <= mux2_1Bit:eachDec[26].mux0.out
+out[27] <= mux2_1Bit:eachDec[27].mux0.out
+out[28] <= mux2_1Bit:eachDec[28].mux0.out
+out[29] <= mux2_1Bit:eachDec[29].mux0.out
+out[30] <= mux2_1Bit:eachDec[30].mux0.out
+out[31] <= mux2_1Bit:eachDec[31].mux0.out
+in0[0] => mux2_1Bit:eachDec[0].mux0.in0
+in0[1] => mux2_1Bit:eachDec[1].mux0.in0
+in0[2] => mux2_1Bit:eachDec[2].mux0.in0
+in0[3] => mux2_1Bit:eachDec[3].mux0.in0
+in0[4] => mux2_1Bit:eachDec[4].mux0.in0
+in0[5] => mux2_1Bit:eachDec[5].mux0.in0
+in0[6] => mux2_1Bit:eachDec[6].mux0.in0
+in0[7] => mux2_1Bit:eachDec[7].mux0.in0
+in0[8] => mux2_1Bit:eachDec[8].mux0.in0
+in0[9] => mux2_1Bit:eachDec[9].mux0.in0
+in0[10] => mux2_1Bit:eachDec[10].mux0.in0
+in0[11] => mux2_1Bit:eachDec[11].mux0.in0
+in0[12] => mux2_1Bit:eachDec[12].mux0.in0
+in0[13] => mux2_1Bit:eachDec[13].mux0.in0
+in0[14] => mux2_1Bit:eachDec[14].mux0.in0
+in0[15] => mux2_1Bit:eachDec[15].mux0.in0
+in0[16] => mux2_1Bit:eachDec[16].mux0.in0
+in0[17] => mux2_1Bit:eachDec[17].mux0.in0
+in0[18] => mux2_1Bit:eachDec[18].mux0.in0
+in0[19] => mux2_1Bit:eachDec[19].mux0.in0
+in0[20] => mux2_1Bit:eachDec[20].mux0.in0
+in0[21] => mux2_1Bit:eachDec[21].mux0.in0
+in0[22] => mux2_1Bit:eachDec[22].mux0.in0
+in0[23] => mux2_1Bit:eachDec[23].mux0.in0
+in0[24] => mux2_1Bit:eachDec[24].mux0.in0
+in0[25] => mux2_1Bit:eachDec[25].mux0.in0
+in0[26] => mux2_1Bit:eachDec[26].mux0.in0
+in0[27] => mux2_1Bit:eachDec[27].mux0.in0
+in0[28] => mux2_1Bit:eachDec[28].mux0.in0
+in0[29] => mux2_1Bit:eachDec[29].mux0.in0
+in0[30] => mux2_1Bit:eachDec[30].mux0.in0
+in0[31] => mux2_1Bit:eachDec[31].mux0.in0
+in1[0] => mux2_1Bit:eachDec[0].mux0.in1
+in1[1] => mux2_1Bit:eachDec[1].mux0.in1
+in1[2] => mux2_1Bit:eachDec[2].mux0.in1
+in1[3] => mux2_1Bit:eachDec[3].mux0.in1
+in1[4] => mux2_1Bit:eachDec[4].mux0.in1
+in1[5] => mux2_1Bit:eachDec[5].mux0.in1
+in1[6] => mux2_1Bit:eachDec[6].mux0.in1
+in1[7] => mux2_1Bit:eachDec[7].mux0.in1
+in1[8] => mux2_1Bit:eachDec[8].mux0.in1
+in1[9] => mux2_1Bit:eachDec[9].mux0.in1
+in1[10] => mux2_1Bit:eachDec[10].mux0.in1
+in1[11] => mux2_1Bit:eachDec[11].mux0.in1
+in1[12] => mux2_1Bit:eachDec[12].mux0.in1
+in1[13] => mux2_1Bit:eachDec[13].mux0.in1
+in1[14] => mux2_1Bit:eachDec[14].mux0.in1
+in1[15] => mux2_1Bit:eachDec[15].mux0.in1
+in1[16] => mux2_1Bit:eachDec[16].mux0.in1
+in1[17] => mux2_1Bit:eachDec[17].mux0.in1
+in1[18] => mux2_1Bit:eachDec[18].mux0.in1
+in1[19] => mux2_1Bit:eachDec[19].mux0.in1
+in1[20] => mux2_1Bit:eachDec[20].mux0.in1
+in1[21] => mux2_1Bit:eachDec[21].mux0.in1
+in1[22] => mux2_1Bit:eachDec[22].mux0.in1
+in1[23] => mux2_1Bit:eachDec[23].mux0.in1
+in1[24] => mux2_1Bit:eachDec[24].mux0.in1
+in1[25] => mux2_1Bit:eachDec[25].mux0.in1
+in1[26] => mux2_1Bit:eachDec[26].mux0.in1
+in1[27] => mux2_1Bit:eachDec[27].mux0.in1
+in1[28] => mux2_1Bit:eachDec[28].mux0.in1
+in1[29] => mux2_1Bit:eachDec[29].mux0.in1
+in1[30] => mux2_1Bit:eachDec[30].mux0.in1
+in1[31] => mux2_1Bit:eachDec[31].mux0.in1
+sel => mux2_1Bit:eachDec[0].mux0.sel
+sel => mux2_1Bit:eachDec[1].mux0.sel
+sel => mux2_1Bit:eachDec[2].mux0.sel
+sel => mux2_1Bit:eachDec[3].mux0.sel
+sel => mux2_1Bit:eachDec[4].mux0.sel
+sel => mux2_1Bit:eachDec[5].mux0.sel
+sel => mux2_1Bit:eachDec[6].mux0.sel
+sel => mux2_1Bit:eachDec[7].mux0.sel
+sel => mux2_1Bit:eachDec[8].mux0.sel
+sel => mux2_1Bit:eachDec[9].mux0.sel
+sel => mux2_1Bit:eachDec[10].mux0.sel
+sel => mux2_1Bit:eachDec[11].mux0.sel
+sel => mux2_1Bit:eachDec[12].mux0.sel
+sel => mux2_1Bit:eachDec[13].mux0.sel
+sel => mux2_1Bit:eachDec[14].mux0.sel
+sel => mux2_1Bit:eachDec[15].mux0.sel
+sel => mux2_1Bit:eachDec[16].mux0.sel
+sel => mux2_1Bit:eachDec[17].mux0.sel
+sel => mux2_1Bit:eachDec[18].mux0.sel
+sel => mux2_1Bit:eachDec[19].mux0.sel
+sel => mux2_1Bit:eachDec[20].mux0.sel
+sel => mux2_1Bit:eachDec[21].mux0.sel
+sel => mux2_1Bit:eachDec[22].mux0.sel
+sel => mux2_1Bit:eachDec[23].mux0.sel
+sel => mux2_1Bit:eachDec[24].mux0.sel
+sel => mux2_1Bit:eachDec[25].mux0.sel
+sel => mux2_1Bit:eachDec[26].mux0.sel
+sel => mux2_1Bit:eachDec[27].mux0.sel
+sel => mux2_1Bit:eachDec[28].mux0.sel
+sel => mux2_1Bit:eachDec[29].mux0.sel
+sel => mux2_1Bit:eachDec[30].mux0.sel
+sel => mux2_1Bit:eachDec[31].mux0.sel
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[0].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[1].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[2].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[3].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[4].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[5].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[6].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[7].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[8].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[9].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[10].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[11].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[12].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[13].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[14].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[15].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[16].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[17].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[18].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[19].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[20].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[21].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[22].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[23].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[24].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[25].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[26].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[27].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[28].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[29].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[30].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RsForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[31].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward
+out[0] <= mux2_1_32Bit:master.out[0]
+out[1] <= mux2_1_32Bit:master.out[1]
+out[2] <= mux2_1_32Bit:master.out[2]
+out[3] <= mux2_1_32Bit:master.out[3]
+out[4] <= mux2_1_32Bit:master.out[4]
+out[5] <= mux2_1_32Bit:master.out[5]
+out[6] <= mux2_1_32Bit:master.out[6]
+out[7] <= mux2_1_32Bit:master.out[7]
+out[8] <= mux2_1_32Bit:master.out[8]
+out[9] <= mux2_1_32Bit:master.out[9]
+out[10] <= mux2_1_32Bit:master.out[10]
+out[11] <= mux2_1_32Bit:master.out[11]
+out[12] <= mux2_1_32Bit:master.out[12]
+out[13] <= mux2_1_32Bit:master.out[13]
+out[14] <= mux2_1_32Bit:master.out[14]
+out[15] <= mux2_1_32Bit:master.out[15]
+out[16] <= mux2_1_32Bit:master.out[16]
+out[17] <= mux2_1_32Bit:master.out[17]
+out[18] <= mux2_1_32Bit:master.out[18]
+out[19] <= mux2_1_32Bit:master.out[19]
+out[20] <= mux2_1_32Bit:master.out[20]
+out[21] <= mux2_1_32Bit:master.out[21]
+out[22] <= mux2_1_32Bit:master.out[22]
+out[23] <= mux2_1_32Bit:master.out[23]
+out[24] <= mux2_1_32Bit:master.out[24]
+out[25] <= mux2_1_32Bit:master.out[25]
+out[26] <= mux2_1_32Bit:master.out[26]
+out[27] <= mux2_1_32Bit:master.out[27]
+out[28] <= mux2_1_32Bit:master.out[28]
+out[29] <= mux2_1_32Bit:master.out[29]
+out[30] <= mux2_1_32Bit:master.out[30]
+out[31] <= mux2_1_32Bit:master.out[31]
+in0[0] => mux2_1_32Bit:mux0.in0[0]
+in0[1] => mux2_1_32Bit:mux0.in0[1]
+in0[2] => mux2_1_32Bit:mux0.in0[2]
+in0[3] => mux2_1_32Bit:mux0.in0[3]
+in0[4] => mux2_1_32Bit:mux0.in0[4]
+in0[5] => mux2_1_32Bit:mux0.in0[5]
+in0[6] => mux2_1_32Bit:mux0.in0[6]
+in0[7] => mux2_1_32Bit:mux0.in0[7]
+in0[8] => mux2_1_32Bit:mux0.in0[8]
+in0[9] => mux2_1_32Bit:mux0.in0[9]
+in0[10] => mux2_1_32Bit:mux0.in0[10]
+in0[11] => mux2_1_32Bit:mux0.in0[11]
+in0[12] => mux2_1_32Bit:mux0.in0[12]
+in0[13] => mux2_1_32Bit:mux0.in0[13]
+in0[14] => mux2_1_32Bit:mux0.in0[14]
+in0[15] => mux2_1_32Bit:mux0.in0[15]
+in0[16] => mux2_1_32Bit:mux0.in0[16]
+in0[17] => mux2_1_32Bit:mux0.in0[17]
+in0[18] => mux2_1_32Bit:mux0.in0[18]
+in0[19] => mux2_1_32Bit:mux0.in0[19]
+in0[20] => mux2_1_32Bit:mux0.in0[20]
+in0[21] => mux2_1_32Bit:mux0.in0[21]
+in0[22] => mux2_1_32Bit:mux0.in0[22]
+in0[23] => mux2_1_32Bit:mux0.in0[23]
+in0[24] => mux2_1_32Bit:mux0.in0[24]
+in0[25] => mux2_1_32Bit:mux0.in0[25]
+in0[26] => mux2_1_32Bit:mux0.in0[26]
+in0[27] => mux2_1_32Bit:mux0.in0[27]
+in0[28] => mux2_1_32Bit:mux0.in0[28]
+in0[29] => mux2_1_32Bit:mux0.in0[29]
+in0[30] => mux2_1_32Bit:mux0.in0[30]
+in0[31] => mux2_1_32Bit:mux0.in0[31]
+in1[0] => mux2_1_32Bit:mux0.in1[0]
+in1[1] => mux2_1_32Bit:mux0.in1[1]
+in1[2] => mux2_1_32Bit:mux0.in1[2]
+in1[3] => mux2_1_32Bit:mux0.in1[3]
+in1[4] => mux2_1_32Bit:mux0.in1[4]
+in1[5] => mux2_1_32Bit:mux0.in1[5]
+in1[6] => mux2_1_32Bit:mux0.in1[6]
+in1[7] => mux2_1_32Bit:mux0.in1[7]
+in1[8] => mux2_1_32Bit:mux0.in1[8]
+in1[9] => mux2_1_32Bit:mux0.in1[9]
+in1[10] => mux2_1_32Bit:mux0.in1[10]
+in1[11] => mux2_1_32Bit:mux0.in1[11]
+in1[12] => mux2_1_32Bit:mux0.in1[12]
+in1[13] => mux2_1_32Bit:mux0.in1[13]
+in1[14] => mux2_1_32Bit:mux0.in1[14]
+in1[15] => mux2_1_32Bit:mux0.in1[15]
+in1[16] => mux2_1_32Bit:mux0.in1[16]
+in1[17] => mux2_1_32Bit:mux0.in1[17]
+in1[18] => mux2_1_32Bit:mux0.in1[18]
+in1[19] => mux2_1_32Bit:mux0.in1[19]
+in1[20] => mux2_1_32Bit:mux0.in1[20]
+in1[21] => mux2_1_32Bit:mux0.in1[21]
+in1[22] => mux2_1_32Bit:mux0.in1[22]
+in1[23] => mux2_1_32Bit:mux0.in1[23]
+in1[24] => mux2_1_32Bit:mux0.in1[24]
+in1[25] => mux2_1_32Bit:mux0.in1[25]
+in1[26] => mux2_1_32Bit:mux0.in1[26]
+in1[27] => mux2_1_32Bit:mux0.in1[27]
+in1[28] => mux2_1_32Bit:mux0.in1[28]
+in1[29] => mux2_1_32Bit:mux0.in1[29]
+in1[30] => mux2_1_32Bit:mux0.in1[30]
+in1[31] => mux2_1_32Bit:mux0.in1[31]
+in2[0] => in2[0].IN1
+in2[1] => in2[1].IN1
+in2[2] => in2[2].IN1
+in2[3] => in2[3].IN1
+in2[4] => in2[4].IN1
+in2[5] => in2[5].IN1
+in2[6] => in2[6].IN1
+in2[7] => in2[7].IN1
+in2[8] => in2[8].IN1
+in2[9] => in2[9].IN1
+in2[10] => in2[10].IN1
+in2[11] => in2[11].IN1
+in2[12] => in2[12].IN1
+in2[13] => in2[13].IN1
+in2[14] => in2[14].IN1
+in2[15] => in2[15].IN1
+in2[16] => in2[16].IN1
+in2[17] => in2[17].IN1
+in2[18] => in2[18].IN1
+in2[19] => in2[19].IN1
+in2[20] => in2[20].IN1
+in2[21] => in2[21].IN1
+in2[22] => in2[22].IN1
+in2[23] => in2[23].IN1
+in2[24] => in2[24].IN1
+in2[25] => in2[25].IN1
+in2[26] => in2[26].IN1
+in2[27] => in2[27].IN1
+in2[28] => in2[28].IN1
+in2[29] => in2[29].IN1
+in2[30] => in2[30].IN1
+in2[31] => in2[31].IN1
+in3[0] => in3[0].IN1
+in3[1] => in3[1].IN1
+in3[2] => in3[2].IN1
+in3[3] => in3[3].IN1
+in3[4] => in3[4].IN1
+in3[5] => in3[5].IN1
+in3[6] => in3[6].IN1
+in3[7] => in3[7].IN1
+in3[8] => in3[8].IN1
+in3[9] => in3[9].IN1
+in3[10] => in3[10].IN1
+in3[11] => in3[11].IN1
+in3[12] => in3[12].IN1
+in3[13] => in3[13].IN1
+in3[14] => in3[14].IN1
+in3[15] => in3[15].IN1
+in3[16] => in3[16].IN1
+in3[17] => in3[17].IN1
+in3[18] => in3[18].IN1
+in3[19] => in3[19].IN1
+in3[20] => in3[20].IN1
+in3[21] => in3[21].IN1
+in3[22] => in3[22].IN1
+in3[23] => in3[23].IN1
+in3[24] => in3[24].IN1
+in3[25] => in3[25].IN1
+in3[26] => in3[26].IN1
+in3[27] => in3[27].IN1
+in3[28] => in3[28].IN1
+in3[29] => in3[29].IN1
+in3[30] => in3[30].IN1
+in3[31] => in3[31].IN1
+sel[0] => sel[0].IN1
+sel[1] => mux2_1_32Bit:master.sel
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0
+out[0] <= mux2_1Bit:eachDec[0].mux0.out
+out[1] <= mux2_1Bit:eachDec[1].mux0.out
+out[2] <= mux2_1Bit:eachDec[2].mux0.out
+out[3] <= mux2_1Bit:eachDec[3].mux0.out
+out[4] <= mux2_1Bit:eachDec[4].mux0.out
+out[5] <= mux2_1Bit:eachDec[5].mux0.out
+out[6] <= mux2_1Bit:eachDec[6].mux0.out
+out[7] <= mux2_1Bit:eachDec[7].mux0.out
+out[8] <= mux2_1Bit:eachDec[8].mux0.out
+out[9] <= mux2_1Bit:eachDec[9].mux0.out
+out[10] <= mux2_1Bit:eachDec[10].mux0.out
+out[11] <= mux2_1Bit:eachDec[11].mux0.out
+out[12] <= mux2_1Bit:eachDec[12].mux0.out
+out[13] <= mux2_1Bit:eachDec[13].mux0.out
+out[14] <= mux2_1Bit:eachDec[14].mux0.out
+out[15] <= mux2_1Bit:eachDec[15].mux0.out
+out[16] <= mux2_1Bit:eachDec[16].mux0.out
+out[17] <= mux2_1Bit:eachDec[17].mux0.out
+out[18] <= mux2_1Bit:eachDec[18].mux0.out
+out[19] <= mux2_1Bit:eachDec[19].mux0.out
+out[20] <= mux2_1Bit:eachDec[20].mux0.out
+out[21] <= mux2_1Bit:eachDec[21].mux0.out
+out[22] <= mux2_1Bit:eachDec[22].mux0.out
+out[23] <= mux2_1Bit:eachDec[23].mux0.out
+out[24] <= mux2_1Bit:eachDec[24].mux0.out
+out[25] <= mux2_1Bit:eachDec[25].mux0.out
+out[26] <= mux2_1Bit:eachDec[26].mux0.out
+out[27] <= mux2_1Bit:eachDec[27].mux0.out
+out[28] <= mux2_1Bit:eachDec[28].mux0.out
+out[29] <= mux2_1Bit:eachDec[29].mux0.out
+out[30] <= mux2_1Bit:eachDec[30].mux0.out
+out[31] <= mux2_1Bit:eachDec[31].mux0.out
+in0[0] => mux2_1Bit:eachDec[0].mux0.in0
+in0[1] => mux2_1Bit:eachDec[1].mux0.in0
+in0[2] => mux2_1Bit:eachDec[2].mux0.in0
+in0[3] => mux2_1Bit:eachDec[3].mux0.in0
+in0[4] => mux2_1Bit:eachDec[4].mux0.in0
+in0[5] => mux2_1Bit:eachDec[5].mux0.in0
+in0[6] => mux2_1Bit:eachDec[6].mux0.in0
+in0[7] => mux2_1Bit:eachDec[7].mux0.in0
+in0[8] => mux2_1Bit:eachDec[8].mux0.in0
+in0[9] => mux2_1Bit:eachDec[9].mux0.in0
+in0[10] => mux2_1Bit:eachDec[10].mux0.in0
+in0[11] => mux2_1Bit:eachDec[11].mux0.in0
+in0[12] => mux2_1Bit:eachDec[12].mux0.in0
+in0[13] => mux2_1Bit:eachDec[13].mux0.in0
+in0[14] => mux2_1Bit:eachDec[14].mux0.in0
+in0[15] => mux2_1Bit:eachDec[15].mux0.in0
+in0[16] => mux2_1Bit:eachDec[16].mux0.in0
+in0[17] => mux2_1Bit:eachDec[17].mux0.in0
+in0[18] => mux2_1Bit:eachDec[18].mux0.in0
+in0[19] => mux2_1Bit:eachDec[19].mux0.in0
+in0[20] => mux2_1Bit:eachDec[20].mux0.in0
+in0[21] => mux2_1Bit:eachDec[21].mux0.in0
+in0[22] => mux2_1Bit:eachDec[22].mux0.in0
+in0[23] => mux2_1Bit:eachDec[23].mux0.in0
+in0[24] => mux2_1Bit:eachDec[24].mux0.in0
+in0[25] => mux2_1Bit:eachDec[25].mux0.in0
+in0[26] => mux2_1Bit:eachDec[26].mux0.in0
+in0[27] => mux2_1Bit:eachDec[27].mux0.in0
+in0[28] => mux2_1Bit:eachDec[28].mux0.in0
+in0[29] => mux2_1Bit:eachDec[29].mux0.in0
+in0[30] => mux2_1Bit:eachDec[30].mux0.in0
+in0[31] => mux2_1Bit:eachDec[31].mux0.in0
+in1[0] => mux2_1Bit:eachDec[0].mux0.in1
+in1[1] => mux2_1Bit:eachDec[1].mux0.in1
+in1[2] => mux2_1Bit:eachDec[2].mux0.in1
+in1[3] => mux2_1Bit:eachDec[3].mux0.in1
+in1[4] => mux2_1Bit:eachDec[4].mux0.in1
+in1[5] => mux2_1Bit:eachDec[5].mux0.in1
+in1[6] => mux2_1Bit:eachDec[6].mux0.in1
+in1[7] => mux2_1Bit:eachDec[7].mux0.in1
+in1[8] => mux2_1Bit:eachDec[8].mux0.in1
+in1[9] => mux2_1Bit:eachDec[9].mux0.in1
+in1[10] => mux2_1Bit:eachDec[10].mux0.in1
+in1[11] => mux2_1Bit:eachDec[11].mux0.in1
+in1[12] => mux2_1Bit:eachDec[12].mux0.in1
+in1[13] => mux2_1Bit:eachDec[13].mux0.in1
+in1[14] => mux2_1Bit:eachDec[14].mux0.in1
+in1[15] => mux2_1Bit:eachDec[15].mux0.in1
+in1[16] => mux2_1Bit:eachDec[16].mux0.in1
+in1[17] => mux2_1Bit:eachDec[17].mux0.in1
+in1[18] => mux2_1Bit:eachDec[18].mux0.in1
+in1[19] => mux2_1Bit:eachDec[19].mux0.in1
+in1[20] => mux2_1Bit:eachDec[20].mux0.in1
+in1[21] => mux2_1Bit:eachDec[21].mux0.in1
+in1[22] => mux2_1Bit:eachDec[22].mux0.in1
+in1[23] => mux2_1Bit:eachDec[23].mux0.in1
+in1[24] => mux2_1Bit:eachDec[24].mux0.in1
+in1[25] => mux2_1Bit:eachDec[25].mux0.in1
+in1[26] => mux2_1Bit:eachDec[26].mux0.in1
+in1[27] => mux2_1Bit:eachDec[27].mux0.in1
+in1[28] => mux2_1Bit:eachDec[28].mux0.in1
+in1[29] => mux2_1Bit:eachDec[29].mux0.in1
+in1[30] => mux2_1Bit:eachDec[30].mux0.in1
+in1[31] => mux2_1Bit:eachDec[31].mux0.in1
+sel => mux2_1Bit:eachDec[0].mux0.sel
+sel => mux2_1Bit:eachDec[1].mux0.sel
+sel => mux2_1Bit:eachDec[2].mux0.sel
+sel => mux2_1Bit:eachDec[3].mux0.sel
+sel => mux2_1Bit:eachDec[4].mux0.sel
+sel => mux2_1Bit:eachDec[5].mux0.sel
+sel => mux2_1Bit:eachDec[6].mux0.sel
+sel => mux2_1Bit:eachDec[7].mux0.sel
+sel => mux2_1Bit:eachDec[8].mux0.sel
+sel => mux2_1Bit:eachDec[9].mux0.sel
+sel => mux2_1Bit:eachDec[10].mux0.sel
+sel => mux2_1Bit:eachDec[11].mux0.sel
+sel => mux2_1Bit:eachDec[12].mux0.sel
+sel => mux2_1Bit:eachDec[13].mux0.sel
+sel => mux2_1Bit:eachDec[14].mux0.sel
+sel => mux2_1Bit:eachDec[15].mux0.sel
+sel => mux2_1Bit:eachDec[16].mux0.sel
+sel => mux2_1Bit:eachDec[17].mux0.sel
+sel => mux2_1Bit:eachDec[18].mux0.sel
+sel => mux2_1Bit:eachDec[19].mux0.sel
+sel => mux2_1Bit:eachDec[20].mux0.sel
+sel => mux2_1Bit:eachDec[21].mux0.sel
+sel => mux2_1Bit:eachDec[22].mux0.sel
+sel => mux2_1Bit:eachDec[23].mux0.sel
+sel => mux2_1Bit:eachDec[24].mux0.sel
+sel => mux2_1Bit:eachDec[25].mux0.sel
+sel => mux2_1Bit:eachDec[26].mux0.sel
+sel => mux2_1Bit:eachDec[27].mux0.sel
+sel => mux2_1Bit:eachDec[28].mux0.sel
+sel => mux2_1Bit:eachDec[29].mux0.sel
+sel => mux2_1Bit:eachDec[30].mux0.sel
+sel => mux2_1Bit:eachDec[31].mux0.sel
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[0].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[1].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[2].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[3].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[4].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[5].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[6].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[7].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[8].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[9].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[10].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[11].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[12].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[13].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[14].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[15].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[16].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[17].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[18].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[19].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[20].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[21].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[22].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[23].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[24].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[25].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[26].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[27].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[28].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[29].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[30].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux0|mux2_1Bit:eachDec[31].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1
+out[0] <= mux2_1Bit:eachDec[0].mux0.out
+out[1] <= mux2_1Bit:eachDec[1].mux0.out
+out[2] <= mux2_1Bit:eachDec[2].mux0.out
+out[3] <= mux2_1Bit:eachDec[3].mux0.out
+out[4] <= mux2_1Bit:eachDec[4].mux0.out
+out[5] <= mux2_1Bit:eachDec[5].mux0.out
+out[6] <= mux2_1Bit:eachDec[6].mux0.out
+out[7] <= mux2_1Bit:eachDec[7].mux0.out
+out[8] <= mux2_1Bit:eachDec[8].mux0.out
+out[9] <= mux2_1Bit:eachDec[9].mux0.out
+out[10] <= mux2_1Bit:eachDec[10].mux0.out
+out[11] <= mux2_1Bit:eachDec[11].mux0.out
+out[12] <= mux2_1Bit:eachDec[12].mux0.out
+out[13] <= mux2_1Bit:eachDec[13].mux0.out
+out[14] <= mux2_1Bit:eachDec[14].mux0.out
+out[15] <= mux2_1Bit:eachDec[15].mux0.out
+out[16] <= mux2_1Bit:eachDec[16].mux0.out
+out[17] <= mux2_1Bit:eachDec[17].mux0.out
+out[18] <= mux2_1Bit:eachDec[18].mux0.out
+out[19] <= mux2_1Bit:eachDec[19].mux0.out
+out[20] <= mux2_1Bit:eachDec[20].mux0.out
+out[21] <= mux2_1Bit:eachDec[21].mux0.out
+out[22] <= mux2_1Bit:eachDec[22].mux0.out
+out[23] <= mux2_1Bit:eachDec[23].mux0.out
+out[24] <= mux2_1Bit:eachDec[24].mux0.out
+out[25] <= mux2_1Bit:eachDec[25].mux0.out
+out[26] <= mux2_1Bit:eachDec[26].mux0.out
+out[27] <= mux2_1Bit:eachDec[27].mux0.out
+out[28] <= mux2_1Bit:eachDec[28].mux0.out
+out[29] <= mux2_1Bit:eachDec[29].mux0.out
+out[30] <= mux2_1Bit:eachDec[30].mux0.out
+out[31] <= mux2_1Bit:eachDec[31].mux0.out
+in0[0] => mux2_1Bit:eachDec[0].mux0.in0
+in0[1] => mux2_1Bit:eachDec[1].mux0.in0
+in0[2] => mux2_1Bit:eachDec[2].mux0.in0
+in0[3] => mux2_1Bit:eachDec[3].mux0.in0
+in0[4] => mux2_1Bit:eachDec[4].mux0.in0
+in0[5] => mux2_1Bit:eachDec[5].mux0.in0
+in0[6] => mux2_1Bit:eachDec[6].mux0.in0
+in0[7] => mux2_1Bit:eachDec[7].mux0.in0
+in0[8] => mux2_1Bit:eachDec[8].mux0.in0
+in0[9] => mux2_1Bit:eachDec[9].mux0.in0
+in0[10] => mux2_1Bit:eachDec[10].mux0.in0
+in0[11] => mux2_1Bit:eachDec[11].mux0.in0
+in0[12] => mux2_1Bit:eachDec[12].mux0.in0
+in0[13] => mux2_1Bit:eachDec[13].mux0.in0
+in0[14] => mux2_1Bit:eachDec[14].mux0.in0
+in0[15] => mux2_1Bit:eachDec[15].mux0.in0
+in0[16] => mux2_1Bit:eachDec[16].mux0.in0
+in0[17] => mux2_1Bit:eachDec[17].mux0.in0
+in0[18] => mux2_1Bit:eachDec[18].mux0.in0
+in0[19] => mux2_1Bit:eachDec[19].mux0.in0
+in0[20] => mux2_1Bit:eachDec[20].mux0.in0
+in0[21] => mux2_1Bit:eachDec[21].mux0.in0
+in0[22] => mux2_1Bit:eachDec[22].mux0.in0
+in0[23] => mux2_1Bit:eachDec[23].mux0.in0
+in0[24] => mux2_1Bit:eachDec[24].mux0.in0
+in0[25] => mux2_1Bit:eachDec[25].mux0.in0
+in0[26] => mux2_1Bit:eachDec[26].mux0.in0
+in0[27] => mux2_1Bit:eachDec[27].mux0.in0
+in0[28] => mux2_1Bit:eachDec[28].mux0.in0
+in0[29] => mux2_1Bit:eachDec[29].mux0.in0
+in0[30] => mux2_1Bit:eachDec[30].mux0.in0
+in0[31] => mux2_1Bit:eachDec[31].mux0.in0
+in1[0] => mux2_1Bit:eachDec[0].mux0.in1
+in1[1] => mux2_1Bit:eachDec[1].mux0.in1
+in1[2] => mux2_1Bit:eachDec[2].mux0.in1
+in1[3] => mux2_1Bit:eachDec[3].mux0.in1
+in1[4] => mux2_1Bit:eachDec[4].mux0.in1
+in1[5] => mux2_1Bit:eachDec[5].mux0.in1
+in1[6] => mux2_1Bit:eachDec[6].mux0.in1
+in1[7] => mux2_1Bit:eachDec[7].mux0.in1
+in1[8] => mux2_1Bit:eachDec[8].mux0.in1
+in1[9] => mux2_1Bit:eachDec[9].mux0.in1
+in1[10] => mux2_1Bit:eachDec[10].mux0.in1
+in1[11] => mux2_1Bit:eachDec[11].mux0.in1
+in1[12] => mux2_1Bit:eachDec[12].mux0.in1
+in1[13] => mux2_1Bit:eachDec[13].mux0.in1
+in1[14] => mux2_1Bit:eachDec[14].mux0.in1
+in1[15] => mux2_1Bit:eachDec[15].mux0.in1
+in1[16] => mux2_1Bit:eachDec[16].mux0.in1
+in1[17] => mux2_1Bit:eachDec[17].mux0.in1
+in1[18] => mux2_1Bit:eachDec[18].mux0.in1
+in1[19] => mux2_1Bit:eachDec[19].mux0.in1
+in1[20] => mux2_1Bit:eachDec[20].mux0.in1
+in1[21] => mux2_1Bit:eachDec[21].mux0.in1
+in1[22] => mux2_1Bit:eachDec[22].mux0.in1
+in1[23] => mux2_1Bit:eachDec[23].mux0.in1
+in1[24] => mux2_1Bit:eachDec[24].mux0.in1
+in1[25] => mux2_1Bit:eachDec[25].mux0.in1
+in1[26] => mux2_1Bit:eachDec[26].mux0.in1
+in1[27] => mux2_1Bit:eachDec[27].mux0.in1
+in1[28] => mux2_1Bit:eachDec[28].mux0.in1
+in1[29] => mux2_1Bit:eachDec[29].mux0.in1
+in1[30] => mux2_1Bit:eachDec[30].mux0.in1
+in1[31] => mux2_1Bit:eachDec[31].mux0.in1
+sel => mux2_1Bit:eachDec[0].mux0.sel
+sel => mux2_1Bit:eachDec[1].mux0.sel
+sel => mux2_1Bit:eachDec[2].mux0.sel
+sel => mux2_1Bit:eachDec[3].mux0.sel
+sel => mux2_1Bit:eachDec[4].mux0.sel
+sel => mux2_1Bit:eachDec[5].mux0.sel
+sel => mux2_1Bit:eachDec[6].mux0.sel
+sel => mux2_1Bit:eachDec[7].mux0.sel
+sel => mux2_1Bit:eachDec[8].mux0.sel
+sel => mux2_1Bit:eachDec[9].mux0.sel
+sel => mux2_1Bit:eachDec[10].mux0.sel
+sel => mux2_1Bit:eachDec[11].mux0.sel
+sel => mux2_1Bit:eachDec[12].mux0.sel
+sel => mux2_1Bit:eachDec[13].mux0.sel
+sel => mux2_1Bit:eachDec[14].mux0.sel
+sel => mux2_1Bit:eachDec[15].mux0.sel
+sel => mux2_1Bit:eachDec[16].mux0.sel
+sel => mux2_1Bit:eachDec[17].mux0.sel
+sel => mux2_1Bit:eachDec[18].mux0.sel
+sel => mux2_1Bit:eachDec[19].mux0.sel
+sel => mux2_1Bit:eachDec[20].mux0.sel
+sel => mux2_1Bit:eachDec[21].mux0.sel
+sel => mux2_1Bit:eachDec[22].mux0.sel
+sel => mux2_1Bit:eachDec[23].mux0.sel
+sel => mux2_1Bit:eachDec[24].mux0.sel
+sel => mux2_1Bit:eachDec[25].mux0.sel
+sel => mux2_1Bit:eachDec[26].mux0.sel
+sel => mux2_1Bit:eachDec[27].mux0.sel
+sel => mux2_1Bit:eachDec[28].mux0.sel
+sel => mux2_1Bit:eachDec[29].mux0.sel
+sel => mux2_1Bit:eachDec[30].mux0.sel
+sel => mux2_1Bit:eachDec[31].mux0.sel
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[0].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[1].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[2].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[3].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[4].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[5].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[6].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[7].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[8].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[9].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[10].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[11].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[12].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[13].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[14].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[15].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[16].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[17].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[18].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[19].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[20].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[21].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[22].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[23].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[24].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[25].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[26].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[27].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[28].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[29].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[30].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:mux1|mux2_1Bit:eachDec[31].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master
+out[0] <= mux2_1Bit:eachDec[0].mux0.out
+out[1] <= mux2_1Bit:eachDec[1].mux0.out
+out[2] <= mux2_1Bit:eachDec[2].mux0.out
+out[3] <= mux2_1Bit:eachDec[3].mux0.out
+out[4] <= mux2_1Bit:eachDec[4].mux0.out
+out[5] <= mux2_1Bit:eachDec[5].mux0.out
+out[6] <= mux2_1Bit:eachDec[6].mux0.out
+out[7] <= mux2_1Bit:eachDec[7].mux0.out
+out[8] <= mux2_1Bit:eachDec[8].mux0.out
+out[9] <= mux2_1Bit:eachDec[9].mux0.out
+out[10] <= mux2_1Bit:eachDec[10].mux0.out
+out[11] <= mux2_1Bit:eachDec[11].mux0.out
+out[12] <= mux2_1Bit:eachDec[12].mux0.out
+out[13] <= mux2_1Bit:eachDec[13].mux0.out
+out[14] <= mux2_1Bit:eachDec[14].mux0.out
+out[15] <= mux2_1Bit:eachDec[15].mux0.out
+out[16] <= mux2_1Bit:eachDec[16].mux0.out
+out[17] <= mux2_1Bit:eachDec[17].mux0.out
+out[18] <= mux2_1Bit:eachDec[18].mux0.out
+out[19] <= mux2_1Bit:eachDec[19].mux0.out
+out[20] <= mux2_1Bit:eachDec[20].mux0.out
+out[21] <= mux2_1Bit:eachDec[21].mux0.out
+out[22] <= mux2_1Bit:eachDec[22].mux0.out
+out[23] <= mux2_1Bit:eachDec[23].mux0.out
+out[24] <= mux2_1Bit:eachDec[24].mux0.out
+out[25] <= mux2_1Bit:eachDec[25].mux0.out
+out[26] <= mux2_1Bit:eachDec[26].mux0.out
+out[27] <= mux2_1Bit:eachDec[27].mux0.out
+out[28] <= mux2_1Bit:eachDec[28].mux0.out
+out[29] <= mux2_1Bit:eachDec[29].mux0.out
+out[30] <= mux2_1Bit:eachDec[30].mux0.out
+out[31] <= mux2_1Bit:eachDec[31].mux0.out
+in0[0] => mux2_1Bit:eachDec[0].mux0.in0
+in0[1] => mux2_1Bit:eachDec[1].mux0.in0
+in0[2] => mux2_1Bit:eachDec[2].mux0.in0
+in0[3] => mux2_1Bit:eachDec[3].mux0.in0
+in0[4] => mux2_1Bit:eachDec[4].mux0.in0
+in0[5] => mux2_1Bit:eachDec[5].mux0.in0
+in0[6] => mux2_1Bit:eachDec[6].mux0.in0
+in0[7] => mux2_1Bit:eachDec[7].mux0.in0
+in0[8] => mux2_1Bit:eachDec[8].mux0.in0
+in0[9] => mux2_1Bit:eachDec[9].mux0.in0
+in0[10] => mux2_1Bit:eachDec[10].mux0.in0
+in0[11] => mux2_1Bit:eachDec[11].mux0.in0
+in0[12] => mux2_1Bit:eachDec[12].mux0.in0
+in0[13] => mux2_1Bit:eachDec[13].mux0.in0
+in0[14] => mux2_1Bit:eachDec[14].mux0.in0
+in0[15] => mux2_1Bit:eachDec[15].mux0.in0
+in0[16] => mux2_1Bit:eachDec[16].mux0.in0
+in0[17] => mux2_1Bit:eachDec[17].mux0.in0
+in0[18] => mux2_1Bit:eachDec[18].mux0.in0
+in0[19] => mux2_1Bit:eachDec[19].mux0.in0
+in0[20] => mux2_1Bit:eachDec[20].mux0.in0
+in0[21] => mux2_1Bit:eachDec[21].mux0.in0
+in0[22] => mux2_1Bit:eachDec[22].mux0.in0
+in0[23] => mux2_1Bit:eachDec[23].mux0.in0
+in0[24] => mux2_1Bit:eachDec[24].mux0.in0
+in0[25] => mux2_1Bit:eachDec[25].mux0.in0
+in0[26] => mux2_1Bit:eachDec[26].mux0.in0
+in0[27] => mux2_1Bit:eachDec[27].mux0.in0
+in0[28] => mux2_1Bit:eachDec[28].mux0.in0
+in0[29] => mux2_1Bit:eachDec[29].mux0.in0
+in0[30] => mux2_1Bit:eachDec[30].mux0.in0
+in0[31] => mux2_1Bit:eachDec[31].mux0.in0
+in1[0] => mux2_1Bit:eachDec[0].mux0.in1
+in1[1] => mux2_1Bit:eachDec[1].mux0.in1
+in1[2] => mux2_1Bit:eachDec[2].mux0.in1
+in1[3] => mux2_1Bit:eachDec[3].mux0.in1
+in1[4] => mux2_1Bit:eachDec[4].mux0.in1
+in1[5] => mux2_1Bit:eachDec[5].mux0.in1
+in1[6] => mux2_1Bit:eachDec[6].mux0.in1
+in1[7] => mux2_1Bit:eachDec[7].mux0.in1
+in1[8] => mux2_1Bit:eachDec[8].mux0.in1
+in1[9] => mux2_1Bit:eachDec[9].mux0.in1
+in1[10] => mux2_1Bit:eachDec[10].mux0.in1
+in1[11] => mux2_1Bit:eachDec[11].mux0.in1
+in1[12] => mux2_1Bit:eachDec[12].mux0.in1
+in1[13] => mux2_1Bit:eachDec[13].mux0.in1
+in1[14] => mux2_1Bit:eachDec[14].mux0.in1
+in1[15] => mux2_1Bit:eachDec[15].mux0.in1
+in1[16] => mux2_1Bit:eachDec[16].mux0.in1
+in1[17] => mux2_1Bit:eachDec[17].mux0.in1
+in1[18] => mux2_1Bit:eachDec[18].mux0.in1
+in1[19] => mux2_1Bit:eachDec[19].mux0.in1
+in1[20] => mux2_1Bit:eachDec[20].mux0.in1
+in1[21] => mux2_1Bit:eachDec[21].mux0.in1
+in1[22] => mux2_1Bit:eachDec[22].mux0.in1
+in1[23] => mux2_1Bit:eachDec[23].mux0.in1
+in1[24] => mux2_1Bit:eachDec[24].mux0.in1
+in1[25] => mux2_1Bit:eachDec[25].mux0.in1
+in1[26] => mux2_1Bit:eachDec[26].mux0.in1
+in1[27] => mux2_1Bit:eachDec[27].mux0.in1
+in1[28] => mux2_1Bit:eachDec[28].mux0.in1
+in1[29] => mux2_1Bit:eachDec[29].mux0.in1
+in1[30] => mux2_1Bit:eachDec[30].mux0.in1
+in1[31] => mux2_1Bit:eachDec[31].mux0.in1
+sel => mux2_1Bit:eachDec[0].mux0.sel
+sel => mux2_1Bit:eachDec[1].mux0.sel
+sel => mux2_1Bit:eachDec[2].mux0.sel
+sel => mux2_1Bit:eachDec[3].mux0.sel
+sel => mux2_1Bit:eachDec[4].mux0.sel
+sel => mux2_1Bit:eachDec[5].mux0.sel
+sel => mux2_1Bit:eachDec[6].mux0.sel
+sel => mux2_1Bit:eachDec[7].mux0.sel
+sel => mux2_1Bit:eachDec[8].mux0.sel
+sel => mux2_1Bit:eachDec[9].mux0.sel
+sel => mux2_1Bit:eachDec[10].mux0.sel
+sel => mux2_1Bit:eachDec[11].mux0.sel
+sel => mux2_1Bit:eachDec[12].mux0.sel
+sel => mux2_1Bit:eachDec[13].mux0.sel
+sel => mux2_1Bit:eachDec[14].mux0.sel
+sel => mux2_1Bit:eachDec[15].mux0.sel
+sel => mux2_1Bit:eachDec[16].mux0.sel
+sel => mux2_1Bit:eachDec[17].mux0.sel
+sel => mux2_1Bit:eachDec[18].mux0.sel
+sel => mux2_1Bit:eachDec[19].mux0.sel
+sel => mux2_1Bit:eachDec[20].mux0.sel
+sel => mux2_1Bit:eachDec[21].mux0.sel
+sel => mux2_1Bit:eachDec[22].mux0.sel
+sel => mux2_1Bit:eachDec[23].mux0.sel
+sel => mux2_1Bit:eachDec[24].mux0.sel
+sel => mux2_1Bit:eachDec[25].mux0.sel
+sel => mux2_1Bit:eachDec[26].mux0.sel
+sel => mux2_1Bit:eachDec[27].mux0.sel
+sel => mux2_1Bit:eachDec[28].mux0.sel
+sel => mux2_1Bit:eachDec[29].mux0.sel
+sel => mux2_1Bit:eachDec[30].mux0.sel
+sel => mux2_1Bit:eachDec[31].mux0.sel
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[0].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[1].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[2].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[3].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[4].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[5].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[6].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[7].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[8].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[9].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[10].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[11].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[12].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[13].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[14].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[15].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[16].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[17].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[18].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[19].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[20].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[21].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[22].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[23].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[24].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[25].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[26].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[27].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[28].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[29].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[30].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
+|CPU|dataPath:data|DecodeReg:decStage|mux4_1_32Bit:RtForward|mux2_1_32Bit:master|mux2_1Bit:eachDec[31].mux0
+out <= comb.DB_MAX_OUTPUT_PORT_TYPE
+in0 => temp[0].IN0
+in1 => temp[1].IN0
+sel => temp[1].IN1
+sel => temp[0].IN1
+
+
 |CPU|dataPath:data|DecodeReg:decStage|register32Bit:ALUin1
 q[0] <= D_FF:eachDff[0].dff.q
 q[1] <= D_FF:eachDff[1].dff.q
@@ -57973,6 +60703,108 @@ reset => q.OUTPUTSELECT
 clk => q~reg0.CLK
 
 
+|CPU|dataPath:data|forwarding:Rs_fwd
+forwardCtrl[0] <= forwardCtrl.DB_MAX_OUTPUT_PORT_TYPE
+forwardCtrl[1] <= forwardCtrl.DB_MAX_OUTPUT_PORT_TYPE
+Rt_ex[0] => writeAddr_Ex[0].DATAB
+Rt_ex[1] => writeAddr_Ex[1].DATAB
+Rt_ex[2] => writeAddr_Ex[2].DATAB
+Rt_ex[3] => writeAddr_Ex[3].DATAB
+Rt_ex[4] => writeAddr_Ex[4].DATAB
+Rd_ex[0] => writeAddr_Ex[0].DATAA
+Rd_ex[1] => writeAddr_Ex[1].DATAA
+Rd_ex[2] => writeAddr_Ex[2].DATAA
+Rd_ex[3] => writeAddr_Ex[3].DATAA
+Rd_ex[4] => writeAddr_Ex[4].DATAA
+Rt_mem[0] => writeAddr_Mem[0].DATAB
+Rt_mem[1] => writeAddr_Mem[1].DATAB
+Rt_mem[2] => writeAddr_Mem[2].DATAB
+Rt_mem[3] => writeAddr_Mem[3].DATAB
+Rt_mem[4] => writeAddr_Mem[4].DATAB
+Rd_mem[0] => writeAddr_Mem[0].DATAA
+Rd_mem[1] => writeAddr_Mem[1].DATAA
+Rd_mem[2] => writeAddr_Mem[2].DATAA
+Rd_mem[3] => writeAddr_Mem[3].DATAA
+Rd_mem[4] => writeAddr_Mem[4].DATAA
+regDest_Ex => writeAddr_Ex[4].OUTPUTSELECT
+regDest_Ex => writeAddr_Ex[3].OUTPUTSELECT
+regDest_Ex => writeAddr_Ex[2].OUTPUTSELECT
+regDest_Ex => writeAddr_Ex[1].OUTPUTSELECT
+regDest_Ex => writeAddr_Ex[0].OUTPUTSELECT
+regDest_Mem => writeAddr_Mem[4].OUTPUTSELECT
+regDest_Mem => writeAddr_Mem[3].OUTPUTSELECT
+regDest_Mem => writeAddr_Mem[2].OUTPUTSELECT
+regDest_Mem => writeAddr_Mem[1].OUTPUTSELECT
+regDest_Mem => writeAddr_Mem[0].OUTPUTSELECT
+writeEnable_mem => forwardCtrl.DATAB
+Rvalue[0] => Equal1.IN4
+Rvalue[0] => Equal2.IN4
+Rvalue[0] => Equal0.IN31
+Rvalue[1] => Equal1.IN3
+Rvalue[1] => Equal2.IN3
+Rvalue[1] => Equal0.IN30
+Rvalue[2] => Equal1.IN2
+Rvalue[2] => Equal2.IN2
+Rvalue[2] => Equal0.IN29
+Rvalue[3] => Equal1.IN1
+Rvalue[3] => Equal2.IN1
+Rvalue[3] => Equal0.IN28
+Rvalue[4] => Equal1.IN0
+Rvalue[4] => Equal2.IN0
+Rvalue[4] => Equal0.IN27
+
+
+|CPU|dataPath:data|forwarding:Rt_fwd
+forwardCtrl[0] <= forwardCtrl.DB_MAX_OUTPUT_PORT_TYPE
+forwardCtrl[1] <= forwardCtrl.DB_MAX_OUTPUT_PORT_TYPE
+Rt_ex[0] => writeAddr_Ex[0].DATAB
+Rt_ex[1] => writeAddr_Ex[1].DATAB
+Rt_ex[2] => writeAddr_Ex[2].DATAB
+Rt_ex[3] => writeAddr_Ex[3].DATAB
+Rt_ex[4] => writeAddr_Ex[4].DATAB
+Rd_ex[0] => writeAddr_Ex[0].DATAA
+Rd_ex[1] => writeAddr_Ex[1].DATAA
+Rd_ex[2] => writeAddr_Ex[2].DATAA
+Rd_ex[3] => writeAddr_Ex[3].DATAA
+Rd_ex[4] => writeAddr_Ex[4].DATAA
+Rt_mem[0] => writeAddr_Mem[0].DATAB
+Rt_mem[1] => writeAddr_Mem[1].DATAB
+Rt_mem[2] => writeAddr_Mem[2].DATAB
+Rt_mem[3] => writeAddr_Mem[3].DATAB
+Rt_mem[4] => writeAddr_Mem[4].DATAB
+Rd_mem[0] => writeAddr_Mem[0].DATAA
+Rd_mem[1] => writeAddr_Mem[1].DATAA
+Rd_mem[2] => writeAddr_Mem[2].DATAA
+Rd_mem[3] => writeAddr_Mem[3].DATAA
+Rd_mem[4] => writeAddr_Mem[4].DATAA
+regDest_Ex => writeAddr_Ex[4].OUTPUTSELECT
+regDest_Ex => writeAddr_Ex[3].OUTPUTSELECT
+regDest_Ex => writeAddr_Ex[2].OUTPUTSELECT
+regDest_Ex => writeAddr_Ex[1].OUTPUTSELECT
+regDest_Ex => writeAddr_Ex[0].OUTPUTSELECT
+regDest_Mem => writeAddr_Mem[4].OUTPUTSELECT
+regDest_Mem => writeAddr_Mem[3].OUTPUTSELECT
+regDest_Mem => writeAddr_Mem[2].OUTPUTSELECT
+regDest_Mem => writeAddr_Mem[1].OUTPUTSELECT
+regDest_Mem => writeAddr_Mem[0].OUTPUTSELECT
+writeEnable_mem => forwardCtrl.DATAB
+Rvalue[0] => Equal1.IN4
+Rvalue[0] => Equal2.IN4
+Rvalue[0] => Equal0.IN31
+Rvalue[1] => Equal1.IN3
+Rvalue[1] => Equal2.IN3
+Rvalue[1] => Equal0.IN30
+Rvalue[2] => Equal1.IN2
+Rvalue[2] => Equal2.IN2
+Rvalue[2] => Equal0.IN29
+Rvalue[3] => Equal1.IN1
+Rvalue[3] => Equal2.IN1
+Rvalue[3] => Equal0.IN28
+Rvalue[4] => Equal1.IN0
+Rvalue[4] => Equal2.IN0
+Rvalue[4] => Equal0.IN27
+
+
 |CPU|dataPath:data|PipelineDecode:decCtrls
 ALUSrc_ex <= D_FF:eachSignal[0].signals.q
 Branch_ex <= D_FF:eachSignal[1].signals.q
@@ -58065,6 +60897,38 @@ clk => q~reg0.CLK
 
 
 |CPU|dataPath:data|Execute:exStage
+ALUoutput_fwd[0] <= alu:aluComp.Output[0]
+ALUoutput_fwd[1] <= alu:aluComp.Output[1]
+ALUoutput_fwd[2] <= alu:aluComp.Output[2]
+ALUoutput_fwd[3] <= alu:aluComp.Output[3]
+ALUoutput_fwd[4] <= alu:aluComp.Output[4]
+ALUoutput_fwd[5] <= alu:aluComp.Output[5]
+ALUoutput_fwd[6] <= alu:aluComp.Output[6]
+ALUoutput_fwd[7] <= alu:aluComp.Output[7]
+ALUoutput_fwd[8] <= alu:aluComp.Output[8]
+ALUoutput_fwd[9] <= alu:aluComp.Output[9]
+ALUoutput_fwd[10] <= alu:aluComp.Output[10]
+ALUoutput_fwd[11] <= alu:aluComp.Output[11]
+ALUoutput_fwd[12] <= alu:aluComp.Output[12]
+ALUoutput_fwd[13] <= alu:aluComp.Output[13]
+ALUoutput_fwd[14] <= alu:aluComp.Output[14]
+ALUoutput_fwd[15] <= alu:aluComp.Output[15]
+ALUoutput_fwd[16] <= alu:aluComp.Output[16]
+ALUoutput_fwd[17] <= alu:aluComp.Output[17]
+ALUoutput_fwd[18] <= alu:aluComp.Output[18]
+ALUoutput_fwd[19] <= alu:aluComp.Output[19]
+ALUoutput_fwd[20] <= alu:aluComp.Output[20]
+ALUoutput_fwd[21] <= alu:aluComp.Output[21]
+ALUoutput_fwd[22] <= alu:aluComp.Output[22]
+ALUoutput_fwd[23] <= alu:aluComp.Output[23]
+ALUoutput_fwd[24] <= alu:aluComp.Output[24]
+ALUoutput_fwd[25] <= alu:aluComp.Output[25]
+ALUoutput_fwd[26] <= alu:aluComp.Output[26]
+ALUoutput_fwd[27] <= alu:aluComp.Output[27]
+ALUoutput_fwd[28] <= alu:aluComp.Output[28]
+ALUoutput_fwd[29] <= alu:aluComp.Output[29]
+ALUoutput_fwd[30] <= alu:aluComp.Output[30]
+ALUoutput_fwd[31] <= alu:aluComp.Output[31]
 memAddr[0] <= register32Bit:ALUtoMem.q[0]
 memAddr[1] <= register32Bit:ALUtoMem.q[1]
 memAddr[2] <= register32Bit:ALUtoMem.q[2]
@@ -62119,6 +64983,38 @@ clk => q~reg0.CLK
 
 
 |CPU|dataPath:data|Memory:memStage
+writeData_fwd[0] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[1] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[2] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[3] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[4] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[5] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[6] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[7] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[8] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[9] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[10] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[11] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[12] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[13] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[14] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[15] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[16] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[17] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[18] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[19] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[20] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[21] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[22] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[23] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[24] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[25] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[26] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[27] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[28] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[29] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[30] <= mux2_1_32Bit:memToRegMux.out
+writeData_fwd[31] <= mux2_1_32Bit:memToRegMux.out
 writeToReg[0] <= register32Bit:memoryData.q[0]
 writeToReg[1] <= register32Bit:memoryData.q[1]
 writeToReg[2] <= register32Bit:memoryData.q[2]

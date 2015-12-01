@@ -43,33 +43,19 @@ module CPU_testbench();
 	
 	CPU dut(.clk, .reset);
 	
+	integer i;
+	
 	initial begin
 	reset <= 1'b1;
 	@(posedge clk);
 	@(posedge clk);
 	reset <= 1'b0;
 	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
-	@(posedge clk);
+
+	for (i = 0; i< 200; i++) begin
+		@(posedge clk);
+	end 
+	
 	$stop;
 	end
 	
