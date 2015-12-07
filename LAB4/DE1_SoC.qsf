@@ -996,7 +996,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE mux2_1_30Bit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE mux2_1_5Bit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE dataPath.sv
 set_global_assignment -name SYSTEMVERILOG_FILE signExtnd.sv
-set_global_assignment -name SYSTEMVERILOG_FILE dataPathTEST.sv
 set_global_assignment -name SYSTEMVERILOG_FILE PC.sv
 set_global_assignment -name SYSTEMVERILOG_FILE instrFU.sv
 set_global_assignment -name SYSTEMVERILOG_FILE register32Bit.sv

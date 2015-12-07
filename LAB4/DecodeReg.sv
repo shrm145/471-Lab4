@@ -1,3 +1,6 @@
+// Michaela Bartz and Shruti Misra
+`timescale 1 ps / 100 fs
+
 module DecodeReg (regRS, toALU1, toALU2, storedRt1, Rt_ex, Rd_ex, ALUSource, Branch,  regWrite, writeToReg, Rd, Rt, Rs, WriteRegAddr, imm16, writeData_fwd, ALUoutput_fwd, RsCtrl, RtCtrl, clk, reset);
 	output [31:0] toALU1, toALU2, storedRt1;
 	output [29:0] regRS;
@@ -11,9 +14,7 @@ module DecodeReg (regRS, toALU1, toALU2, storedRt1, Rt_ex, Rd_ex, ALUSource, Bra
 	wire [31:0]  signExImm16, constCPU, BussB;
 	wire [31:0] readRs, readRt, Rs_fwd, Rt_fwd;
 
-
-	
-	assign regRS = readRs[31:2];
+	assign regRS = Rs_fwd[31:2];
 	
 	// register file of CPU. Can read 2 values
 	regfile rf (.ReadData1(readRs), .ReadData2(readRt), .WriteData(writeToReg), 
@@ -28,6 +29,7 @@ module DecodeReg (regRS, toALU1, toALU2, storedRt1, Rt_ex, Rd_ex, ALUSource, Bra
 	
 	// Determines if the constant from signImmMux or the 2nd reg value is sent into ALU on BussB
 	mux2_1_32Bit ALUSourceMux (.out(BussB), .in0(Rt_fwd), .in1(constCPU), .sel(ALUSource));
+	
 	
 	// Forwarding Muxes
 	mux4_1_32Bit RsForward (.out(Rs_fwd), .in0(readRs), .in1(ALUoutput_fwd), .in2(writeData_fwd), .in3(readRs), .sel(RsCtrl));

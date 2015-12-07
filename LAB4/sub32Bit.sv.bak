@@ -1,0 +1,24 @@
+// Michaela Bartz and Shruti Misra
+`timescale 1 ps / 100 fs
+
+module sub32Bit #(parameter WIDTH = 32)(out, in0, in1);
+	output [WIDTH-1:0] out;
+	//output cout, overflow;
+	input [WIDTH-1:0] in0, in1;
+	
+	wire[WIDTH:0] carryValues; // contains carry in and carry out values
+	
+	assign carryValues[0] = 1'b1;
+	
+	// compute sum of each bit to calculate 32 bit sum
+	genvar i;	
+	generate
+		for(i=0; i<WIDTH; i++) begin : eachBit
+			
+			adder addrBit (.sum(out[i]), .cout(carryValues[i+1]), .a(in0[i]), .b(in1[i]), .cin(carryValues[i]));
+		end
+	endgenerate
+	
+	//assign out = tempOut;	
+	
+endmodule 

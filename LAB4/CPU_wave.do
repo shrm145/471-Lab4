@@ -38,6 +38,12 @@ add wave -noupdate /CPU_testbench/dut/data/decStage/Rd
 add wave -noupdate /CPU_testbench/dut/data/decStage/rf/WriteRegister
 add wave -noupdate /CPU_testbench/dut/data/decStage/rf/WriteData
 add wave -noupdate /CPU_testbench/dut/data/decStage/rf/RegWrite
+add wave -noupdate /CPU_testbench/dut/data/decStage/Rs_fwd
+add wave -noupdate /CPU_testbench/dut/data/decStage/Rt_fwd
+add wave -noupdate /CPU_testbench/dut/data/decStage/readRs
+add wave -noupdate /CPU_testbench/dut/data/decStage/readRt
+add wave -noupdate /CPU_testbench/dut/data/decStage/writeData_fwd
+add wave -noupdate /CPU_testbench/dut/data/decStage/ALUoutput_fwd
 add wave -noupdate -expand -group ExOuts /CPU_testbench/dut/data/exStage/memAddr
 add wave -noupdate -expand -group MemOuts /CPU_testbench/dut/data/memStage/writeToReg
 add wave -noupdate -childformat {{{/CPU_testbench/dut/data/decStage/rf/regVal[31]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[30]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[29]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[28]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[27]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[26]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[25]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[24]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[23]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[22]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[21]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[20]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[19]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[18]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[17]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[16]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[15]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[14]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[13]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[12]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[11]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[10]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[9]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[8]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[7]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[6]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[5]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[4]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[3]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[2]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[1]} -radix decimal} {{/CPU_testbench/dut/data/decStage/rf/regVal[0]} -radix decimal}} -subitemconfig {{/CPU_testbench/dut/data/decStage/rf/regVal[31]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[30]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[29]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[28]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[27]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[26]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[25]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[24]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[23]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[22]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[21]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[20]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[19]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[18]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[17]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[16]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[15]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[14]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[13]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[12]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[11]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[10]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[9]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[8]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[7]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[6]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[5]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[4]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[3]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[2]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[1]} {-height 15 -radix decimal} {/CPU_testbench/dut/data/decStage/rf/regVal[0]} {-height 15 -radix decimal}} /CPU_testbench/dut/data/decStage/rf/regVal
@@ -75,11 +81,16 @@ add wave -noupdate /CPU_testbench/dut/data/decStage/readRt
 add wave -noupdate /CPU_testbench/dut/data/decStage/Rs_fwd
 add wave -noupdate /CPU_testbench/dut/data/decStage/Rt_fwd
 add wave -noupdate /CPU_testbench/dut/data/decStage/BussB
+add wave -noupdate /CPU_testbench/dut/getinstr/regRS
+add wave -noupdate /CPU_testbench/dut/getinstr/imm16
+add wave -noupdate /CPU_testbench/dut/getinstr/Branch
+add wave -noupdate /CPU_testbench/dut/getinstr/valToAdderCtrl
+add wave -noupdate /CPU_testbench/dut/getinstr/PC
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {1775167989 ps} 0}
+WaveRestoreCursors {{Cursor 1} {23532618482 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 351
-configure wave -valuecolwidth 204
+configure wave -valuecolwidth 237
 configure wave -justifyvalue left
 configure wave -signalnamewidth 0
 configure wave -snapdistance 10
@@ -92,4 +103,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {38412662882 ps}
+WaveRestoreZoom {0 ps} {456608710231 ps}

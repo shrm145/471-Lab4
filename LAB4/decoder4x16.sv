@@ -23,11 +23,4 @@ module decoder4x16 #(parameter WIDTH=4) (out, in, enable);
 	endgenerate
 	
 	
-	/*
-	decoder2x4 dec0 (.out(out[3:0]), .in(in[1:0]), .enable(tempEnable[0]));
-	decoder2x4 dec1 (.out(out[7:4]), .in(in[1:0]), .enable(tempEnable[1]));
-	decoder2x4 dec2 (.out(out[11:8]), .in(in[1:0]), .enable(tempEnable[2]));
-	decoder2x4 dec3 (.out(out[15:12]), .in(in[1:0]), .enable(tempEnable[3]));
-	*/
-	
 endmodule

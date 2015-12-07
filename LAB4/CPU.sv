@@ -52,7 +52,7 @@ module CPU_testbench();
 	reset <= 1'b0;
 	@(posedge clk);
 
-	for (i = 0; i< 200; i++) begin
+	for (i = 0; i< 1001; i++) begin
 		@(posedge clk);
 	end 
 	

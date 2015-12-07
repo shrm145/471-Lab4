@@ -1,3 +1,6 @@
+// Michaela Bartz and Shruti Misra
+`timescale 1 ps / 100 fs
+
 module PipelineDecode(ALUSrc_ex, Branch_ex, ALUControl0_ex, ALUControl1_ex, MemWrite_ex, MemToReg_ex, RegDest_ex, RegWrite_ex, 
                         ALUSrc_dec, Branch_dec, ALUControl0_dec,ALUControl1_dec, MemWrite_dec, MemToReg_dec, RegDest_dec, RegWrite_dec, clk, reset);
 								

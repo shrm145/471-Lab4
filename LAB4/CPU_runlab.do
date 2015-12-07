@@ -13,6 +13,8 @@ vlog "./controls.sv"
 vlog "./dataPath.sv"
 vlog "./mux2_1_5Bit.sv"
 vlog "./mux2_1_32Bit.sv"
+vlog "./instrFU.sv"
+
 
 # data Path
 vlog "./instructionFetch.sv"

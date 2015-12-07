@@ -13,6 +13,8 @@ Notes From Lecture:
 -If Execute and Memory Stages both forward then use most recent. (Execute)
 
 */
+// Michaela Bartz and Shruti Misra
+`timescale 1 ps / 100 fs
 
 module forwarding (forwardCtrl, Rt_ex, Rd_ex, Rt_mem, Rd_mem, regDest_Ex, regDest_Mem, writeEnable_mem, RegWrite_ex, Rvalue);
 	output reg[1:0] forwardCtrl;

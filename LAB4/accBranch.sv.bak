@@ -1,0 +1,9 @@
+module accBranches(Branch, regRs);
+	output Branch;
+	input regRs;
+	
+	
+	adder32Bit (out, cout, overflow, in0, in1, ctrl);
+	
+	
+	assign Branch = out[31];

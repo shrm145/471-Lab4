@@ -1,3 +1,6 @@
+// Michaela Bartz and Shruti Misra
+`timescale 1 ps / 100 fs
+
 module Memory (writeData_fwd, writeToReg, Rt_wr, Rd_wr, MemWrite, MemToReg, memAddr, storedRt2, Rt_mem, Rd_mem, clk, reset);
 	output [31:0] writeToReg, writeData_fwd;
 	output [4:0] Rt_wr, Rd_wr;

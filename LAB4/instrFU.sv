@@ -10,7 +10,7 @@ module instrFU(instruction, Jump, JR, Branch, negative, imm16, jumpTarget, regRS
 	input [29:0] regRS; // not including last 2 bits of regRS
    input clk, reset;
 	
-	wire valToAdderCtrl; 
+	wire valToAdderCtrl, cin; 
 	wire [29:0] PCin, PCout, constCtrl, PCnoJump, PC;
 	wire [31:0] signExImm16;
 	
@@ -20,7 +20,7 @@ module instrFU(instruction, Jump, JR, Branch, negative, imm16, jumpTarget, regRS
 	mux2_1_30Bit detPCMux (.out(PCin), .in0(PC), .in1(regRS), .sel(JR));
 	
 	// determines control for valToAdderMux. Positive if branching and Reg[rs] is negative 
-	and #50 (valToAdderCtrl, Branch, negative);
+	and #50 (valToAdderCtrl, Branch, regRS[29]);
 	
 	// NEED SIGN EXTEND HERE (output inputs to in1 of valToAdderMux below)
 	signExtnd extImm16 (.outExtnd(signExImm16), .inExtnd(imm16));
@@ -28,9 +28,11 @@ module instrFU(instruction, Jump, JR, Branch, negative, imm16, jumpTarget, regRS
 	// determines value sent to added to PC. 
 	mux2_1_30Bit valToAdderMux (.out(constCtrl), .in0(30'b0), .in1(signExImm16[29:0]), .sel(valToAdderCtrl));
 	
+	// controls incrementation of PC for branches 
+	mux2_1Bit adderCinCtrl(.out(cin), .in0(1'b1), .in1(1'b0), .sel(valToAdderCtrl));  
 	
 	// 30 bit adder that updates program counter
-	adder30Bit adder30 (.out(PCnoJump), .cin(1'b1), .in0(PCout), .in1(constCtrl));
+	adder30Bit adder30 (.out(PCnoJump), .cin, .in0(PCout), .in1(constCtrl));
 	
 	// determines PC based on whether the instruction is a jump
 	mux2_1_30Bit jumpMux (.out(PC), .in0(PCnoJump), .in1({PCout[29:26], jumpTarget}), .sel(Jump));

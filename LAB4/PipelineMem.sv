@@ -1,3 +1,6 @@
+// Michaela Bartz and Shruti Misra
+`timescale 1 ps / 100 fs
+
 module PipelineMem( RegDest_wr, RegWrite_wr, 
                     RegDest_mem, RegWrite_mem, clk, reset);
 								

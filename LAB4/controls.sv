@@ -55,7 +55,7 @@ module controls (Branch, Jump, JR, ALUSource, ALUControl, RegWrite, MemWrite, Me
 				Branch = 	1'b0;
 				Jump = 		1'b0;
 				JR = 			1'b0; 
-				ALUControl= 2'b10; //sltu 
+				ALUControl= 2'b11; //sltu 
 			end
 			else begin // dont write, jump or branch
 				RegDest = 	1'b0;

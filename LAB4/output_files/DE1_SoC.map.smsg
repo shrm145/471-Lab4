@@ -1,5 +1,5 @@
-Info (10281): Verilog HDL Declaration information at DecodeReg.sv(5): object "Rt" differs only in case from object "RT" in the same scope
-Info (10281): Verilog HDL Declaration information at DecodeReg.sv(5): object "Rd" differs only in case from object "RD" in the same scope
+Info (10281): Verilog HDL Declaration information at DecodeReg.sv(8): object "Rt" differs only in case from object "RT" in the same scope
+Info (10281): Verilog HDL Declaration information at DecodeReg.sv(8): object "Rd" differs only in case from object "RD" in the same scope
 Warning (10030): Net "instrmem.data_a" at InstructionMem.sv(9) has no driver or initial value, using a default initial value '0'
 Warning (10030): Net "instrmem.waddr_a" at InstructionMem.sv(9) has no driver or initial value, using a default initial value '0'
 Warning (10030): Net "instrmem.we_a" at InstructionMem.sv(9) has no driver or initial value, using a default initial value '0'

@@ -1,3 +1,6 @@
+// Michaela Bartz and Shruti Misra
+`timescale 1 ps / 100 fs
+
 module Execute (ALUoutput_fwd, memAddr, storedRt2, Rt_mem, Rd_mem, negative, zero, CarryOut, overflow, ALUControl, toALU1, toALU2, storedRt1, Rt_ex, Rd_ex, reset, clk);
 	output [31:0] memAddr, storedRt2, ALUoutput_fwd;
 	output negative, zero, CarryOut, overflow;
